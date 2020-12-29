@@ -369,7 +369,6 @@
 				01258DCBFDBB7BC535A612A4 /* Pods-GroceryPalTests.debug.xcconfig */,
 				F90C9F9C0CE39B5E8CD9D920 /* Pods-GroceryPalTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
