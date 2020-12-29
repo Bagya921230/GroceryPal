@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gGs-en-0Qt">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Grocery-->
+        <scene sceneID="HSW-2y-dv4">
+            <objects>
+                <viewController id="gGs-en-0Qt" customClass="GroceryMainViewController" customModule="GroceryPal" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xSg-LM-Ptw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grocery List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCe-8e-quM">
+                                <rect key="frame" x="20" y="64" width="374" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="WCe-8e-quM" firstAttribute="top" secondItem="jck-In-m52" secondAttribute="top" constant="20" id="B8Q-z8-dhY"/>
+                            <constraint firstItem="jck-In-m52" firstAttribute="trailing" secondItem="WCe-8e-quM" secondAttribute="trailing" constant="20" id="WjG-Zb-g36"/>
+                            <constraint firstItem="WCe-8e-quM" firstAttribute="leading" secondItem="jck-In-m52" secondAttribute="leading" constant="20" id="ptn-rX-39h"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jck-In-m52"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Grocery" image="nav_grocery" selectedImage="nav_grocery" id="cLb-4a-7Qg"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0US-3d-Sqv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="176.81159420289856" y="211.60714285714286"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="nav_grocery" width="32" height="32"/>
+    </resources>
+</document>
