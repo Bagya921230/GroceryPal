@@ -237,12 +237,25 @@
                                     </view>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lHG-Qv-YCi">
+                                <rect key="frame" x="376" y="20" width="18" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="18" id="NUY-VD-byv"/>
+                                    <constraint firstAttribute="height" constant="20" id="ZTh-dk-uHY"/>
+                                </constraints>
+                                <state key="normal" image="bell"/>
+                                <connections>
+                                    <action selector="clickNotifications:" destination="xLc-n3-iVC" eventType="touchUpInside" id="SnB-Va-sch"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="RHZ-V3-lUr" firstAttribute="leading" secondItem="Ddp-rc-pz1" secondAttribute="leading" constant="20" id="8sl-Ph-ccm"/>
                             <constraint firstItem="t0o-P1-DeQ" firstAttribute="top" secondItem="RHZ-V3-lUr" secondAttribute="bottom" constant="40" id="GBo-jH-Mdf"/>
+                            <constraint firstItem="Ddp-rc-pz1" firstAttribute="trailing" secondItem="lHG-Qv-YCi" secondAttribute="trailing" constant="20" id="N4Y-Kh-ia1"/>
                             <constraint firstItem="RHZ-V3-lUr" firstAttribute="top" secondItem="Ddp-rc-pz1" secondAttribute="top" constant="20" id="Nt6-yg-6xy"/>
+                            <constraint firstItem="lHG-Qv-YCi" firstAttribute="top" secondItem="Ddp-rc-pz1" secondAttribute="top" constant="20" id="Ra6-eh-SgA"/>
                             <constraint firstItem="Ddp-rc-pz1" firstAttribute="trailing" secondItem="t0o-P1-DeQ" secondAttribute="trailing" constant="50" id="aWb-q5-Y9N"/>
                             <constraint firstItem="t0o-P1-DeQ" firstAttribute="leading" secondItem="Ddp-rc-pz1" secondAttribute="leading" constant="20" id="lhQ-iw-hPK"/>
                             <constraint firstItem="Ddp-rc-pz1" firstAttribute="trailing" secondItem="RHZ-V3-lUr" secondAttribute="trailing" constant="20" id="ski-9j-Ogp"/>
@@ -259,6 +272,7 @@
                         <segue destination="Lee-Og-2AI" kind="show" identifier="segueItemMain" id="gkh-Tg-uUK"/>
                         <segue destination="8LY-vX-JKv" kind="show" identifier="segueRestockMain" id="EDn-QE-izS"/>
                         <segue destination="zTU-t4-0Fe" kind="show" identifier="segueStatistics" id="JYk-mo-RPC"/>
+                        <segue destination="yGU-oZ-gSX" kind="show" identifier="segueNotifications" id="rMh-o4-bBO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wnh-Ux-YyO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -289,6 +303,16 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="214" y="-1170"/>
+        </scene>
+        <!--Notifications-->
+        <scene sceneID="bYL-aM-EWB">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Notifications" id="yGU-oZ-gSX" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="KgB-VK-ZyX"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="auT-z8-TYO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="838" y="-1361"/>
         </scene>
         <!--ItemsMain-->
         <scene sceneID="lSj-mx-wjo">
@@ -364,6 +388,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bell" width="23" height="24"/>
         <image name="home_grocerylist" width="66" height="85"/>
         <image name="home_items" width="80" height="70"/>
         <image name="home_restock" width="119" height="83"/>

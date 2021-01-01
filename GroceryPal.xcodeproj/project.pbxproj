@@ -8,8 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		5D5F09AA4C4DC6DD7DAE9D9E /* Pods_GroceryPalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 162F77A5CFCBEA170B193B1E /* Pods_GroceryPalTests.framework */; };
+		6912E727259C9AFD007219B6 /* UpdateStorage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6912E726259C9AFD007219B6 /* UpdateStorage.storyboard */; };
+		6912E729259C9B1B007219B6 /* UpdateStorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6912E728259C9B1B007219B6 /* UpdateStorageViewController.swift */; };
+		6912E72C259C9EDC007219B6 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6912E72B259C9EDC007219B6 /* CustomNavigationController.swift */; };
 		69136BA5259A24BB0024DA33 /* StorageItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69136BA3259A24BB0024DA33 /* StorageItemTableViewCell.swift */; };
-		69136BA6259A24BB0024DA33 /* StorageItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69136BA4259A24BB0024DA33 /* StorageItemTableViewCell.xib */; };
+		69188434259F1B4200DE636F /* AddToStorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69188433259F1B4200DE636F /* AddToStorageViewController.swift */; };
 		6934D4C02599D56800B4F846 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6934D4BF2599D56800B4F846 /* LandingViewController.swift */; };
 		6934D4C22599D5B200B4F846 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6934D4C12599D5B200B4F846 /* SignUpViewController.swift */; };
 		6934D4C42599D5C100B4F846 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6934D4C32599D5C100B4F846 /* SignInViewController.swift */; };
@@ -23,6 +26,14 @@
 		6934D4D52599E4A200B4F846 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6934D4D42599E4A200B4F846 /* NotificationsViewController.swift */; };
 		6934D4DA259A113D00B4F846 /* StorageEmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6934D4D9259A113D00B4F846 /* StorageEmptyViewController.swift */; };
 		6934D4DF259A156000B4F846 /* StorageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6934D4DE259A156000B4F846 /* StorageListViewController.swift */; };
+		69461EE2259DEBE300035AF7 /* NotificationEmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69461EE1259DEBE300035AF7 /* NotificationEmptyViewController.swift */; };
+		69461EE4259DEBFD00035AF7 /* NotificationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69461EE3259DEBFD00035AF7 /* NotificationListViewController.swift */; };
+		69461EE7259DF24800035AF7 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69461EE6259DF24800035AF7 /* NotificationTableViewCell.swift */; };
+		69461EE9259E03E400035AF7 /* ItemsEmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69461EE8259E03E400035AF7 /* ItemsEmptyViewController.swift */; };
+		69461EEB259E048F00035AF7 /* ItemsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69461EEA259E048F00035AF7 /* ItemsListViewController.swift */; };
+		69461EED259E083A00035AF7 /* UISearchBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69461EEC259E083A00035AF7 /* UISearchBarExtension.swift */; };
+		69461EF0259EF56000035AF7 /* ItemListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69461EEF259EF56000035AF7 /* ItemListTableViewCell.swift */; };
+		69461EF2259F119800035AF7 /* AddToStorage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69461EF1259F119800035AF7 /* AddToStorage.storyboard */; };
 		696D324F259984D1009ACCB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696D324E259984D1009ACCB3 /* AppDelegate.swift */; };
 		696D3251259984D1009ACCB3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696D3250259984D1009ACCB3 /* SceneDelegate.swift */; };
 		696D3253259984D1009ACCB3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696D3252259984D1009ACCB3 /* ViewController.swift */; };
@@ -66,8 +77,11 @@
 /* Begin PBXFileReference section */
 		01258DCBFDBB7BC535A612A4 /* Pods-GroceryPalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroceryPalTests.debug.xcconfig"; path = "Target Support Files/Pods-GroceryPalTests/Pods-GroceryPalTests.debug.xcconfig"; sourceTree = "<group>"; };
 		162F77A5CFCBEA170B193B1E /* Pods_GroceryPalTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GroceryPalTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6912E726259C9AFD007219B6 /* UpdateStorage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UpdateStorage.storyboard; sourceTree = "<group>"; };
+		6912E728259C9B1B007219B6 /* UpdateStorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStorageViewController.swift; sourceTree = "<group>"; };
+		6912E72B259C9EDC007219B6 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		69136BA3259A24BB0024DA33 /* StorageItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageItemTableViewCell.swift; sourceTree = "<group>"; };
-		69136BA4259A24BB0024DA33 /* StorageItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StorageItemTableViewCell.xib; sourceTree = "<group>"; };
+		69188433259F1B4200DE636F /* AddToStorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToStorageViewController.swift; sourceTree = "<group>"; };
 		6934D4BF2599D56800B4F846 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		6934D4C12599D5B200B4F846 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		6934D4C32599D5C100B4F846 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +95,14 @@
 		6934D4D42599E4A200B4F846 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		6934D4D9259A113D00B4F846 /* StorageEmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageEmptyViewController.swift; sourceTree = "<group>"; };
 		6934D4DE259A156000B4F846 /* StorageListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageListViewController.swift; sourceTree = "<group>"; };
+		69461EE1259DEBE300035AF7 /* NotificationEmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationEmptyViewController.swift; sourceTree = "<group>"; };
+		69461EE3259DEBFD00035AF7 /* NotificationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListViewController.swift; sourceTree = "<group>"; };
+		69461EE6259DF24800035AF7 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
+		69461EE8259E03E400035AF7 /* ItemsEmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsEmptyViewController.swift; sourceTree = "<group>"; };
+		69461EEA259E048F00035AF7 /* ItemsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsListViewController.swift; sourceTree = "<group>"; };
+		69461EEC259E083A00035AF7 /* UISearchBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBarExtension.swift; sourceTree = "<group>"; };
+		69461EEF259EF56000035AF7 /* ItemListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListTableViewCell.swift; sourceTree = "<group>"; };
+		69461EF1259F119800035AF7 /* AddToStorage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddToStorage.storyboard; sourceTree = "<group>"; };
 		696D324B259984D1009ACCB3 /* GroceryPal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryPal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		696D324E259984D1009ACCB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		696D3250259984D1009ACCB3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -143,11 +165,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6912E72A259C9EB1007219B6 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				6912E72B259C9EDC007219B6 /* CustomNavigationController.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		69136BA2259A23AF0024DA33 /* cell */ = {
 			isa = PBXGroup;
 			children = (
 				69136BA3259A24BB0024DA33 /* StorageItemTableViewCell.swift */,
-				69136BA4259A24BB0024DA33 /* StorageItemTableViewCell.xib */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -159,6 +188,22 @@
 				6934D4CC2599E44500B4F846 /* Statistics.storyboard */,
 			);
 			path = Statistics;
+			sourceTree = "<group>";
+		};
+		69461EE5259DF21200035AF7 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				69461EE6259DF24800035AF7 /* NotificationTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		69461EEE259EF4F000035AF7 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				69461EEF259EF56000035AF7 /* ItemListTableViewCell.swift */,
+			);
+			path = cell;
 			sourceTree = "<group>";
 		};
 		696D3242259984D1009ACCB3 = {
@@ -186,6 +231,7 @@
 		696D324D259984D1009ACCB3 /* GroceryPal */ = {
 			isa = PBXGroup;
 			children = (
+				6912E72A259C9EB1007219B6 /* UI */,
 				696D328925998C36009ACCB3 /* Extensions */,
 				696D32812599852C009ACCB3 /* Scenes */,
 				696D324E259984D1009ACCB3 /* AppDelegate.swift */,
@@ -273,6 +319,7 @@
 			isa = PBXGroup;
 			children = (
 				696D328A25998C64009ACCB3 /* UIViewExtension.swift */,
+				69461EEC259E083A00035AF7 /* UISearchBarExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -307,6 +354,8 @@
 		696D32992599B9B0009ACCB3 /* UpdateStorage */ = {
 			isa = PBXGroup;
 			children = (
+				6912E726259C9AFD007219B6 /* UpdateStorage.storyboard */,
+				6912E728259C9B1B007219B6 /* UpdateStorageViewController.swift */,
 			);
 			path = UpdateStorage;
 			sourceTree = "<group>";
@@ -314,6 +363,8 @@
 		696D329A2599B9BA009ACCB3 /* AddToStorage */ = {
 			isa = PBXGroup;
 			children = (
+				69461EF1259F119800035AF7 /* AddToStorage.storyboard */,
+				69188433259F1B4200DE636F /* AddToStorageViewController.swift */,
 			);
 			path = AddToStorage;
 			sourceTree = "<group>";
@@ -321,8 +372,11 @@
 		696D329B2599B9D7009ACCB3 /* ItemsMain */ = {
 			isa = PBXGroup;
 			children = (
+				69461EEE259EF4F000035AF7 /* cell */,
 				6934D4C52599E26100B4F846 /* ItemsMain.storyboard */,
 				6934D4C72599E29600B4F846 /* ItemsMainViewController.swift */,
+				69461EE8259E03E400035AF7 /* ItemsEmptyViewController.swift */,
+				69461EEA259E048F00035AF7 /* ItemsListViewController.swift */,
 			);
 			path = ItemsMain;
 			sourceTree = "<group>";
@@ -344,8 +398,11 @@
 		696D329E2599BA34009ACCB3 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
+				69461EE5259DF21200035AF7 /* Cell */,
 				6934D4D22599E49300B4F846 /* Notifications.storyboard */,
 				6934D4D42599E4A200B4F846 /* NotificationsViewController.swift */,
+				69461EE1259DEBE300035AF7 /* NotificationEmptyViewController.swift */,
+				69461EE3259DEBFD00035AF7 /* NotificationListViewController.swift */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -494,7 +551,6 @@
 				696D32A12599BAA0009ACCB3 /* Landing.storyboard in Resources */,
 				6934D4CD2599E44500B4F846 /* Statistics.storyboard in Resources */,
 				696D325E259984D2009ACCB3 /* LaunchScreen.storyboard in Resources */,
-				69136BA6259A24BB0024DA33 /* StorageItemTableViewCell.xib in Resources */,
 				696D325B259984D2009ACCB3 /* Assets.xcassets in Resources */,
 				696D32A32599BC18009ACCB3 /* SignUp.storyboard in Resources */,
 				6934D4CF2599E47200B4F846 /* RestockMain.storyboard in Resources */,
@@ -502,6 +558,8 @@
 				6934D4D32599E49300B4F846 /* Notifications.storyboard in Resources */,
 				696D32912599B5F5009ACCB3 /* GroceryMain.storyboard in Resources */,
 				696D32832599854F009ACCB3 /* Home.storyboard in Resources */,
+				6912E727259C9AFD007219B6 /* UpdateStorage.storyboard in Resources */,
+				69461EF2259F119800035AF7 /* AddToStorage.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -596,15 +654,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				6934D4C22599D5B200B4F846 /* SignUpViewController.swift in Sources */,
+				69461EE4259DEBFD00035AF7 /* NotificationListViewController.swift in Sources */,
+				69188434259F1B4200DE636F /* AddToStorageViewController.swift in Sources */,
 				6934D4D12599E48100B4F846 /* RestockMainViewController.swift in Sources */,
 				696D328B25998C64009ACCB3 /* UIViewExtension.swift in Sources */,
 				696D3253259984D1009ACCB3 /* ViewController.swift in Sources */,
 				696D32952599B6E5009ACCB3 /* GroceryMainViewController.swift in Sources */,
 				69136BA5259A24BB0024DA33 /* StorageItemTableViewCell.swift in Sources */,
+				6912E72C259C9EDC007219B6 /* CustomNavigationController.swift in Sources */,
+				69461EF0259EF56000035AF7 /* ItemListTableViewCell.swift in Sources */,
 				696D32932599B6D8009ACCB3 /* StorageMainViewController.swift in Sources */,
 				696D324F259984D1009ACCB3 /* AppDelegate.swift in Sources */,
 				6934D4DA259A113D00B4F846 /* StorageEmptyViewController.swift in Sources */,
 				696D3251259984D1009ACCB3 /* SceneDelegate.swift in Sources */,
+				69461EE7259DF24800035AF7 /* NotificationTableViewCell.swift in Sources */,
 				696D32862599886C009ACCB3 /* TabBarViewController.swift in Sources */,
 				6934D4C42599D5C100B4F846 /* SignInViewController.swift in Sources */,
 				696D328D25998D76009ACCB3 /* HomeViewController.swift in Sources */,
@@ -612,6 +675,11 @@
 				696D3259259984D1009ACCB3 /* GroceryPal.xcdatamodeld in Sources */,
 				6934D4DF259A156000B4F846 /* StorageListViewController.swift in Sources */,
 				6934D4C82599E29600B4F846 /* ItemsMainViewController.swift in Sources */,
+				6912E729259C9B1B007219B6 /* UpdateStorageViewController.swift in Sources */,
+				69461EE2259DEBE300035AF7 /* NotificationEmptyViewController.swift in Sources */,
+				69461EED259E083A00035AF7 /* UISearchBarExtension.swift in Sources */,
+				69461EE9259E03E400035AF7 /* ItemsEmptyViewController.swift in Sources */,
+				69461EEB259E048F00035AF7 /* ItemsListViewController.swift in Sources */,
 				6934D4CB2599E43900B4F846 /* StatisticsViewController.swift in Sources */,
 				6934D4D52599E4A200B4F846 /* NotificationsViewController.swift in Sources */,
 			);

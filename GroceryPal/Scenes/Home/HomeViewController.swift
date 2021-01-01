@@ -38,6 +38,10 @@ class HomeViewController: UIViewController {
         performSegue(withIdentifier: "segueStatistics", sender: nil)
     }
     
+    @IBAction func clickNotifications(_ sender: Any) {
+        performSegue(withIdentifier: "segueNotifications", sender: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
