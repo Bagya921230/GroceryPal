@@ -1,4 +1,4 @@
-framework module Pods_GroceryPal {
+module Pods_GroceryPal {
   umbrella header "Pods-GroceryPal-umbrella.h"
 
   export *
