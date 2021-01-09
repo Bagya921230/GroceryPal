@@ -53,6 +53,9 @@
 		B94E986A25A2648900875C7F /* SignUpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E986925A2648900875C7F /* SignUpVM.swift */; };
 		B94E986D25A276F500875C7F /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E986C25A276F500875C7F /* Common.swift */; };
 		B94E986F25A2874400875C7F /* SignInVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E986E25A2874400875C7F /* SignInVM.swift */; };
+		B9580FA525A9E1D400536179 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9580FA425A9E1D400536179 /* Item.swift */; };
+		B9580FA725A9F12900536179 /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9580FA625A9F12900536179 /* HomeVM.swift */; };
+		B9580FA925AA390F00536179 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9580FA825AA390F00536179 /* ItemDetailViewController.swift */; };
 		B9AE3F2A25A6168D00DC769B /* SignInUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE3F2925A6168D00DC769B /* SignInUITest.swift */; };
 		B9F8D6BD25A3391B00E277D5 /* SignInVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F8D6BC25A3391B00E277D5 /* SignInVMTests.swift */; };
 		B9F8D6C025A43F9800E277D5 /* SignUpVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F8D6BF25A43F9800E277D5 /* SignUpVMTests.swift */; };
@@ -130,6 +133,9 @@
 		B94E986925A2648900875C7F /* SignUpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVM.swift; sourceTree = "<group>"; };
 		B94E986C25A276F500875C7F /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		B94E986E25A2874400875C7F /* SignInVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVM.swift; sourceTree = "<group>"; };
+		B9580FA425A9E1D400536179 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		B9580FA625A9F12900536179 /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
+		B9580FA825AA390F00536179 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		B9AE3F2925A6168D00DC769B /* SignInUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUITest.swift; sourceTree = "<group>"; };
 		B9F8D6BC25A3391B00E277D5 /* SignInVMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVMTests.swift; sourceTree = "<group>"; };
 		B9F8D6BF25A43F9800E277D5 /* SignUpVMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVMTests.swift; sourceTree = "<group>"; };
@@ -366,6 +372,7 @@
 			children = (
 				6934D4C52599E26100B4F846 /* ItemsMain.storyboard */,
 				6934D4C72599E29600B4F846 /* ItemsMainViewController.swift */,
+				B9580FA825AA390F00536179 /* ItemDetailViewController.swift */,
 			);
 			path = ItemsMain;
 			sourceTree = "<group>";
@@ -407,6 +414,7 @@
 			children = (
 				B94E985025A213F100875C7F /* Category.swift */,
 				B94E985A25A22BD000875C7F /* UnitOfMeasurement.swift */,
+				B9580FA425A9E1D400536179 /* Item.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -416,6 +424,7 @@
 			children = (
 				B94E986925A2648900875C7F /* SignUpVM.swift */,
 				B94E986E25A2874400875C7F /* SignInVM.swift */,
+				B9580FA625A9F12900536179 /* HomeVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -715,6 +724,7 @@
 				B94E986D25A276F500875C7F /* Common.swift in Sources */,
 				6934D4C22599D5B200B4F846 /* SignUpViewController.swift in Sources */,
 				6934D4D12599E48100B4F846 /* RestockMainViewController.swift in Sources */,
+				B9580FA525A9E1D400536179 /* Item.swift in Sources */,
 				696D328B25998C64009ACCB3 /* UIViewEx.swift in Sources */,
 				696D32952599B6E5009ACCB3 /* GroceryMainViewController.swift in Sources */,
 				B94E985B25A22BD000875C7F /* UnitOfMeasurement.swift in Sources */,
@@ -730,12 +740,14 @@
 				6934D4C42599D5C100B4F846 /* SignInViewController.swift in Sources */,
 				696D328D25998D76009ACCB3 /* HomeViewController.swift in Sources */,
 				B94E986025A245F200875C7F /* UIButtonEx.swift in Sources */,
+				B9580FA925AA390F00536179 /* ItemDetailViewController.swift in Sources */,
 				6934D4C02599D56800B4F846 /* LandingViewController.swift in Sources */,
 				696D3259259984D1009ACCB3 /* GroceryPal.xcdatamodeld in Sources */,
 				6934D4DF259A156000B4F846 /* StorageListViewController.swift in Sources */,
 				B94E986625A25FD800875C7F /* UIColorEx.swift in Sources */,
 				B94E985725A21E3D00875C7F /* FireStoreDatabase.swift in Sources */,
 				6934D4C82599E29600B4F846 /* ItemsMainViewController.swift in Sources */,
+				B9580FA725A9F12900536179 /* HomeVM.swift in Sources */,
 				6934D4CB2599E43900B4F846 /* StatisticsViewController.swift in Sources */,
 				6934D4D52599E4A200B4F846 /* NotificationsViewController.swift in Sources */,
 			);

@@ -8,12 +8,17 @@
 
 import UIKit
 
-class ItemsMainViewController: UIViewController {
+class ItemsMainViewController: UINavigationController {
 
+    var itemList = [Item]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        if(itemList.count > 0)
+        {
+           performSegue(withIdentifier: "noItems", sender: nil)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -21,10 +26,5 @@ class ItemsMainViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-    }
-
+    
 }

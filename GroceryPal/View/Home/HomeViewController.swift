@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController,ItemEvents {
     
     // MARK: - Outlet
     @IBOutlet weak var storageView: UIView!
@@ -16,7 +16,11 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var groceryListView: UIView!
     @IBOutlet weak var restockNeededView: UIView!
     @IBOutlet weak var statisticsView: UIView!
+    @IBOutlet weak var itemCount: UILabel!
     
+    let homeVM = HomeVM()
+    var itemList = [Item]()
+
     // MARK: - Actions
     @IBAction func clickStorage(_ sender: Any) {
         self.tabBarController?.selectedIndex = 1
@@ -40,7 +44,9 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        FireStoreDataBase.shared.delegateItemEvents = self
         configureUI()
+        homeVM.onLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,8 +65,11 @@ class HomeViewController: UIViewController {
 
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "segueItemMain"{
+            if let vc = segue.destination as? ItemsMainViewController {
+                vc.itemList = itemList
+            }
+        }
     }
 
     @IBAction func onLogout(_ sender: Any) {
@@ -69,4 +78,10 @@ class HomeViewController: UIViewController {
         let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
         sceneDelegate?.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "landingNavigation")
     }
+    
+    func itemList(itemList: [Item]) {
+        self.itemList = itemList
+        itemCount.text = String(itemList.count)+" "+(itemList.count < 2 ? "item" : "items")+" available"
+    }
+    
 }

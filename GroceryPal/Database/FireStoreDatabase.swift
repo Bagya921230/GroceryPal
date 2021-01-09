@@ -17,6 +17,8 @@ class FireStoreDataBase
     let firebaseDb = Firestore.firestore()
     private init(){}
     
+    var delegateItemEvents: ItemEvents?
+    
     func addUser(dispatch:DispatchGroup, docId:String, name:String, completed: @escaping (Bool) -> Void)
     {
             dispatch.enter()
@@ -87,4 +89,25 @@ class FireStoreDataBase
              })
            }
        }
+    
+    func fetchItems()
+    {
+        var itemList = [Item]()
+
+        firebaseDb.collection("user").document("NxCxS6GaFzM7C7Z6UQftA16VZV03").collection("items").addSnapshotListener { (querySnapshot, error) in
+          
+            guard let documents = querySnapshot?.documents else {
+            self.delegateItemEvents?.itemList(itemList: itemList)
+            return
+           }
+
+            _ = documents.map { queryDocumentSnapshot -> Void in
+                let data = queryDocumentSnapshot.data()
+                let name = data["uom"] as? String ?? ""
+                itemList.append(Item(id: queryDocumentSnapshot.documentID,name: name))
+            }
+        
+            self.delegateItemEvents?.itemList(itemList: itemList)
+        }
+    }
 }
