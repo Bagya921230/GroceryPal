@@ -268,7 +268,7 @@
 			children = (
 				6912E72A259C9EB1007219B6 /* UI */,
 				696D328925998C36009ACCB3 /* Extensions */,
-				696D32812599852C009ACCB3 /* Scenes */,
+				696D32812599852C009ACCB3 /* View */,
 				696D324E259984D1009ACCB3 /* AppDelegate.swift */,
 				696D3250259984D1009ACCB3 /* SceneDelegate.swift */,
 				696D3252259984D1009ACCB3 /* ViewController.swift */,
@@ -298,7 +298,7 @@
 			path = GroceryPalUITests;
 			sourceTree = "<group>";
 		};
-		696D32812599852C009ACCB3 /* Scenes */ = {
+		696D32812599852C009ACCB3 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				694B1E6025A9F6AE00C4C4B3 /* AddItemToGrocery */,
@@ -318,7 +318,7 @@
 				696D3287259988CB009ACCB3 /* StorageMain */,
 				696D328425998830009ACCB3 /* Home */,
 			);
-			path = Scenes;
+			path = View;
 			sourceTree = "<group>";
 		};
 		696D328425998830009ACCB3 /* Home */ = {
