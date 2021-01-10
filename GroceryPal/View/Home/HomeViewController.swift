@@ -57,6 +57,7 @@ class HomeViewController: UIViewController,ItemEvents {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        navigationController?.navigationBar.tintColor = UIColor.themeColor()
     }
     
     func configureUI() {

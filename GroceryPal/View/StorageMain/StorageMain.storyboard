@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="o7F-Ps-I0h">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="b7o-KC-SCO">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Storage-->
+        <!--Storage Main View Controller-->
         <scene sceneID="J1j-OO-31j">
             <objects>
                 <viewController id="o7F-Ps-I0h" customClass="StorageMainViewController" customModule="GroceryPal" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,25 +16,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Storage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WRH-MF-Ic4">
-                                <rect key="frame" x="20" y="64" width="374" height="29"/>
+                                <rect key="frame" x="20" y="108" width="374" height="29"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W8l-ua-bQk">
-                                <rect key="frame" x="0.0" y="93" width="414" height="720"/>
+                                <rect key="frame" x="0.0" y="137" width="414" height="676"/>
                                 <connections>
                                     <segue destination="aR8-GP-7aA" kind="embed" id="a4Z-3H-YnF"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ujO-oj-IKJ">
-                                <rect key="frame" x="0.0" y="93" width="414" height="720"/>
+                                <rect key="frame" x="0.0" y="137" width="414" height="676"/>
                                 <connections>
                                     <segue destination="3jn-5j-Lri" kind="embed" id="VBP-8n-8tw"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DBO-wI-y8M">
-                                <rect key="frame" x="354" y="57" width="34" height="30"/>
+                                <rect key="frame" x="354" y="101" width="34" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="10S-zv-fXy"/>
                                 </constraints>
@@ -65,7 +65,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0Qd-Ff-9hA"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Storage" image="nav_storage" selectedImage="nav_storage" id="Yib-Qo-qy7"/>
+                    <navigationItem key="navigationItem" id="7mN-hh-f1t"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addNewBtn" destination="DBO-wI-y8M" id="hbr-Mv-7s0"/>
@@ -76,7 +76,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0RT-8u-gG8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-59.420289855072468" y="111.83035714285714"/>
+            <point key="canvasLocation" x="850.72463768115949" y="111.83035714285714"/>
         </scene>
         <!--AddToStorage-->
         <scene sceneID="Hk3-jM-gRo">
@@ -93,7 +93,7 @@
             <objects>
                 <viewController id="aR8-GP-7aA" customClass="StorageEmptyViewController" customModule="GroceryPal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dD1-AP-iB4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="720"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="676"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="storage_large" translatesAutoresizingMaskIntoConstraints="NO" id="VrL-cs-IJk">
@@ -142,14 +142,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8xH-ob-wYx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="702.89855072463774" y="79.6875"/>
+            <point key="canvasLocation" x="1613.0434782608697" y="79.6875"/>
         </scene>
         <!--Storage List View Controller-->
         <scene sceneID="qOd-z2-yc7">
             <objects>
                 <viewController id="3jn-5j-Lri" customClass="StorageListViewController" customModule="GroceryPal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wbK-eF-A2c">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="720"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="676"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YkU-it-05I">
@@ -217,7 +217,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hdh-ps-l57">
-                                <rect key="frame" x="10" y="204" width="394" height="496"/>
+                                <rect key="frame" x="10" y="204" width="394" height="452"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="storageItemCell" rowHeight="140" id="UEd-WI-e9G" customClass="StorageItemTableViewCell" customModule="GroceryPal" customModuleProvider="target">
@@ -379,12 +379,13 @@
                     <connections>
                         <outlet property="categoryDropdown" destination="LLv-fQ-Wwb" id="sJT-aT-UwA"/>
                         <outlet property="statusDropdown" destination="ajd-Kj-GQN" id="bby-Ee-YCg"/>
+                        <outlet property="tableView" destination="hdh-ps-l57" id="FgL-T1-fOb"/>
                         <segue destination="10p-kG-1L9" kind="show" identifier="segueUpdateStorage" id="0HH-kg-9Vx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EvZ-Zr-82D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="702.89855072463774" y="669.64285714285711"/>
+            <point key="canvasLocation" x="1613.0434782608697" y="669.64285714285711"/>
         </scene>
         <!--UpdateStorage-->
         <scene sceneID="KRK-Wp-YqM">
@@ -395,6 +396,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N5x-zi-Kf3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1278" y="670"/>
+        </scene>
+        <!--Storage-->
+        <scene sceneID="jVN-Fc-3pX">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="b7o-KC-SCO" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Storage" image="nav_storage" selectedImage="nav_storage" id="Yib-Qo-qy7"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="M3m-iL-wkh">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="o7F-Ps-I0h" kind="relationship" relationship="rootViewController" id="dfr-pT-hpc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4pT-Ni-Brj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-59.420289855072468" y="111.83035714285714"/>
         </scene>
     </scenes>
     <resources>

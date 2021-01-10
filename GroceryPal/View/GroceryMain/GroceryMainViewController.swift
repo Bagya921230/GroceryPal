@@ -28,6 +28,7 @@ class GroceryMainViewController: UIViewController {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        navigationController?.navigationBar.tintColor = UIColor.themeColor()
     }
 
     func showEmptyView() {

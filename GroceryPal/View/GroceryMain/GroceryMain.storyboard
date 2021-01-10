@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MAw-Gy-j0o">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7vr-dc-hr3">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
@@ -16,25 +16,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Brb-M4-GZP" userLabel="emptyContainer">
-                                <rect key="frame" x="0.0" y="93" width="414" height="720"/>
+                                <rect key="frame" x="0.0" y="137" width="414" height="676"/>
                                 <connections>
                                     <segue destination="WFz-j0-LdM" kind="embed" id="OPy-FV-tEX"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JIz-vE-jAz" userLabel="listContainer">
-                                <rect key="frame" x="0.0" y="93" width="414" height="720"/>
+                                <rect key="frame" x="0.0" y="137" width="414" height="676"/>
                                 <connections>
                                     <segue destination="iIg-c5-Mpd" kind="embed" id="3TQ-hB-NNy"/>
                                 </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grocery List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zD-3f-bRz">
-                                <rect key="frame" x="20" y="64" width="374" height="29"/>
+                                <rect key="frame" x="20" y="108" width="374" height="29"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ywO-68-8PA">
-                                <rect key="frame" x="354" y="57" width="34" height="30"/>
+                                <rect key="frame" x="354" y="101" width="34" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="djJ-9x-KWB"/>
                                 </constraints>
@@ -65,7 +65,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="G7g-Zv-Egf"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Grocery" image="nav_grocery" id="cCE-6G-jHD"/>
+                    <navigationItem key="navigationItem" id="KEa-YB-vd9"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="emptyContainer" destination="Brb-M4-GZP" id="9L9-Im-gTG"/>
@@ -75,7 +75,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i1I-VV-DYj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="86.956521739130437" y="232.36607142857142"/>
+            <point key="canvasLocation" x="997.10144927536237" y="232.36607142857142"/>
         </scene>
         <!--NewGroceryList-->
         <scene sceneID="uZb-WI-D1l">
@@ -92,7 +92,7 @@
             <objects>
                 <viewController id="WFz-j0-LdM" customClass="GroceryEmptyViewController" customModule="GroceryPal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kiv-7Y-8IN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="720"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="676"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grocery_large" translatesAutoresizingMaskIntoConstraints="NO" id="Fnw-AQ-IAA">
@@ -143,18 +143,18 @@ Please create a new list.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="abE-mS-LDV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1036" y="186"/>
+            <point key="canvasLocation" x="1944.9275362318842" y="185.49107142857142"/>
         </scene>
         <!--Grocery List View Controller-->
         <scene sceneID="tex-Bx-Axm">
             <objects>
                 <viewController id="iIg-c5-Mpd" customClass="GroceryListViewController" customModule="GroceryPal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rW8-sd-oBQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="720"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="676"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fp9-7W-PzB">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="720"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="676"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2pO-vO-Pf7">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
@@ -460,6 +460,25 @@ Please create a new list.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sf3-td-wud" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1458" y="703"/>
+        </scene>
+        <!--Grocery-->
+        <scene sceneID="5rQ-ao-dvI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7vr-dc-hr3" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Grocery" image="nav_grocery" id="cCE-6G-jHD"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ewx-R5-ic1">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="MAw-Gy-j0o" kind="relationship" relationship="rootViewController" id="RYm-os-7JS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7wr-zw-jNg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="86.956521739130437" y="232.36607142857142"/>
         </scene>
     </scenes>
     <resources>

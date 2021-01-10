@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="giy-wx-PYL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="giy-wx-PYL">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home-->
+        <!--Home View Controller-->
         <scene sceneID="kwj-K7-buI">
             <objects>
                 <viewController storyboardIdentifier="homeViewController" hidesBottomBarWhenPushed="YES" id="xLc-n3-iVC" customClass="HomeViewController" customModule="GroceryPal" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="zLT-i6-kGj" userLabel="Header">
-                                <rect key="frame" x="20" y="20" width="374" height="25"/>
+                                <rect key="frame" x="20" y="64" width="374" height="25"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grocery Pal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kwr-dp-n2i">
                                         <rect key="frame" x="0.0" y="0.0" width="314" height="25"/>
@@ -45,11 +45,14 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                         <state key="normal" backgroundImage="notification"/>
+                                        <connections>
+                                            <action selector="clickNotifications:" destination="xLc-n3-iVC" eventType="touchUpInside" id="XOR-jX-pVU"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="t0o-P1-DeQ">
-                                <rect key="frame" x="20" y="85" width="344" height="440"/>
+                                <rect key="frame" x="20" y="129" width="344" height="440"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MCr-Do-PbF">
                                         <rect key="frame" x="0.0" y="0.0" width="344" height="80"/>
@@ -113,7 +116,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="54 items available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLr-YU-fCD">
-                                                        <rect key="frame" x="0.0" y="25.333333333333343" width="214" height="17"/>
+                                                        <rect key="frame" x="0.0" y="25.333333333333314" width="214" height="17"/>
                                                         <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
                                                         <color key="textColor" red="0.59215686270000001" green="0.59215686270000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -239,7 +242,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="view summary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07U-1A-lk2">
-                                                        <rect key="frame" x="0.0" y="25.333333333333314" width="214" height="17"/>
+                                                        <rect key="frame" x="0.0" y="25.333333333333371" width="214" height="17"/>
                                                         <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
                                                         <color key="textColor" red="0.59215686270000001" green="0.59215686270000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -275,7 +278,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ddp-rc-pz1"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="nav_home" selectedImage="nav_home" id="cgn-sN-qEp"/>
+                    <navigationItem key="navigationItem" id="0Cr-dL-vbk"/>
                     <connections>
                         <outlet property="groceryListView" destination="1kG-8X-qKR" id="EvQ-62-eb2"/>
                         <outlet property="itemCount" destination="jLr-YU-fCD" id="CB5-iD-hvT"/>
@@ -316,7 +319,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="214" y="-1170"/>
+            <point key="canvasLocation" x="1120.2898550724638" y="-1170.6521739130435"/>
         </scene>
         <!--Notifications-->
         <scene sceneID="bYL-aM-EWB">
@@ -326,7 +329,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="auT-z8-TYO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="838" y="-1361"/>
+            <point key="canvasLocation" x="1744.9275362318842" y="-1361.413043478261"/>
         </scene>
         <!--ItemsMain-->
         <scene sceneID="lSj-mx-wjo">
@@ -336,7 +339,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U95-7M-3XK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="804" y="-1297"/>
+            <point key="canvasLocation" x="1710.8695652173915" y="-1297.0108695652175"/>
         </scene>
         <!--Statistics-->
         <scene sceneID="CNZ-Li-6Cb">
@@ -346,7 +349,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jRm-Ah-l21" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="800" y="-1067"/>
+            <point key="canvasLocation" x="1707.2463768115942" y="-1067.1195652173915"/>
         </scene>
         <!--RestockMain-->
         <scene sceneID="CKm-gj-XKG">
@@ -356,7 +359,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lca-vg-VGz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="814" y="-1150"/>
+            <point key="canvasLocation" x="1720.289855072464" y="-1150.271739130435"/>
         </scene>
         <!--StorageMain-->
         <scene sceneID="Mcr-A7-dmB">
@@ -391,7 +394,7 @@
                         <color key="selectedImageTintColor" red="0.0" green="0.53333333329999999" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="xLc-n3-iVC" kind="relationship" relationship="viewControllers" id="BKV-5k-h7K"/>
+                        <segue destination="K05-hm-rwN" kind="relationship" relationship="viewControllers" id="BKV-5k-h7K"/>
                         <segue destination="OwT-D2-frP" kind="relationship" relationship="viewControllers" id="wwj-qX-goE"/>
                         <segue destination="HgY-hd-hWv" kind="relationship" relationship="viewControllers" id="wNZ-Sz-9zn"/>
                     </connections>
@@ -399,6 +402,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="787-Tr-Ynv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-820" y="-1171"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="2To-1o-T4u">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="K05-hm-rwN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="nav_home" selectedImage="nav_home" id="cgn-sN-qEp"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wFR-E8-zk0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="xLc-n3-iVC" kind="relationship" relationship="rootViewController" id="Lef-uY-eAz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hS9-29-FBT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="213.04347826086959" y="-1170.6521739130435"/>
         </scene>
     </scenes>
     <resources>
