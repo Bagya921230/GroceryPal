@@ -88,6 +88,7 @@
 		69A7AC3E25A98F7C00B25D2A /* NewGroceryList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69A7AC3D25A98F7C00B25D2A /* NewGroceryList.storyboard */; };
 		79B0CFC5D473E10A41A82076 /* Pods_GroceryPal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5FC4862C1C223E878040E62 /* Pods_GroceryPal.framework */; };
 		E46B7F595F207A47551015B1 /* Pods_GroceryPal_GroceryPalUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2836062DE6AA37CF617FEC3 /* Pods_GroceryPal_GroceryPalUITests.framework */; };
+  };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -247,6 +248,7 @@
 				D6B9A6B1BD7977AE3C301E53 /* libPods-GroceryPalTests.a */,
 			);
 			name = Frameworks;
+        };
 		6912E72A259C9EB1007219B6 /* UI */ = {
 			isa = PBXGroup;
 			children = (
