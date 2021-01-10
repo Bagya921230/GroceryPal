@@ -353,10 +353,6 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="3jn-5j-Lri" id="Or2-W7-Csv"/>
-                                    <outlet property="delegate" destination="3jn-5j-Lri" id="p5E-PF-CL0"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -383,7 +379,6 @@
                     <connections>
                         <outlet property="categoryDropdown" destination="LLv-fQ-Wwb" id="sJT-aT-UwA"/>
                         <outlet property="statusDropdown" destination="ajd-Kj-GQN" id="bby-Ee-YCg"/>
-                        <outlet property="tableView" destination="hdh-ps-l57" id="iyL-Ho-uIK"/>
                         <segue destination="10p-kG-1L9" kind="show" identifier="segueUpdateStorage" id="0HH-kg-9Vx"/>
                     </connections>
                 </viewController>
