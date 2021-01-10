@@ -40,6 +40,7 @@ class SignInVM {
 
             if authResult != nil {
                     UserDefaults.standard.set(true, forKey: "loggedIn")
+                    UserDefaults.standard.set(authResult!.user.uid, forKey: "userId")
                     self.delegate?.signInSuccess()
                     completion(true)
             }

@@ -29,12 +29,12 @@ class FireStoreDataBase
             
                dispatch.leave()
                if let err = err {
-                    print("Error writing document: \(err)")
+                    print("Error writing user: \(err)")
                     dispatch.notify(queue: .main, execute: {
                             completed(true)
                       })
                } else {
-                   print("Document successfully written!")
+                    print("User data successfully written!")
                     dispatch.notify(queue: .main, execute: {
                             completed(true)
                       })
@@ -94,7 +94,7 @@ class FireStoreDataBase
     {
         var itemList = [Item]()
 
-        firebaseDb.collection("user").document("NxCxS6GaFzM7C7Z6UQftA16VZV03").collection("items").addSnapshotListener { (querySnapshot, error) in
+        firebaseDb.collection("user").document(UserDefaults.standard.string(forKey: "userId")!).collection("items").addSnapshotListener { (querySnapshot, error) in
           
             guard let documents = querySnapshot?.documents else {
             self.delegateItemEvents?.itemList(itemList: itemList)
@@ -102,12 +102,58 @@ class FireStoreDataBase
            }
 
             _ = documents.map { queryDocumentSnapshot -> Void in
+                
+                do {
                 let data = queryDocumentSnapshot.data()
-                let name = data["uom"] as? String ?? ""
-                itemList.append(Item(id: queryDocumentSnapshot.documentID,name: name))
+                 
+                let jsonObj = try JSONSerialization.data(withJSONObject: data, options: [])
+                let item = try JSONDecoder().decode(Item.self, from: jsonObj)
+                itemList.append(item)
+                }
+                catch{
+                    self.delegateItemEvents?.itemList(itemList: itemList)
+                }
             }
         
             self.delegateItemEvents?.itemList(itemList: itemList)
+        }
+    }
+    
+    func addItems(item: Item, dispatch:DispatchGroup, completed: @escaping (Bool) -> Void)
+    {
+        dispatch.enter()
+        
+        do {
+        let jsonData = try item.jsonData()
+
+        let json = try JSONSerialization.jsonObject(with: jsonData, options: [])
+        guard let dictionary = json as? [String : Any] else {
+            return
+        }
+            
+            firebaseDb.collection("user").document(UserDefaults.standard.string(forKey: "userId")!).collection("items").addDocument(data:
+                      dictionary
+            )
+        {
+            err in
+                           dispatch.leave()
+
+                           if let err = err {
+                               print("Error adding item: \(err)")
+                                dispatch.notify(queue: .main, execute: {
+                                                     completed(false)
+                                               })
+                           } else {
+                                print("Item data successfully written!")
+                                dispatch.notify(queue: .main, execute: {
+                                                         completed(true)
+                               })
+                           }
+        }
+        }
+        
+        catch{
+            completed(false)
         }
     }
 }

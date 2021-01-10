@@ -15,7 +15,7 @@ class ItemsMainViewController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if(itemList.count > 0)
+        if(itemList.count == 0)
         {
            performSegue(withIdentifier: "noItems", sender: nil)
         }
