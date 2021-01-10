@@ -42,9 +42,9 @@ class FireStoreDataBase
            }
     }
     
-    func fetchCategories(dispatch:DispatchGroup, completed: @escaping ([Category]) -> Void)
+    func fetchCategories(dispatch:DispatchGroup, completed: @escaping ([String]) -> Void)
     {
-        var categoryList = [Category]()
+        var categoryList = [String]()
         dispatch.enter()
 
         firebaseDb.collection("category").addSnapshotListener { (querySnapshot, error) in
@@ -55,7 +55,7 @@ class FireStoreDataBase
         _ = documents.map { queryDocumentSnapshot -> Void in
             let data = queryDocumentSnapshot.data()
             let catName = data["catName"] as? String ?? ""
-            categoryList.append(Category(id: queryDocumentSnapshot.documentID,name: catName))
+            categoryList.append(catName)
         }
         
         dispatch.leave()
@@ -66,9 +66,9 @@ class FireStoreDataBase
         }
     }
     
-    func fetchUOM(dispatch:DispatchGroup, completed: @escaping ([UnitOfMeasurement]) -> Void)
+    func fetchUOM(dispatch:DispatchGroup, completed: @escaping ([String]) -> Void)
        {
-           var unitOfMeasurementList = [UnitOfMeasurement]()
+           var unitOfMeasurementList = [String]()
            dispatch.enter()
 
            firebaseDb.collection("unit of measurement").addSnapshotListener { (querySnapshot, error) in
@@ -79,7 +79,7 @@ class FireStoreDataBase
            _ = documents.map { queryDocumentSnapshot -> Void in
                let data = queryDocumentSnapshot.data()
                let name = data["uom"] as? String ?? ""
-               unitOfMeasurementList.append(UnitOfMeasurement(id: queryDocumentSnapshot.documentID,name: name))
+               unitOfMeasurementList.append(name)
            }
            
            dispatch.leave()
