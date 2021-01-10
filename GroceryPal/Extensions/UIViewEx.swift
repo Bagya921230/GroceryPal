@@ -23,6 +23,11 @@ extension UIView {
         }
     }
     
+    func allRoundCorners(radius: CGFloat) {
+        self.layer.masksToBounds = true
+        self.layer.cornerRadius = radius
+    }
+    
     func addBorderColor() {
         self.layer.borderWidth = 0.4
         self.layer.borderColor = UIColor.gray.cgColor
