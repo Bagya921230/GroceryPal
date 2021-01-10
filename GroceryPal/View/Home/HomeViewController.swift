@@ -42,6 +42,10 @@ class HomeViewController: UIViewController,ItemEvents {
         performSegue(withIdentifier: "segueStatistics", sender: nil)
     }
     
+    @IBAction func clickNotifications(_ sender: Any) {
+        performSegue(withIdentifier: "segueNotifications", sender: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         FireStoreDataBase.shared.delegateItemEvents = self
