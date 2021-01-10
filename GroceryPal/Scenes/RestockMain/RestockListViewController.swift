@@ -1,17 +1,16 @@
 //
-//  ItemsListViewController.swift
+//  RestockListViewController.swift
 //  GroceryPal
 //
-//  Created by Bhagya Gunawardena on 12/31/20.
-//  Copyright © 2020 iit. All rights reserved.
+//  Created by Bhagya Gunawardena on 1/9/21.
+//  Copyright © 2021 iit. All rights reserved.
 //
 
 import UIKit
 
-class ItemsListViewController: UIViewController {
+class RestockListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
     
     
     override func viewDidLoad() {
@@ -24,11 +23,6 @@ class ItemsListViewController: UIViewController {
         tableView.delegate = self
         tableView.allowsSelection = true
         tableView.separatorStyle = .none
-        searchBar.barTintColor = UIColor.white
-        searchBar.backgroundColor = UIColor.white
-        searchBar.layer.borderWidth = 1
-        searchBar.layer.borderColor = UIColor.white.cgColor
-        searchBar.setTextFieldColor(UIColor.init(red: 249, green: 249, blue: 249, alpha: 1))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,7 +33,7 @@ class ItemsListViewController: UIViewController {
 
 }
 
-extension ItemsListViewController : UITableViewDataSource , UITableViewDelegate{
+extension RestockListViewController : UITableViewDataSource , UITableViewDelegate{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

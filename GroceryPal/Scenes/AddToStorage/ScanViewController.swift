@@ -1,14 +1,14 @@
 //
-//  ItemsEmptyViewController.swift
+//  ScanViewController.swift
 //  GroceryPal
 //
-//  Created by Bhagya Gunawardena on 12/31/20.
-//  Copyright © 2020 iit. All rights reserved.
+//  Created by Bhagya Gunawardena on 1/9/21.
+//  Copyright © 2021 iit. All rights reserved.
 //
 
 import UIKit
 
-class ItemsEmptyViewController: UIViewController {
+class ScanViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
