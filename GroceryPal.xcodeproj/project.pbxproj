@@ -38,6 +38,8 @@
 		694B1E6425A9F6E200C4C4B3 /* AddItemToGrocery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 694B1E6325A9F6E200C4C4B3 /* AddItemToGrocery.storyboard */; };
 		694B1E6625AA06DD00C4C4B3 /* RestockEmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694B1E6525AA06DD00C4C4B3 /* RestockEmptyViewController.swift */; };
 		694B1E6825AA06ED00C4C4B3 /* RestockListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694B1E6725AA06ED00C4C4B3 /* RestockListViewController.swift */; };
+		694B1EC525AABEC900C4C4B3 /* GroceryNewItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694B1EC425AABEC900C4C4B3 /* GroceryNewItemTableViewCell.swift */; };
+		694B1EC725AAD4B800C4C4B3 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694B1EC625AAD4B800C4C4B3 /* UIColorExtension.swift */; };
 		696D324F259984D1009ACCB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696D324E259984D1009ACCB3 /* AppDelegate.swift */; };
 		696D3251259984D1009ACCB3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696D3250259984D1009ACCB3 /* SceneDelegate.swift */; };
 		696D3253259984D1009ACCB3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696D3252259984D1009ACCB3 /* ViewController.swift */; };
@@ -118,6 +120,8 @@
 		694B1E6325A9F6E200C4C4B3 /* AddItemToGrocery.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddItemToGrocery.storyboard; sourceTree = "<group>"; };
 		694B1E6525AA06DD00C4C4B3 /* RestockEmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestockEmptyViewController.swift; sourceTree = "<group>"; };
 		694B1E6725AA06ED00C4C4B3 /* RestockListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestockListViewController.swift; sourceTree = "<group>"; };
+		694B1EC425AABEC900C4C4B3 /* GroceryNewItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryNewItemTableViewCell.swift; sourceTree = "<group>"; };
+		694B1EC625AAD4B800C4C4B3 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		696D324B259984D1009ACCB3 /* GroceryPal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryPal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		696D324E259984D1009ACCB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		696D3250259984D1009ACCB3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -356,6 +360,7 @@
 			children = (
 				696D328A25998C64009ACCB3 /* UIViewExtension.swift */,
 				69461EEC259E083A00035AF7 /* UISearchBarExtension.swift */,
+				694B1EC625AAD4B800C4C4B3 /* UIColorExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -460,6 +465,7 @@
 			isa = PBXGroup;
 			children = (
 				69A7AC3825A983C600B25D2A /* GroceryItemTableViewCell.swift */,
+				694B1EC425AABEC900C4C4B3 /* GroceryNewItemTableViewCell.swift */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -712,6 +718,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				694B1EC525AABEC900C4C4B3 /* GroceryNewItemTableViewCell.swift in Sources */,
 				6934D4C22599D5B200B4F846 /* SignUpViewController.swift in Sources */,
 				69A7AC3C25A98F4700B25D2A /* NewGroceryListViewController.swift in Sources */,
 				69461EE4259DEBFD00035AF7 /* NotificationListViewController.swift in Sources */,
@@ -738,6 +745,7 @@
 				6934D4C42599D5C100B4F846 /* SignInViewController.swift in Sources */,
 				6975466025A9813F00D98C2B /* ScanViewController.swift in Sources */,
 				696D328D25998D76009ACCB3 /* HomeViewController.swift in Sources */,
+				694B1EC725AAD4B800C4C4B3 /* UIColorExtension.swift in Sources */,
 				69A7AC3925A983C600B25D2A /* GroceryItemTableViewCell.swift in Sources */,
 				6934D4C02599D56800B4F846 /* LandingViewController.swift in Sources */,
 				696D3259259984D1009ACCB3 /* GroceryPal.xcdatamodeld in Sources */,

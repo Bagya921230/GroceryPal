@@ -39,7 +39,18 @@ class AddToStorageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done",
+        style: .plain,
+        target: self,
+        action: #selector(onDoneAction))
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor(hex: "#008891ff")
+
+    }
+    
+    @objc
+    func onDoneAction() {
+        print("done action")
     }
     
     func configureUI() {

@@ -245,15 +245,9 @@
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6at-Da-cVC">
                                 <rect key="frame" x="24" y="259" width="366" height="34"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" notEnabled="YES"/>
-                                </accessibility>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="fnB-JQ-VYX" appends="YES" id="d63-eA-dPT"/>
-                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expiry Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Vf-LZ-Lne">
                                 <rect key="frame" x="24" y="234" width="366" height="17"/>
@@ -272,11 +266,20 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UHE-ja-Ov4">
+                                <rect key="frame" x="24" y="259" width="366" height="34"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="hXA-hG-CQ8" appends="YES" id="D33-CI-bkF"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="G3V-cj-g3a" firstAttribute="leading" secondItem="yeR-0b-03n" secondAttribute="leading" constant="24" id="4nP-LH-hcq"/>
                             <constraint firstItem="yeR-0b-03n" firstAttribute="trailing" secondItem="eHd-8e-ONa" secondAttribute="trailing" constant="24" id="5L8-WH-2lV"/>
+                            <constraint firstItem="UHE-ja-Ov4" firstAttribute="bottom" secondItem="6at-Da-cVC" secondAttribute="bottom" id="5lT-mz-umU"/>
                             <constraint firstItem="gPU-Ns-ryr" firstAttribute="top" secondItem="G3V-cj-g3a" secondAttribute="bottom" constant="8" id="6Fd-Pz-7lO"/>
                             <constraint firstItem="1Vf-LZ-Lne" firstAttribute="leading" secondItem="yeR-0b-03n" secondAttribute="leading" constant="24" id="7ln-Vs-595"/>
                             <constraint firstItem="4oJ-UR-fIv" firstAttribute="top" secondItem="yeR-0b-03n" secondAttribute="top" constant="25" id="8rb-iq-xLz"/>
@@ -287,9 +290,12 @@
                             <constraint firstItem="yeR-0b-03n" firstAttribute="trailing" secondItem="dYD-1l-zMU" secondAttribute="trailing" constant="24" id="Dh2-gY-uD1"/>
                             <constraint firstItem="yeR-0b-03n" firstAttribute="trailing" secondItem="G3V-cj-g3a" secondAttribute="trailing" constant="24" id="DiP-eJ-fcS"/>
                             <constraint firstItem="MHq-wP-Itf" firstAttribute="leading" secondItem="yeR-0b-03n" secondAttribute="leading" constant="24" id="Ge2-P5-EVA"/>
+                            <constraint firstItem="UHE-ja-Ov4" firstAttribute="trailing" secondItem="6at-Da-cVC" secondAttribute="trailing" id="HvI-2b-C9h"/>
                             <constraint firstItem="7EE-1i-518" firstAttribute="leading" secondItem="aKd-0M-CSf" secondAttribute="trailing" constant="10" id="LQC-pK-NeC"/>
+                            <constraint firstItem="UHE-ja-Ov4" firstAttribute="top" secondItem="6at-Da-cVC" secondAttribute="top" id="OXj-wx-dSC"/>
                             <constraint firstItem="aKd-0M-CSf" firstAttribute="top" secondItem="gPU-Ns-ryr" secondAttribute="top" constant="10" id="QRm-Dz-Kol"/>
                             <constraint firstItem="gPU-Ns-ryr" firstAttribute="leading" secondItem="yeR-0b-03n" secondAttribute="leading" constant="24" id="URH-ut-eh1"/>
+                            <constraint firstItem="UHE-ja-Ov4" firstAttribute="leading" secondItem="6at-Da-cVC" secondAttribute="leading" id="XQl-Gh-bfp"/>
                             <constraint firstItem="MHq-wP-Itf" firstAttribute="top" secondItem="dYD-1l-zMU" secondAttribute="bottom" constant="8" id="ZOt-xm-cOu"/>
                             <constraint firstItem="aKd-0M-CSf" firstAttribute="leading" secondItem="gPU-Ns-ryr" secondAttribute="trailing" constant="10" id="Zbm-K2-8ad"/>
                             <constraint firstAttribute="trailing" secondItem="gTH-cF-m72" secondAttribute="trailing" constant="24" id="cfY-2H-Yrc"/>
@@ -321,9 +327,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L0m-cj-Q7L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="fnB-JQ-VYX">
+                <tapGestureRecognizer id="hXA-hG-CQ8">
                     <connections>
-                        <action selector="selectExpiryDate:" destination="QhX-q5-Ydm" id="7wb-ip-wta"/>
+                        <action selector="selectExpiryDate:" destination="QhX-q5-Ydm" id="PNI-p9-Y5n"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

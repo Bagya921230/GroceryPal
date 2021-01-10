@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Items-->
+        <!--Re-Stock Needed-->
         <scene sceneID="b9E-H8-LXO">
             <objects>
-                <viewController title="Items" id="MAw-Gy-j0o" customClass="RestockMainViewController" customModule="GroceryPal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Re-Stock Needed" id="MAw-Gy-j0o" customClass="RestockMainViewController" customModule="GroceryPal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3zv-Hd-Pf1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -58,45 +58,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="items_large" translatesAutoresizingMaskIntoConstraints="NO" id="Fnw-AQ-IAA">
-                                <rect key="frame" x="127" y="164" width="160" height="160"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="iYF-KB-uXd">
+                                <rect key="frame" x="157" y="179.5" width="150" height="149"/>
+                                <color key="tintColor" red="0.0" green="0.53333333329999999" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="160" id="4WY-7g-yMv"/>
-                                    <constraint firstAttribute="height" constant="160" id="jyq-I8-Azi"/>
+                                    <constraint firstAttribute="width" constant="150" id="Aja-52-Ud9"/>
+                                    <constraint firstAttribute="height" constant="150" id="uqa-2f-Ebl"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oh you don’t have any items. Please add new items." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKa-rV-Dtn">
-                                <rect key="frame" x="40" y="374" width="334" height="38.5"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="restock_large" translatesAutoresizingMaskIntoConstraints="NO" id="Fnw-AQ-IAA">
+                                <rect key="frame" x="107" y="164" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="4WY-7g-yMv"/>
+                                    <constraint firstAttribute="height" constant="200" id="jyq-I8-Azi"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No need to restock at the moment." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKa-rV-Dtn">
+                                <rect key="frame" x="40" y="414" width="334" height="19.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uzl-uc-iGh">
-                                <rect key="frame" x="60" y="502.5" width="294" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="0.53333333329999999" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="vGG-93-H3A"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <state key="normal" title="Add Items">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="uzl-uc-iGh" firstAttribute="leading" secondItem="kiv-7Y-8IN" secondAttribute="leadingMargin" constant="40" id="9E9-jI-9WZ"/>
+                            <constraint firstItem="iYF-KB-uXd" firstAttribute="leading" secondItem="Fnw-AQ-IAA" secondAttribute="leading" constant="50" id="O2n-N7-DPI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="WKa-rV-Dtn" secondAttribute="trailing" constant="20" id="WVq-ts-F5u"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="uzl-uc-iGh" secondAttribute="trailing" constant="40" id="XEx-1n-OXF"/>
+                            <constraint firstItem="Fnw-AQ-IAA" firstAttribute="bottom" secondItem="iYF-KB-uXd" secondAttribute="bottom" constant="35" id="Zst-0e-amF"/>
                             <constraint firstItem="WKa-rV-Dtn" firstAttribute="leading" secondItem="kiv-7Y-8IN" secondAttribute="leadingMargin" constant="20" id="bjV-hp-Hfv"/>
                             <constraint firstItem="Fnw-AQ-IAA" firstAttribute="centerX" secondItem="kiv-7Y-8IN" secondAttribute="centerX" id="mb6-CM-FuM"/>
                             <constraint firstItem="WKa-rV-Dtn" firstAttribute="top" secondItem="Fnw-AQ-IAA" secondAttribute="bottom" constant="50" id="oRV-Pj-NWk"/>
-                            <constraint firstItem="uzl-uc-iGh" firstAttribute="top" secondItem="WKa-rV-Dtn" secondAttribute="bottom" constant="90" id="sjR-Do-jh6"/>
                             <constraint firstItem="Fnw-AQ-IAA" firstAttribute="top" secondItem="kiv-7Y-8IN" secondAttribute="topMargin" constant="120" id="y3C-Vh-Qle"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="noH-y6-7hT"/>
@@ -104,7 +95,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="abE-mS-LDV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="806" y="191"/>
+            <point key="canvasLocation" x="805.79710144927537" y="190.84821428571428"/>
         </scene>
         <!--Restock List View Controller-->
         <scene sceneID="tex-Bx-Axm">
@@ -115,7 +106,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sTg-nd-0d2">
-                                <rect key="frame" x="0.0" y="44" width="414" height="754"/>
+                                <rect key="frame" x="0.0" y="113" width="414" height="685"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="itemTableViewCell" rowHeight="119" id="hYG-DN-iqt" customClass="ItemListTableViewCell" customModule="GroceryPal" customModuleProvider="target">
@@ -198,13 +189,24 @@
                                     <outlet property="delegate" destination="iIg-c5-Mpd" id="zhk-ZH-zeL"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Goj-mF-cFw">
+                                <rect key="frame" x="20" y="64" width="374" height="29"/>
+                                <string key="text">Out of stock items and reorder level reached items 
+will be automatically listed here.</string>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
+                                <color key="textColor" red="0.59215686270000001" green="0.59215686270000001" blue="0.59215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="sTg-nd-0d2" firstAttribute="top" secondItem="feg-Ts-kWb" secondAttribute="top" id="4Ed-VS-hcJ"/>
                             <constraint firstItem="sTg-nd-0d2" firstAttribute="leading" secondItem="rW8-sd-oBQ" secondAttribute="leading" id="Ezm-Tm-XZw"/>
+                            <constraint firstItem="Goj-mF-cFw" firstAttribute="top" secondItem="feg-Ts-kWb" secondAttribute="top" constant="20" id="XaD-TU-Sel"/>
+                            <constraint firstItem="feg-Ts-kWb" firstAttribute="trailing" secondItem="Goj-mF-cFw" secondAttribute="trailing" constant="20" id="lf9-rk-EWl"/>
+                            <constraint firstItem="sTg-nd-0d2" firstAttribute="top" secondItem="Goj-mF-cFw" secondAttribute="bottom" constant="20" id="pGc-zY-lfM"/>
                             <constraint firstAttribute="bottom" secondItem="sTg-nd-0d2" secondAttribute="bottom" constant="20" id="raQ-he-A6f"/>
                             <constraint firstAttribute="trailing" secondItem="sTg-nd-0d2" secondAttribute="trailing" id="rhG-G2-4Tw"/>
+                            <constraint firstItem="Goj-mF-cFw" firstAttribute="leading" secondItem="feg-Ts-kWb" secondAttribute="leading" constant="20" id="xoj-2S-2qs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="feg-Ts-kWb"/>
                     </view>
@@ -218,7 +220,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="items_large" width="192" height="175"/>
+        <image name="circle.fill" catalog="system" width="64" height="60"/>
+        <image name="restock_large" width="205" height="268"/>
         <image name="temp" width="373" height="198"/>
     </resources>
 </document>

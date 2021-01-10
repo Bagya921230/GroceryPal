@@ -10,7 +10,7 @@
         <!--New Grocery List View Controller-->
         <scene sceneID="rS0-yh-WGz">
             <objects>
-                <viewController id="euE-Fw-9aq" customClass="NewGroceryListViewController" customModule="GroceryPal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController definesPresentationContext="YES" id="euE-Fw-9aq" customClass="NewGroceryListViewController" customModule="GroceryPal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="b9b-iu-SMw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,6 +44,9 @@
                                                 <integer key="value" value="8"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="saveAction:" destination="euE-Fw-9aq" eventType="touchUpInside" id="kYV-oX-mIY"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -79,8 +82,8 @@
                         <viewLayoutGuide key="safeArea" id="Tsr-ct-h0W"/>
                     </view>
                     <connections>
-                        <outlet property="bgView" destination="ZWL-DA-MXk" id="qxt-Dd-2lU"/>
-                        <outlet property="saveButton" destination="9eZ-ub-s6R" id="iYu-fi-b22"/>
+                        <outlet property="bgView" destination="ZWL-DA-MXk" id="5hD-Lo-huT"/>
+                        <outlet property="saveButton" destination="9eZ-ub-s6R" id="pn6-6p-Crc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="moJ-dC-tlC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
