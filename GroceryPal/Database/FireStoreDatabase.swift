@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseStorage
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
@@ -119,24 +120,33 @@ class FireStoreDataBase
         }
     }
     
-    func addItems(item: Item, dispatch:DispatchGroup, completed: @escaping (Bool) -> Void)
+    func addItems(item: Item, image: UIImage?, dispatch:DispatchGroup, completed: @escaping (Bool) -> Void)
     {
         dispatch.enter()
-        
+              
         do {
         let jsonData = try item.jsonData()
 
         let json = try JSONSerialization.jsonObject(with: jsonData, options: [])
-        guard let dictionary = json as? [String : Any] else {
+        guard var dictionary = json as? [String : Any] else {
             return
         }
             
-            firebaseDb.collection("user").document(UserDefaults.standard.string(forKey: "userId")!).collection("items").addDocument(data:
-                      dictionary
-            )
-        {
+            let docRef = firebaseDb.collection("user").document(UserDefaults.standard.string(forKey: "userId")!).collection("items").document()
+        
+            dictionary["id"] = docRef.documentID
+
+            firebaseDb.collection("user").document(UserDefaults.standard.string(forKey: "userId")!).collection("items").document(docRef.documentID).setData(dictionary)
+            {
             err in
-                           dispatch.leave()
+                            if(image != nil)
+                            {
+                                self.uploadImagePic(image: image!, docId: docRef.documentID, dispatch: dispatch)
+                            }
+                            else
+                            {
+                                dispatch.leave()
+                            }
 
                            if let err = err {
                                print("Error adding item: \(err)")
@@ -154,6 +164,24 @@ class FireStoreDataBase
         
         catch{
             completed(false)
+        }
+    }
+    
+    func uploadImagePic(image: UIImage, docId: String, dispatch: DispatchGroup) {
+        guard let imageData: Data = image.jpegData(compressionQuality: 0.1) else {
+            return
+        }
+        
+        let storageRef = Storage.storage().reference().child(UserDefaults.standard.string(forKey: "userId")!+"/"+docId+"/item.jpg")
+
+        storageRef.putData(imageData, metadata: nil){ (metaData, error) in
+            
+            dispatch.leave()
+
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
         }
     }
 }

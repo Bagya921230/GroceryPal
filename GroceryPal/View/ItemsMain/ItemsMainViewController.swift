@@ -19,6 +19,10 @@ class ItemsMainViewController: UINavigationController {
         {
            performSegue(withIdentifier: "noItems", sender: nil)
         }
+        else
+        {
+           performSegue(withIdentifier: "itemList", sender: nil)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

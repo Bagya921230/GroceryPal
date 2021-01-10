@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 class ItemDetailVM {
@@ -29,7 +30,7 @@ class ItemDetailVM {
         }
     }
     
-    func sendValues(name: String, category: String, uom: String,notes:String,price:String,nonUnitPrice:String,perVal:String, roLevel:String, image: String) -> Bool
+    func sendValues(name: String, category: String, uom: String,notes:String,price:String,nonUnitPrice:String,perVal:String, roLevel:String, image: UIImage?) -> Bool
     {
         if name.trimmingCharacters(in: .whitespaces).isEmpty{
             delegate?.displayError(msg: "Please enter the item name.")
@@ -56,9 +57,9 @@ class ItemDetailVM {
             let perValDouble =  Common.getFormattedDecimalDouble(value:NSString(string: perVal).doubleValue)
             let unitPrice = Common.getFormattedDecimalDouble(value: self.getUnitPrice(selectedUnit: uom, price: priceDouble, nonUnitPrice: nonUnitPriceDouble));
             
-            let item = Item(name: name, category: category, uom: uom, unitPrice: unitPrice, perValue: perValDouble, roLevel: roLevelDouble, notes: notes, image: image)
+            let item = Item(name: name, category: category, uom: uom, unitPrice: unitPrice, perValue: perValDouble, roLevel: roLevelDouble, notes: notes, image: "", id: "")
                         
-            storeItem(item: item, completion: { _ in })
+            storeItem(item: item, image: image, completion: { _ in })
             return true
         }
         
@@ -70,10 +71,10 @@ class ItemDetailVM {
         return selectedUnit == "unit" ? price : nonUnitPrice;
     }
     
-    func storeItem(item: Item, completion: @escaping(Bool)->())
+    func storeItem(item: Item, image: UIImage?, completion: @escaping(Bool)->())
     {
         let dispatch = DispatchGroup()
-        FireStoreDataBase.shared.addItems(item: item, dispatch: dispatch){ transaction in
+        FireStoreDataBase.shared.addItems(item: item, image: image, dispatch: dispatch){ transaction in
                           dispatch.notify(queue: .main, execute: {
                                    
                             if(transaction)

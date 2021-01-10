@@ -354,8 +354,6 @@
 				6934D4C92599E42400B4F846 /* Statistics */,
 				696D329F2599BA66009ACCB3 /* RestockMain */,
 				696D329E2599BA34009ACCB3 /* Notifications */,
-				696D329D2599B9ED009ACCB3 /* UpdateItem */,
-				696D329C2599B9E7009ACCB3 /* NewItem */,
 				696D329B2599B9D7009ACCB3 /* ItemsMain */,
 				696D329A2599B9BA009ACCB3 /* AddToStorage */,
 				696D32992599B9B0009ACCB3 /* UpdateStorage */,
@@ -473,20 +471,6 @@
 				69461EEA259E048F00035AF7 /* ItemsListViewController.swift */,
 			);
 			path = ItemsMain;
-			sourceTree = "<group>";
-		};
-		696D329C2599B9E7009ACCB3 /* NewItem */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = NewItem;
-			sourceTree = "<group>";
-		};
-		696D329D2599B9ED009ACCB3 /* UpdateItem */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = UpdateItem;
 			sourceTree = "<group>";
 		};
 		696D329E2599BA34009ACCB3 /* Notifications */ = {

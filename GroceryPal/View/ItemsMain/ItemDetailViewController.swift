@@ -35,7 +35,7 @@ class ItemDetailViewController: UIViewController, ImagePickerDelegate, ItemDetai
     
     var imagePicker: ImagePicker!
     let itemDetailVM = ItemDetailVM()
-    var base64String: String = ""
+    var selectedImage: UIImage!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,7 +97,7 @@ class ItemDetailViewController: UIViewController, ImagePickerDelegate, ItemDetai
         let perVal =  self.perVal.text!
 
         Common.showActivityIndicatory(view: self.view)
-        _ = itemDetailVM.sendValues(name: name, category: category, uom: uom,notes:notes,price:price,nonUnitPrice:nonUnitPrice,perVal:perVal, roLevel:roLevel, image:base64String)
+        _ = itemDetailVM.sendValues(name: name, category: category, uom: uom,notes:notes,price:price,nonUnitPrice:nonUnitPrice,perVal:perVal, roLevel:roLevel, image:selectedImage)
     }
     
     @IBAction func onBack(_ sender: Any) {
@@ -109,7 +109,7 @@ class ItemDetailViewController: UIViewController, ImagePickerDelegate, ItemDetai
         if (image != nil)
         {
         self.imageView.image = image
-        base64String = Common.convertImageToBase64(image: self.imageView.image!)
+        self.selectedImage = image
         }
     }
     
