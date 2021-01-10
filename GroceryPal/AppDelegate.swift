@@ -18,20 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
-        let dispatch = DispatchGroup()
-        FireStoreDataBase.shared.fetchCategories(dispatch: dispatch){(catList) in
-            dispatch.notify(queue: .main, execute: {
-                print("number of categories: \(catList.count)")
-                print("categories: \(catList)")
-            })
-        }
-        
-        FireStoreDataBase.shared.fetchUOM(dispatch: dispatch){(uomList) in
-            dispatch.notify(queue: .main, execute: {
-                print("number of uom: \(uomList.count)")
-                print("unit of measurements: \(uomList)")
-            })
-        }
         return true
     }
 

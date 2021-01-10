@@ -12,7 +12,7 @@ target 'GroceryPal' do
   pod 'Firebase/Auth'
   pod 'BoringSSL-GRPC', :modular_headers => false
   pod 'gRPC-Core', :modular_headers => false
-
+  pod 'iOSDropDown'
 
   target 'GroceryPalTests' do
     inherit! :search_paths
