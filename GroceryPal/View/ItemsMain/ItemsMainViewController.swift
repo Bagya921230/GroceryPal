@@ -31,4 +31,12 @@ class ItemsMainViewController: UINavigationController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "itemList"{
+            if let vc = segue.destination as? ItemsListViewController {
+                vc.itemList = itemList
+            }
+        }
+    }
+    
 }

@@ -13,6 +13,7 @@ class ItemsListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    var itemList = [Item]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +46,7 @@ extension ItemsListViewController : UITableViewDataSource , UITableViewDelegate{
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return itemList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -53,12 +54,20 @@ extension ItemsListViewController : UITableViewDataSource , UITableViewDelegate{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ItemListTableViewCell else {
             fatalError("The dequed cell is not an instance of ItemListTableViewCell")
         }
-        cell.setUp(name: "Coconut Oil", image: UIImage(named: "temp")!, category: "Oil")
+        
+        let item = itemList[indexPath.row]
+        cell.setUp(item: item)
         return cell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 96
+        return 95
+    }
+    
+    private func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        //let indexPath = tableView.indexPathForSelectedRow();
+        //let currentCell = tableView.cellForRowAtIndexPath(indexPath!) as UITableViewCell!
+        //println(currentCell.textLabel!.text)
     }
 
 }

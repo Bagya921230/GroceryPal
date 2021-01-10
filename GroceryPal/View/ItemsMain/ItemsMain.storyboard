@@ -341,24 +341,25 @@
                                 <rect key="frame" x="0.0" y="96" width="414" height="726"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="itemTableViewCell" rowHeight="119" id="JyC-hm-isR" customClass="ItemListTableViewCell" customModule="GroceryPal" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="119"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="itemTableViewCell" rowHeight="100" id="JyC-hm-isR" customClass="ItemListTableViewCell" customModule="GroceryPal" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JyC-hm-isR" id="4Yg-Da-zQK">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="119"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0O9-dl-vOe">
-                                                    <rect key="frame" x="20" y="10" width="374" height="99"/>
+                                                    <rect key="frame" x="20" y="10" width="374" height="80"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="temp" translatesAutoresizingMaskIntoConstraints="NO" id="RXY-3b-CsE">
-                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="99"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RXY-3b-CsE" customClass="SDAnimatedImageView">
+                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="80"/>
+                                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="100" id="IQ0-hv-TOq"/>
                                                             </constraints>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="gCj-6d-iVo">
-                                                            <rect key="frame" x="110" y="26.5" width="254" height="46"/>
+                                                            <rect key="frame" x="110" y="17" width="254" height="46"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coconut Oil 500ml" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WoJ-pq-g7c">
                                                                     <rect key="frame" x="0.0" y="0.0" width="139.5" height="19.5"/>
@@ -413,6 +414,7 @@
                                             <outlet property="categoryLabel" destination="Nac-rT-GPU" id="c1B-Mw-yk8"/>
                                             <outlet property="itemImageView" destination="RXY-3b-CsE" id="L8i-3h-1QR"/>
                                             <outlet property="nameLabel" destination="WoJ-pq-g7c" id="bzN-xq-Cnq"/>
+                                            <segue destination="1uU-nL-EAS" kind="show" identifier="editItem" id="DPz-YI-uvt"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -445,11 +447,13 @@
             <point key="canvasLocation" x="1020" y="173"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="DPz-YI-uvt"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.53333333329999999" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
     <resources>
         <image name="add_item" width="407" height="190"/>
         <image name="backbtn" width="512" height="512"/>
         <image name="no_items" width="96" height="87.5"/>
-        <image name="temp" width="373" height="198"/>
     </resources>
 </document>

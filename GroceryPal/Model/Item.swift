@@ -13,7 +13,6 @@ protocol ItemEvents {
 }
 
 struct Item: Codable {
-    var id: String
     var name: String
     var category: String
     var uom: String
@@ -24,7 +23,6 @@ struct Item: Codable {
     var image: String
     
     init(name:String, category:String, uom:String, unitPrice:Double, perValue:Double, roLevel:Double, notes:String, image: String, id: String){
-        self.id = id
         self.name=name
         self.category=category
         self.uom=uom

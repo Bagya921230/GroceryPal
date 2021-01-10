@@ -14,6 +14,9 @@ target 'GroceryPal' do
   pod 'gRPC-Core', :modular_headers => false
   pod 'iOSDropDown'
   pod 'Firebase/Storage'
+  pod 'SDWebImage', '~> 5.0'
+  pod 'FirebaseUI/Storage', '~> 8.0'
+
 
   target 'GroceryPalTests' do
     inherit! :search_paths
