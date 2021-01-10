@@ -10,10 +10,18 @@ import UIKit
 
 class GroceryMainViewController: UIViewController {
 
+    // MARK: - Outlet
+    @IBOutlet weak var emptyContainer: UIView!
+    @IBOutlet weak var listContainerView: UIView!
+
+    @IBAction func newListAction(_ sender: Any) {
+        performSegue(withIdentifier: "segueNewList", sender: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        //showEmptyView()
+        showListView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -22,9 +30,14 @@ class GroceryMainViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+    func showEmptyView() {
+        emptyContainer.alpha = 1
+        listContainerView.alpha = 0
+    }
+    
+    func showListView() {
+        emptyContainer.alpha = 0
+        listContainerView.alpha = 1
     }
 
 }

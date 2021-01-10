@@ -11,10 +11,14 @@ import UIKit
 class StorageMainViewController: UIViewController {
 
     // MARK: - Outlet
-    
     @IBOutlet weak var emptyContainer: UIView!
-    
     @IBOutlet weak var listContainerView: UIView!
+    @IBOutlet weak var addNewBtn: UIButton!
+    
+    // MARK: - Actions
+    @IBAction func addToStorageAction(_ sender: Any) {
+        performSegue(withIdentifier: "segueAddToStorage", sender: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +35,13 @@ class StorageMainViewController: UIViewController {
     func showEmptyView() {
         emptyContainer.alpha = 1
         listContainerView.alpha = 0
+        addNewBtn.isHidden = true
     }
     
     func showListView() {
         emptyContainer.alpha = 0
         listContainerView.alpha = 1
+        addNewBtn.isHidden = false
     }
 
 }

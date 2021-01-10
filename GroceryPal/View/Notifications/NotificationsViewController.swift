@@ -9,21 +9,30 @@
 import UIKit
 
 class NotificationsViewController: UIViewController {
+    
+    @IBOutlet weak var emptyContainer: UIView!
+    
+    @IBOutlet weak var listContainerView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        //showEmptyView()
+        showListView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+    
+    func showEmptyView() {
+        emptyContainer.alpha = 1
+        listContainerView.alpha = 0
+    }
+    
+    func showListView() {
+        emptyContainer.alpha = 0
+        listContainerView.alpha = 1
     }
 
 }

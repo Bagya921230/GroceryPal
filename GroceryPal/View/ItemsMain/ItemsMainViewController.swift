@@ -1,8 +1,8 @@
 //
-//  ItemsMainViewController.swift
+//  ItemsEmptyViewController.swift
 //  GroceryPal
 //
-//  Created by Bhagya Gunawardena on 12/28/20.
+//  Created by Aparna Prasad on 1/10/21.
 //  Copyright © 2020 iit. All rights reserved.
 //
 
