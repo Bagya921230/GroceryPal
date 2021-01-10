@@ -1,4 +1,4 @@
-framework module Pods_GroceryPal_GroceryPalUITests {
+module Pods_GroceryPal_GroceryPalUITests {
   umbrella header "Pods-GroceryPal-GroceryPalUITests-umbrella.h"
 
   export *
