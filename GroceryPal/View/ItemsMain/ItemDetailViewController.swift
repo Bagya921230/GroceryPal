@@ -105,7 +105,10 @@ class ItemDetailViewController: UIViewController, ImagePickerDelegate, ItemDetai
     
     // image picker
     func didSelect(image: UIImage?) {
+        if (image != nil)
+        {
         self.imageView.image = image
+        }
     }
     
     func displayCategories(list: [String]) {

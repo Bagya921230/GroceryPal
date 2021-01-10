@@ -35,6 +35,18 @@ class ItemDetailVM {
             delegate?.displayError(msg: "Please enter the item name.")
         }
         
+        if uom == "unit" && price.trimmingCharacters(in: .whitespaces).isEmpty {
+            delegate?.displayError(msg: "Please enter the price.")
+        }
+        
+        if uom != "unit" && nonUnitPrice.trimmingCharacters(in: .whitespaces).isEmpty {
+            delegate?.displayError(msg: "Please enter the price.")
+        }
+        
+        if uom != "unit" && perVal.trimmingCharacters(in: .whitespaces).isEmpty {
+            delegate?.displayError(msg: "Please enter the per unit value.")
+        }
+        
         return false
     }
 }
