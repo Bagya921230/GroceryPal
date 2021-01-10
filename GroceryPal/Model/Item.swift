@@ -12,12 +12,26 @@ protocol ItemEvents {
     func itemList(itemList: [Item])
 }
 
-struct Item {
+struct Item: Codable {
     var id: String
     var name: String
+    var category: String
+    var uom: String
+    var unitPrice: Double
+    var perValue: Double
+    var roLevel: Double
+    var notes: String
+    var image: String
     
-    init(id: String, name:String){
+    init(name:String, category:String, uom:String, unitPrice:Double, perValue:Double, roLevel:Double, notes:String, image: String, id: String){
+        self.id = id
         self.name=name
-        self.id=id
+        self.category=category
+        self.uom=uom
+        self.unitPrice=unitPrice
+        self.perValue=perValue
+        self.roLevel=roLevel
+        self.notes=notes
+        self.image=image
     }
 }

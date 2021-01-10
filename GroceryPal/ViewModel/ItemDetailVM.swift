@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 class ItemDetailVM {
@@ -29,24 +30,64 @@ class ItemDetailVM {
         }
     }
     
-    func sendValues(name: String, category: String, uom: String,notes:String,price:String,nonUnitPrice:String,perVal:String, roLevel:String) -> Bool
+    func sendValues(name: String, category: String, uom: String,notes:String,price:String,nonUnitPrice:String,perVal:String, roLevel:String, image: UIImage?) -> Bool
     {
         if name.trimmingCharacters(in: .whitespaces).isEmpty{
             delegate?.displayError(msg: "Please enter the item name.")
         }
         
-        if uom == "unit" && price.trimmingCharacters(in: .whitespaces).isEmpty {
+        else if uom == "unit" && price.trimmingCharacters(in: .whitespaces).isEmpty {
             delegate?.displayError(msg: "Please enter the price.")
         }
         
-        if uom != "unit" && nonUnitPrice.trimmingCharacters(in: .whitespaces).isEmpty {
+        else if uom != "unit" && nonUnitPrice.trimmingCharacters(in: .whitespaces).isEmpty {
             delegate?.displayError(msg: "Please enter the price.")
         }
         
-        if uom != "unit" && perVal.trimmingCharacters(in: .whitespaces).isEmpty {
+        else if uom != "unit" && perVal.trimmingCharacters(in: .whitespaces).isEmpty {
             delegate?.displayError(msg: "Please enter the per unit value.")
         }
         
+        else
+        {
+            let priceDouble =  NSString(string: price).doubleValue
+            let nonUnitPriceDouble =  NSString(string: nonUnitPrice).doubleValue
+            
+            let roLevelDouble =  Common.getFormattedDecimalDouble(value:NSString(string: roLevel).doubleValue)
+            let perValDouble =  Common.getFormattedDecimalDouble(value:NSString(string: perVal).doubleValue)
+            let unitPrice = Common.getFormattedDecimalDouble(value: self.getUnitPrice(selectedUnit: uom, price: priceDouble, nonUnitPrice: nonUnitPriceDouble));
+            
+            let item = Item(name: name, category: category, uom: uom, unitPrice: unitPrice, perValue: perValDouble, roLevel: roLevelDouble, notes: notes, image: "", id: "")
+                        
+            storeItem(item: item, image: image, completion: { _ in })
+            return true
+        }
+        
         return false
+    }
+    
+    func getUnitPrice(selectedUnit: String, price: Double, nonUnitPrice: Double) -> Double
+    {
+        return selectedUnit == "unit" ? price : nonUnitPrice;
+    }
+    
+    func storeItem(item: Item, image: UIImage?, completion: @escaping(Bool)->())
+    {
+        let dispatch = DispatchGroup()
+        FireStoreDataBase.shared.addItems(item: item, image: image, dispatch: dispatch){ transaction in
+                          dispatch.notify(queue: .main, execute: {
+                                   
+                            if(transaction)
+                            {
+                                self.delegate?.addSuccess()
+                                completion(true)
+                            }
+                            else
+                            {
+                                self.delegate?.displayError(msg: "Cannot add the item")
+                                completion(true)
+                            }
+                 })
+         }
     }
 }

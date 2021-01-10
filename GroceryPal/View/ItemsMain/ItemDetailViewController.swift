@@ -35,6 +35,7 @@ class ItemDetailViewController: UIViewController, ImagePickerDelegate, ItemDetai
     
     var imagePicker: ImagePicker!
     let itemDetailVM = ItemDetailVM()
+    var selectedImage: UIImage!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,7 +97,7 @@ class ItemDetailViewController: UIViewController, ImagePickerDelegate, ItemDetai
         let perVal =  self.perVal.text!
 
         Common.showActivityIndicatory(view: self.view)
-        _ = itemDetailVM.sendValues(name: name, category: category, uom: uom,notes:notes,price:price,nonUnitPrice:nonUnitPrice,perVal:perVal, roLevel:roLevel)
+        _ = itemDetailVM.sendValues(name: name, category: category, uom: uom,notes:notes,price:price,nonUnitPrice:nonUnitPrice,perVal:perVal, roLevel:roLevel, image:selectedImage)
     }
     
     @IBAction func onBack(_ sender: Any) {
@@ -108,6 +109,7 @@ class ItemDetailViewController: UIViewController, ImagePickerDelegate, ItemDetai
         if (image != nil)
         {
         self.imageView.image = image
+        self.selectedImage = image
         }
     }
     
@@ -131,9 +133,9 @@ class ItemDetailViewController: UIViewController, ImagePickerDelegate, ItemDetai
      }
      
     func addSuccess() {
-//           let storyboard = UIStoryboard(name: "Home", bundle: nil)
-//           let homeViewController = storyboard.instantiateViewController(withIdentifier: "homeViewController") as! HomeViewController
-//           self.navigationController?.pushViewController(homeViewController, animated: true)
+           /*let storyboard = UIStoryboard(name: "Home", bundle: nil)
+           let homeViewController = storyboard.instantiateViewController(withIdentifier: "homeViewController") as! HomeViewController
+           self.navigationController?.pushViewController(homeViewController, animated: true)*/
     }
        
     func displayError(msg: String) {

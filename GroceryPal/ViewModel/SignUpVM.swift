@@ -79,6 +79,7 @@ class SignUpVM {
         FireStoreDataBase.shared.addUser(dispatch: dispatch, docId: uid, name: name){_ in
                    dispatch.notify(queue: .main, execute: {
                             UserDefaults.standard.set(true, forKey: "loggedIn")
+                            UserDefaults.standard.set(uid, forKey: "userId")
                             self.delegate?.signUpSuccess()
                             completion(true)
                    })
