@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="giy-wx-PYL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="giy-wx-PYL">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,19 +10,46 @@
         <!--Home-->
         <scene sceneID="kwj-K7-buI">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="xLc-n3-iVC" customClass="HomeViewController" customModule="GroceryPal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="homeViewController" hidesBottomBarWhenPushed="YES" id="xLc-n3-iVC" customClass="HomeViewController" customModule="GroceryPal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LXt-Hk-LJz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grocery Pal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RHZ-V3-lUr">
-                                <rect key="frame" x="20" y="20" width="374" height="28.666666666666671"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="zLT-i6-kGj" userLabel="Header">
+                                <rect key="frame" x="20" y="20" width="374" height="25"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grocery Pal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kwr-dp-n2i">
+                                        <rect key="frame" x="0.0" y="0.0" width="314" height="25"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y5H-rG-7vh">
+                                        <rect key="frame" x="319" y="0.0" width="25" height="25"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="logout_home"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="5Lc-xP-zWL"/>
+                                            <constraint firstAttribute="width" constant="25" id="Yse-zt-0eA"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                        <state key="normal" backgroundImage="logout"/>
+                                        <connections>
+                                            <action selector="onLogout:" destination="xLc-n3-iVC" eventType="touchUpInside" id="bhD-De-AJo"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DO5-E8-gJx">
+                                        <rect key="frame" x="349" y="0.0" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="7GQ-qL-mqu"/>
+                                            <constraint firstAttribute="height" constant="25" id="qoi-ia-LJU"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                        <state key="normal" backgroundImage="notification"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="t0o-P1-DeQ">
-                                <rect key="frame" x="20" y="88.666666666666686" width="344" height="440.00000000000006"/>
+                                <rect key="frame" x="20" y="85" width="344" height="440"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MCr-Do-PbF">
                                         <rect key="frame" x="0.0" y="0.0" width="344" height="80"/>
@@ -44,7 +71,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 items stored" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iGZ-gV-cmb">
-                                                        <rect key="frame" x="0.0" y="25.333333333333329" width="214" height="17"/>
+                                                        <rect key="frame" x="0.0" y="25.333333333333343" width="214" height="17"/>
                                                         <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
                                                         <color key="textColor" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -237,34 +264,21 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lHG-Qv-YCi">
-                                <rect key="frame" x="376" y="20" width="18" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="18" id="NUY-VD-byv"/>
-                                    <constraint firstAttribute="height" constant="20" id="ZTh-dk-uHY"/>
-                                </constraints>
-                                <state key="normal" image="bell"/>
-                                <connections>
-                                    <action selector="clickNotifications:" destination="xLc-n3-iVC" eventType="touchUpInside" id="SnB-Va-sch"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="RHZ-V3-lUr" firstAttribute="leading" secondItem="Ddp-rc-pz1" secondAttribute="leading" constant="20" id="8sl-Ph-ccm"/>
-                            <constraint firstItem="t0o-P1-DeQ" firstAttribute="top" secondItem="RHZ-V3-lUr" secondAttribute="bottom" constant="40" id="GBo-jH-Mdf"/>
-                            <constraint firstItem="Ddp-rc-pz1" firstAttribute="trailing" secondItem="lHG-Qv-YCi" secondAttribute="trailing" constant="20" id="N4Y-Kh-ia1"/>
-                            <constraint firstItem="RHZ-V3-lUr" firstAttribute="top" secondItem="Ddp-rc-pz1" secondAttribute="top" constant="20" id="Nt6-yg-6xy"/>
-                            <constraint firstItem="lHG-Qv-YCi" firstAttribute="top" secondItem="Ddp-rc-pz1" secondAttribute="top" constant="20" id="Ra6-eh-SgA"/>
-                            <constraint firstItem="Ddp-rc-pz1" firstAttribute="trailing" secondItem="t0o-P1-DeQ" secondAttribute="trailing" constant="50" id="aWb-q5-Y9N"/>
+                            <constraint firstItem="Ddp-rc-pz1" firstAttribute="trailing" secondItem="zLT-i6-kGj" secondAttribute="trailing" constant="20" id="6Qf-qZ-hfA"/>
+                            <constraint firstItem="zLT-i6-kGj" firstAttribute="leading" secondItem="Ddp-rc-pz1" secondAttribute="leading" constant="20" id="bLo-nY-C48"/>
+                            <constraint firstItem="t0o-P1-DeQ" firstAttribute="top" secondItem="zLT-i6-kGj" secondAttribute="bottom" constant="40" id="iBD-rO-0x0"/>
                             <constraint firstItem="t0o-P1-DeQ" firstAttribute="leading" secondItem="Ddp-rc-pz1" secondAttribute="leading" constant="20" id="lhQ-iw-hPK"/>
-                            <constraint firstItem="Ddp-rc-pz1" firstAttribute="trailing" secondItem="RHZ-V3-lUr" secondAttribute="trailing" constant="20" id="ski-9j-Ogp"/>
+                            <constraint firstItem="zLT-i6-kGj" firstAttribute="top" secondItem="Ddp-rc-pz1" secondAttribute="top" constant="20" id="oAX-nk-yML"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ddp-rc-pz1"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="nav_home" selectedImage="nav_home" id="cgn-sN-qEp"/>
                     <connections>
                         <outlet property="groceryListView" destination="1kG-8X-qKR" id="EvQ-62-eb2"/>
+                        <outlet property="itemCount" destination="jLr-YU-fCD" id="CB5-iD-hvT"/>
                         <outlet property="itemsView" destination="Dtk-Re-rt3" id="fnx-zf-1vf"/>
                         <outlet property="restockNeededView" destination="Tkj-TA-df7" id="jVy-7F-bIU"/>
                         <outlet property="statisticsView" destination="Hor-48-vDf" id="4wO-Nw-Jft"/>
@@ -368,7 +382,7 @@
         <!--Tab Bar View Controller-->
         <scene sceneID="D7K-q0-g62">
             <objects>
-                <tabBarController id="giy-wx-PYL" customClass="TabBarViewController" customModule="GroceryPal" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="homeTabBar" id="giy-wx-PYL" customClass="TabBarViewController" customModule="GroceryPal" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NTB-fJ-I6w">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -388,12 +402,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bell" width="23" height="24"/>
         <image name="home_grocerylist" width="66" height="85"/>
         <image name="home_items" width="80" height="70"/>
         <image name="home_restock" width="119" height="83"/>
         <image name="home_statistics" width="59" height="60"/>
         <image name="home_storage" width="67" height="70"/>
+        <image name="logout" width="20" height="20"/>
         <image name="nav_home" width="32" height="32"/>
+        <image name="notification" width="20" height="20"/>
     </resources>
 </document>
