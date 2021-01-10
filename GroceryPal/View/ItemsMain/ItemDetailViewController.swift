@@ -36,6 +36,9 @@ class ItemDetailViewController: UIViewController, ImagePickerDelegate, ItemDetai
     var imagePicker: ImagePicker!
     let itemDetailVM = ItemDetailVM()
     var selectedImage: UIImage!
+    
+    var selectedItem: Item?
+    var isEditMode: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,11 +47,26 @@ class ItemDetailViewController: UIViewController, ImagePickerDelegate, ItemDetai
         self.hideKeyboardWhenTappedAround(scrollView: scrollView)
         itemDetailVM.onLoad()
         self.handleDropDown()
+        
+        if(isEditMode)
+        {
+            self.prepareEditMode()
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.addTextViewBorder()
+    }
+    
+    func prepareEditMode()
+    {
+        /*name.text = selectedItem.name
+        categoryDropDown.text = selectedItem.category
+        uomDropDown.text = selectedItem.uom*/
+         //uomDropDown.sele = "kg"
+        print(selectedItem)
     }
     
     func handleDropDown()

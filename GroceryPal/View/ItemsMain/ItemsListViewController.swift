@@ -14,7 +14,8 @@ class ItemsListViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     var itemList = [Item]()
-    
+    var selectedItem: Item?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
@@ -36,6 +37,15 @@ class ItemsListViewController: UIViewController {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+           if segue.identifier == "editItem"{
+               if let vc = segue.destination as? ItemDetailViewController {
+                   vc.selectedItem = selectedItem
+                   vc.isEditMode = true
+               }
+           }
     }
 
 }
@@ -64,10 +74,8 @@ extension ItemsListViewController : UITableViewDataSource , UITableViewDelegate{
         return 95
     }
     
-    private func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //let indexPath = tableView.indexPathForSelectedRow();
-        //let currentCell = tableView.cellForRowAtIndexPath(indexPath!) as UITableViewCell!
-        //println(currentCell.textLabel!.text)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedItem = itemList[indexPath.row]
     }
 
 }
