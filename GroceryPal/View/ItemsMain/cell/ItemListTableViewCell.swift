@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SDWebImage
+import FirebaseUI
 
 class ItemListTableViewCell: UITableViewCell {
 
@@ -23,16 +25,16 @@ class ItemListTableViewCell: UITableViewCell {
         self.bgView.layer.masksToBounds = true
     }
     
-    func setUp(name: String, image: UIImage, category: String) {
-        nameLabel.text = name
-        categoryLabel.text = category
-        itemImageView.image = image
+    func setUp(item: Item) {
+        nameLabel.text = item.name
+        categoryLabel.text = item.category
+        
+        let referenceImage = Storage.storage().reference().child(item.image)
+        itemImageView.sd_setImage(with: referenceImage,placeholderImage: nil)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

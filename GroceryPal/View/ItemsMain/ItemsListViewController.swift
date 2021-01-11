@@ -13,7 +13,9 @@ class ItemsListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    
+    var itemList = [Item]()
+    var selectedItem: Item?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
@@ -36,6 +38,15 @@ class ItemsListViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+           if segue.identifier == "editItem"{
+               if let vc = segue.destination as? ItemDetailViewController {
+                   vc.selectedItem = selectedItem
+                   vc.isEditMode = true
+               }
+           }
+    }
 
 }
 
@@ -45,7 +56,7 @@ extension ItemsListViewController : UITableViewDataSource , UITableViewDelegate{
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return itemList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -53,12 +64,18 @@ extension ItemsListViewController : UITableViewDataSource , UITableViewDelegate{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ItemListTableViewCell else {
             fatalError("The dequed cell is not an instance of ItemListTableViewCell")
         }
-        cell.setUp(name: "Coconut Oil", image: UIImage(named: "temp")!, category: "Oil")
+        
+        let item = itemList[indexPath.row]
+        cell.setUp(item: item)
         return cell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 96
+        return 95
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedItem = itemList[indexPath.row]
     }
 
 }

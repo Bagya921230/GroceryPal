@@ -47,7 +47,7 @@ extension RestockListViewController : UITableViewDataSource , UITableViewDelegat
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ItemListTableViewCell else {
             fatalError("The dequed cell is not an instance of ItemListTableViewCell")
         }
-        cell.setUp(name: "Coconut Oil", image: UIImage(named: "temp")!, category: "Oil")
+        //cell.setUp(name: "Coconut Oil", image: UIImage(named: "temp")!, category: "Oil")
         return cell
     }
 

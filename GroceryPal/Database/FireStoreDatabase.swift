@@ -16,6 +16,7 @@ class FireStoreDataBase
 
     static let shared : FireStoreDataBase = FireStoreDataBase()
     let firebaseDb = Firestore.firestore()
+    let userId = UserDefaults.standard.string(forKey: "userId")!
     private init(){}
     
     var delegateItemEvents: ItemEvents?
@@ -95,7 +96,7 @@ class FireStoreDataBase
     {
         var itemList = [Item]()
 
-        firebaseDb.collection("user").document(UserDefaults.standard.string(forKey: "userId")!).collection("items").addSnapshotListener { (querySnapshot, error) in
+        firebaseDb.collection("user").document(self.userId).collection("items").addSnapshotListener { (querySnapshot, error) in
           
             guard let documents = querySnapshot?.documents else {
             self.delegateItemEvents?.itemList(itemList: itemList)
@@ -126,40 +127,37 @@ class FireStoreDataBase
               
         do {
         let jsonData = try item.jsonData()
-
         let json = try JSONSerialization.jsonObject(with: jsonData, options: [])
-        guard var dictionary = json as? [String : Any] else {
-            return
-        }
+        var dictionary = json as! [String : Any]
             
-            let docRef = firebaseDb.collection("user").document(UserDefaults.standard.string(forKey: "userId")!).collection("items").document()
-        
-            dictionary["id"] = docRef.documentID
-
-            firebaseDb.collection("user").document(UserDefaults.standard.string(forKey: "userId")!).collection("items").document(docRef.documentID).setData(dictionary)
+            let docRef = firebaseDb.collection("user").document().collection("items").document()
+            let path = self.userId+"/"+docRef.documentID+"/item.jpg"
+            
+            self.uploadImagePic(image: image, path: path)
             {
-            err in
-                            if(image != nil)
-                            {
-                                self.uploadImagePic(image: image!, docId: docRef.documentID, dispatch: dispatch)
-                            }
-                            else
-                            {
-                                dispatch.leave()
-                            }
+                result in
+                
+                dictionary["id"] = docRef.documentID
+                dictionary["image"] = path
+                
+                self.firebaseDb.collection("user").document(self.userId).collection("items").document(docRef.documentID).setData(dictionary)
+                    {
+                    err in
+                                   dispatch.leave()
 
-                           if let err = err {
-                               print("Error adding item: \(err)")
-                                dispatch.notify(queue: .main, execute: {
-                                                     completed(false)
-                                               })
-                           } else {
-                                print("Item data successfully written!")
-                                dispatch.notify(queue: .main, execute: {
-                                                         completed(true)
-                               })
-                           }
-        }
+                                   if let err = err {
+                                       print("Error adding item: \(err)")
+                                        dispatch.notify(queue: .main, execute: {
+                                                             completed(false)
+                                                       })
+                                   } else {
+                                        print("Item data successfully written!")
+                                        dispatch.notify(queue: .main, execute: {
+                                                                 completed(true)
+                                       })
+                                   }
+                    }
+            }
         }
         
         catch{
@@ -167,21 +165,26 @@ class FireStoreDataBase
         }
     }
     
-    func uploadImagePic(image: UIImage, docId: String, dispatch: DispatchGroup) {
-        guard let imageData: Data = image.jpegData(compressionQuality: 0.1) else {
-            return
-        }
+    func uploadImagePic(image: UIImage?, path: String, completion: @escaping(Bool)->()) {
         
-        let storageRef = Storage.storage().reference().child(UserDefaults.standard.string(forKey: "userId")!+"/"+docId+"/item.jpg")
+        if image != nil
+        {
+            let imageData: Data = image!.jpegData(compressionQuality: 0.1)!
+            let storageRef = Storage.storage().reference().child(path)
 
-        storageRef.putData(imageData, metadata: nil){ (metaData, error) in
-            
-            dispatch.leave()
-
-            if let error = error {
-                print(error.localizedDescription)
-                return
+            storageRef.putData(imageData, metadata: nil){ (metaData, error) in
+                
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                
+                completion(true)
             }
+        }
+        else
+        {
+            completion(true)
         }
     }
 }
