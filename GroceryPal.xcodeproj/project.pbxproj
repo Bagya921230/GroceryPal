@@ -64,6 +64,8 @@
 		69A7AC3925A983C600B25D2A /* GroceryItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A7AC3825A983C600B25D2A /* GroceryItemTableViewCell.swift */; };
 		69A7AC3C25A98F4700B25D2A /* NewGroceryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A7AC3B25A98F4700B25D2A /* NewGroceryListViewController.swift */; };
 		69A7AC3E25A98F7C00B25D2A /* NewGroceryList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69A7AC3D25A98F7C00B25D2A /* NewGroceryList.storyboard */; };
+		69DD7D8125AD37AF00B16670 /* StorageListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DD7D8025AD37AF00B16670 /* StorageListVM.swift */; };
+		69E7CF5725AED2F2008368AE /* UITextFieldEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E7CF5625AED2F2008368AE /* UITextFieldEx.swift */; };
 		B92899CA25A82CE100D37313 /* SignUpUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92899C925A82CE100D37313 /* SignUpUITest.swift */; };
 		B94E984E25A11C0400875C7F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B94E984D25A11C0400875C7F /* GoogleService-Info.plist */; };
 		B94E985725A21E3D00875C7F /* FireStoreDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E985625A21E3D00875C7F /* FireStoreDatabase.swift */; };
@@ -167,6 +169,8 @@
 		69A7AC3825A983C600B25D2A /* GroceryItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItemTableViewCell.swift; sourceTree = "<group>"; };
 		69A7AC3B25A98F4700B25D2A /* NewGroceryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroceryListViewController.swift; sourceTree = "<group>"; };
 		69A7AC3D25A98F7C00B25D2A /* NewGroceryList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewGroceryList.storyboard; sourceTree = "<group>"; };
+		69DD7D8025AD37AF00B16670 /* StorageListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageListVM.swift; sourceTree = "<group>"; };
+		69E7CF5625AED2F2008368AE /* UITextFieldEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldEx.swift; sourceTree = "<group>"; };
 		A317CCBA347B2433DD25BF70 /* libPods-GroceryPal-GroceryPalUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GroceryPal-GroceryPalUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B92899C925A82CE100D37313 /* SignUpUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUITest.swift; sourceTree = "<group>"; };
 		B94E984D25A11C0400875C7F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -410,6 +414,7 @@
 				696D328A25998C64009ACCB3 /* UIViewEx.swift */,
 				69461EEC259E083A00035AF7 /* UISearchBarEx.swift */,
 				B968CCFF25AB543500EE6BFF /* EncodableEx.swift */,
+				69E7CF5625AED2F2008368AE /* UITextFieldEx.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -529,6 +534,7 @@
 				B94E986E25A2874400875C7F /* SignInVM.swift */,
 				B9580FA625A9F12900536179 /* HomeVM.swift */,
 				B9580FAE25AA6C9400536179 /* ItemDetailVM.swift */,
+				69DD7D8025AD37AF00B16670 /* StorageListVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -865,6 +871,7 @@
 				696D328D25998D76009ACCB3 /* HomeViewController.swift in Sources */,
 				B94E986025A245F200875C7F /* UIButtonEx.swift in Sources */,
 				B9580FA925AA390F00536179 /* ItemDetailViewController.swift in Sources */,
+				69E7CF5725AED2F2008368AE /* UITextFieldEx.swift in Sources */,
 				69A7AC3925A983C600B25D2A /* GroceryItemTableViewCell.swift in Sources */,
 				6934D4C02599D56800B4F846 /* LandingViewController.swift in Sources */,
 				696D3259259984D1009ACCB3 /* GroceryPal.xcdatamodeld in Sources */,
@@ -878,6 +885,7 @@
 				69461EED259E083A00035AF7 /* UISearchBarEx.swift in Sources */,
 				69461EEB259E048F00035AF7 /* ItemsListViewController.swift in Sources */,
 				6934D4CB2599E43900B4F846 /* StatisticsViewController.swift in Sources */,
+				69DD7D8125AD37AF00B16670 /* StorageListVM.swift in Sources */,
 				6934D4D52599E4A200B4F846 /* NotificationsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

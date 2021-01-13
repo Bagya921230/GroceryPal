@@ -30,6 +30,6 @@ class AddItemToGroceryViewController: UIViewController {
     
     @objc
     func onDoneAction() {
-        print("done action")
+        self.navigationController?.popViewController(animated: true)
     }
 }

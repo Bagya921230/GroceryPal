@@ -7,27 +7,39 @@
 //
 
 import UIKit
+import iOSDropDown
 
-class ManualViewController: UIViewController {
-    
+protocol ManualViewControllerDelegate {
+    func displayItems(list: [String])
+    func displayError(msg: String)
+    func addSuccess()
+}
+
+class ManualViewController: UIViewController, ManualViewControllerDelegate {
+        
     //MARK: - Outlets
     @IBOutlet weak var expiryTextField: UITextField!
-    @IBOutlet weak var itemNameTextField: UITextField!
+    @IBOutlet weak var itemNameDropdown: DropDown!
     @IBOutlet weak var quantityTextField: UITextField!
     @IBOutlet weak var measurementTextField: UITextField!
     @IBOutlet weak var priceTextField: UITextField!
     
     let datePicker = UIDatePicker()
 
-    // MARK: - Actions
-    @IBAction func selectExpiryDate(_ sender: Any) {
-        showDatePicker()
-    }
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        configureUI()
+        displayItems(list: ["All","Expired","Restock","Active","A","B","C","D","E"])
+    }
+    
+    func configureUI() {
+        expiryTextField.setRightIcon(icon: UIImage(systemName: "calendar")!)
+        quantityTextField.setRightLabel(text: "kg")
+        measurementTextField.setRightLabel(text: "kg")
+        priceTextField.setRightLabel(text: "LKR")
+        itemNameDropdown.setLeftIcon(icon: UIImage(systemName: "magnifyingglass")!)
+        expiryTextField.setInputViewDatePicker(target: self, selector: #selector(tapDone))
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -35,35 +47,34 @@ class ManualViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-    
-     func showDatePicker() {
-       //Formate Date
-        datePicker.datePickerMode = .date
 
-      //ToolBar
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
-
-        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
-
-        expiryTextField.inputAccessoryView = toolbar
-        expiryTextField.inputView = datePicker
-
-    }
-
-     @objc func donedatePicker(){
-
-      let formatter = DateFormatter()
-      formatter.dateFormat = "dd/MM/yyyy"
-      expiryTextField.text = formatter.string(from: datePicker.date)
-      self.view.endEditing(true)
-    }
+    @objc func tapDone() {
+         if let datePicker = self.expiryTextField.inputView as? UIDatePicker {
+             let dateformatter = DateFormatter()
+             dateformatter.dateStyle = .medium
+             self.expiryTextField.text = dateformatter.string(from: datePicker.date)
+         }
+         self.expiryTextField.resignFirstResponder()
+     }
 
     @objc func cancelDatePicker(){
        self.view.endEditing(true)
      }
+    
+    func displayItems(list: [String]) {
+        let selectedVal = list[0]
+        self.itemNameDropdown.optionArray = list
+        self.itemNameDropdown.selectedIndex = 0
+        self.itemNameDropdown.text = selectedVal
+    }
+    
+    func displayError(msg: String) {
+        Common.stopActivityIndicatory()
+        Common.showAlert(msg: msg, viewController: self)
+    }
+    
+    func addSuccess() {
+        
+    }
 
 }

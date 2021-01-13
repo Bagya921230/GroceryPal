@@ -50,7 +50,7 @@ class AddToStorageViewController: UIViewController {
     
     @objc
     func onDoneAction() {
-        print("done action")
+        self.navigationController?.popViewController(animated: true)
     }
     
     func configureUI() {

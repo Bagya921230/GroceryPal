@@ -65,7 +65,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="G7g-Zv-Egf"/>
                     </view>
-                    <navigationItem key="navigationItem" id="KEa-YB-vd9"/>
+                    <navigationItem key="navigationItem" id="KEa-YB-vd9">
+                        <barButtonItem key="backBarButtonItem" title=" " id="1WQ-yY-IsB"/>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="emptyContainer" destination="Brb-M4-GZP" id="9L9-Im-gTG"/>
@@ -470,6 +472,7 @@ Please create a new list.</string>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ewx-R5-ic1">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

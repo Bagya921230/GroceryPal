@@ -278,7 +278,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ddp-rc-pz1"/>
                     </view>
-                    <navigationItem key="navigationItem" id="0Cr-dL-vbk"/>
+                    <navigationItem key="navigationItem" id="0Cr-dL-vbk">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Cwk-xU-Ntd"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="groceryListView" destination="1kG-8X-qKR" id="EvQ-62-eb2"/>
                         <outlet property="itemCount" destination="jLr-YU-fCD" id="CB5-iD-hvT"/>
@@ -339,7 +341,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U95-7M-3XK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1710.8695652173915" y="-1297.0108695652175"/>
+            <point key="canvasLocation" x="1802" y="-1273"/>
         </scene>
         <!--Statistics-->
         <scene sceneID="CNZ-Li-6Cb">
@@ -349,7 +351,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jRm-Ah-l21" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1707.2463768115942" y="-1067.1195652173915"/>
+            <point key="canvasLocation" x="1806" y="-1048"/>
         </scene>
         <!--RestockMain-->
         <scene sceneID="CKm-gj-XKG">
@@ -359,7 +361,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lca-vg-VGz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1720.289855072464" y="-1150.271739130435"/>
+            <point key="canvasLocation" x="1813" y="-1145"/>
         </scene>
         <!--StorageMain-->
         <scene sceneID="Mcr-A7-dmB">
@@ -412,6 +414,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wFR-E8-zk0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

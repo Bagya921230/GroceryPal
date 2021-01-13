@@ -7,21 +7,33 @@
 //
 
 import UIKit
+import iOSDropDown
 
-class StorageListViewController: UIViewController {
+protocol StorageListViewControllerDelegate {
+    func displayCategories(list: [String])
+    func displayStatus(list: [String])
+    func displayError(msg: String)
+    func addSuccess()
+}
 
-    @IBOutlet weak var categoryDropdown: UIView!
-    @IBOutlet weak var statusDropdown: UIView!
+class StorageListViewController: UIViewController, StorageListViewControllerDelegate {
+
+    //MARK: - Outlet
+    @IBOutlet weak var categoryDropDown: DropDown!
+    @IBOutlet weak var statusDropDown: DropDown!
     @IBOutlet weak var tableView: UITableView!
+    
+    var isEditMode: Bool = false
+    let storageListVM = StorageListVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        storageListVM.delegate = self
+        storageListVM.onLoad()
     }
     
     func configureUI() {
-        categoryDropdown.addBorderColor()
-        statusDropdown.addBorderColor()
         tableView.dataSource = self
         tableView.delegate = self
         tableView.allowsSelection = true
@@ -32,6 +44,29 @@ class StorageListViewController: UIViewController {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    func displayCategories(list: [String]) {
+        let selectedVal = list[0]
+        self.categoryDropDown.optionArray = list
+        self.categoryDropDown.selectedIndex = 0
+        self.categoryDropDown.text = selectedVal
+    }
+    
+    func displayStatus(list: [String]) {
+        let selectedVal = list[0]
+        self.statusDropDown.optionArray = list
+        self.statusDropDown.selectedIndex = 0
+        self.statusDropDown.text = selectedVal
+    }
+    
+    func displayError(msg: String) {
+        Common.stopActivityIndicatory()
+        Common.showAlert(msg: msg, viewController: self)
+    }
+    
+    func addSuccess() {
+        
     }
 
 }

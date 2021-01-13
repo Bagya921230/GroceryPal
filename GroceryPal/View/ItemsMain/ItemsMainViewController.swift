@@ -8,26 +8,37 @@
 
 import UIKit
 
-class ItemsMainViewController: UINavigationController {
+class ItemsMainViewController: UIViewController {
 
+    // MARK: - Outlet
+    @IBOutlet weak var emptyContainer: UIView!
+    @IBOutlet weak var listContainerView: UIView!
+    
     var itemList = [Item]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if(itemList.count == 0)
-        {
-           performSegue(withIdentifier: "noItems", sender: nil)
+        if(itemList.count == 0){
+           showEmptyView()
+        } else {
+           showListView()
         }
-        else
-        {
-           performSegue(withIdentifier: "itemList", sender: nil)
-        }
+    }
+    
+    func showEmptyView() {
+        emptyContainer.alpha = 1
+        listContainerView.alpha = 0
+    }
+    
+    func showListView() {
+        emptyContainer.alpha = 0
+        listContainerView.alpha = 1
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = true
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
