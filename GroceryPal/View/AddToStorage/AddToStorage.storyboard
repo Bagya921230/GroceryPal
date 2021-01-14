@@ -315,6 +315,7 @@
                         <viewLayoutGuide key="safeArea" id="yeR-0b-03n"/>
                     </view>
                     <connections>
+                        <outlet property="categoryLabel" destination="E4m-6V-9ZH" id="NEc-ld-AR8"/>
                         <outlet property="expiryTextField" destination="6at-Da-cVC" id="EJQ-Sp-mlj"/>
                         <outlet property="itemNameDropdown" destination="eHd-8e-ONa" id="2FV-fU-86L"/>
                         <outlet property="measurementTextField" destination="7EE-1i-518" id="sza-2Z-nN7"/>

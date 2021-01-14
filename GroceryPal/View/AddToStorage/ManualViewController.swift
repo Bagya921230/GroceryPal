@@ -10,26 +10,31 @@ import UIKit
 import iOSDropDown
 
 protocol ManualViewControllerDelegate {
-    func displayItems(list: [String])
     func displayError(msg: String)
     func addSuccess()
 }
 
-class ManualViewController: UIViewController, ManualViewControllerDelegate {
-        
+class ManualViewController: UIViewController, ManualViewControllerDelegate, ItemEvents {
+    
     //MARK: - Outlets
     @IBOutlet weak var expiryTextField: UITextField!
     @IBOutlet weak var itemNameDropdown: DropDown!
     @IBOutlet weak var quantityTextField: UITextField!
     @IBOutlet weak var measurementTextField: UITextField!
     @IBOutlet weak var priceTextField: UITextField!
+    @IBOutlet weak var categoryLabel: UILabel!
     
     let datePicker = UIDatePicker()
+    let manualVM = ManualVM()
+    var itemList = [Item]()
+    var selectedItem: Item?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        displayItems(list: ["All","Expired","Restock","Active","A","B","C","D","E"])
+        FireStoreDataBase.shared.delegateItemEvents = self
+        manualVM.onLoad()
+        handleItemDropDown()
     }
     
     func configureUI() {
@@ -62,10 +67,20 @@ class ManualViewController: UIViewController, ManualViewControllerDelegate {
      }
     
     func displayItems(list: [String]) {
-        let selectedVal = list[0]
+        //let selectedVal = list[0]
         self.itemNameDropdown.optionArray = list
-        self.itemNameDropdown.selectedIndex = 0
-        self.itemNameDropdown.text = selectedVal
+        //self.itemNameDropdown.selectedIndex = 0
+        //self.itemNameDropdown.text = selectedVal
+    }
+    
+    func handleItemDropDown()
+    {
+        itemNameDropdown.didSelect{(selectedText , index ,id) in
+            self.categoryLabel.text = self.itemList[index].category
+            self.measurementTextField.setRightLabel(text: self.itemList[index].uom)
+            self.measurementTextField.text = String(format: "%.2f", self.itemList[index].perValue)
+            self.priceTextField.text = String(format: "%.2f", self.itemList[index].unitPrice)
+        }
     }
     
     func displayError(msg: String) {
@@ -75,6 +90,15 @@ class ManualViewController: UIViewController, ManualViewControllerDelegate {
     
     func addSuccess() {
         
+    }
+    
+    func itemList(itemList: [Item]) {
+        self.itemList = itemList
+        var dropdownList = [String]()
+        for item in itemList {
+            dropdownList.append(item.name)
+        }
+        displayItems(list: dropdownList)
     }
 
 }

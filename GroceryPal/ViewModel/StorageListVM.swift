@@ -22,10 +22,9 @@ class StorageListVM {
              })
         }
         
-        //FIXME: Get status list
-        FireStoreDataBase.shared.fetchUOM(dispatch: dispatch){(uomList) in
+        FireStoreDataBase.shared.fetchStatuses(dispatch: dispatch){(statusList) in
             self.dispatch.notify(queue: .main, execute: {
-                self.delegate?.displayStatus(list: uomList)
+                self.delegate?.displayStatus(list: statusList)
             })
         }
     }

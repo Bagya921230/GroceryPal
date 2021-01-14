@@ -20,6 +20,7 @@ class FireStoreDataBase
     private init(){}
     
     var delegateItemEvents: ItemEvents?
+    var delegateStockItemEvents: StockItemEvents?
     
     func addUser(dispatch:DispatchGroup, docId:String, name:String, completed: @escaping (Bool) -> Void)
     {
@@ -186,5 +187,121 @@ class FireStoreDataBase
         {
             completion(true)
         }
+    }
+    
+    func fetchStatuses(dispatch:DispatchGroup, completed: @escaping ([String]) -> Void)
+    {
+        var statusList = [String]()
+        dispatch.enter()
+
+        firebaseDb.collection("status").addSnapshotListener { (querySnapshot, error) in
+          guard let documents = querySnapshot?.documents else {
+            return
+          }
+
+        _ = documents.map { queryDocumentSnapshot -> Void in
+            let data = queryDocumentSnapshot.data()
+            let catName = data["statName"] as? String ?? ""
+            statusList.append(catName)
+        }
+        
+        dispatch.leave()
+
+        dispatch.notify(queue: .main, execute: {
+                completed(statusList)
+          })
+        }
+    }
+    
+    //MARK: - Fetch stock items
+    func fetchStockItems() {
+        var stockItemList = [StockItem]()
+
+        firebaseDb.collection("user").document(self.userId).collection("stock items").addSnapshotListener { (querySnapshot, error) in
+          
+            guard let documents = querySnapshot?.documents else {
+                self.delegateStockItemEvents?.stockItemList(stockItemList: stockItemList)
+            return
+           }
+
+            _ = documents.map { queryDocumentSnapshot -> Void in
+                
+                do {
+                let data = queryDocumentSnapshot.data()
+                 
+                let jsonObj = try JSONSerialization.data(withJSONObject: data, options: [])
+                let stockItem = try JSONDecoder().decode(StockItem.self, from: jsonObj)
+                stockItemList.append(stockItem)
+                }
+                catch{
+                    self.delegateStockItemEvents?.stockItemList(stockItemList: stockItemList)
+                }
+            }
+        
+            self.delegateStockItemEvents?.stockItemList(stockItemList: stockItemList)
+
+        }
+    }
+    
+    func addStockItem(item: StockItem, dispatch:DispatchGroup, completed: @escaping (Bool) -> Void) {
+        dispatch.enter()
+        
+        do {
+            let jsonData = try item.jsonData()
+            let json = try JSONSerialization.jsonObject(with: jsonData, options: [])
+            var dictionary = json as! [String : Any]
+            
+            let newDocRef = firebaseDb.collection("user").document().collection("stock items").document()
+            self.firebaseDb.collection("user").document(self.userId).collection("stock items")
+                .document(newDocRef.documentID)
+                .setData(dictionary) { err in
+                dispatch.leave()
+                
+                if let err = err {
+                    print("Error adding item: \(err)")
+                    dispatch.notify(queue: .main, execute: {
+                        completed(false)
+                    })
+                } else {
+                    print("Item data successfully written!")
+                    dispatch.notify(queue: .main, execute: {
+                        completed(true)
+                    })
+                    self.updateItemWhenStorageUpdate(item: item)
+                }
+            }
+        } catch {
+            completed(false)
+        }
+    }
+    
+    func updateItemWhenStorageUpdate (item: StockItem) {
+//        dispatch.enter()
+//        
+//        do {
+//            var dictionary = ["unitPrice": item.unitPrice, "perValue": item.perValue]
+//            
+//            let docRef = firebaseDb.collection("user").document().collection("stock items").whereField("name", isEqualTo: item.name).
+//            self.firebaseDb.collection("user").document(self.userId).collection("stock items")
+//                .document(docRef.documentID)
+//                .setData(dictionary, merge: true) { err in
+//                dispatch.leave()
+//                
+//                if let err = err {
+//                    print("Error adding item: \(err)")
+//                    dispatch.notify(queue: .main, execute: {
+//                        completed(false)
+//                    })
+//                } else {
+//                    print("Item data successfully written!")
+//                    dispatch.notify(queue: .main, execute: {
+//                        completed(true)
+//                    })
+//                    self.updateItemWhenStorageUpdate()
+//                }
+//            }
+//        } catch {
+//            completed(false)
+//        }
     }
 }
