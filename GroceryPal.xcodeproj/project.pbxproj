@@ -82,6 +82,8 @@
 		B9580FAD25AA686A00536179 /* libiOSDropDown.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9580FAC25AA686A00536179 /* libiOSDropDown.a */; };
 		B9580FAF25AA6C9400536179 /* ItemDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9580FAE25AA6C9400536179 /* ItemDetailVM.swift */; };
 		B968CD0025AB543500EE6BFF /* EncodableEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B968CCFF25AB543500EE6BFF /* EncodableEx.swift */; };
+		B98E8E0825AF879A000948DD /* ItemListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E8E0725AF879A000948DD /* ItemListVM.swift */; };
+		B98E8E0A25AFA753000948DD /* FireStoreItemQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E8E0925AFA753000948DD /* FireStoreItemQueries.swift */; };
 		B9AE3F2A25A6168D00DC769B /* SignInUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE3F2925A6168D00DC769B /* SignInUITest.swift */; };
 		B9F8D6BD25A3391B00E277D5 /* SignInVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F8D6BC25A3391B00E277D5 /* SignInVMTests.swift */; };
 		B9F8D6C025A43F9800E277D5 /* SignUpVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F8D6BF25A43F9800E277D5 /* SignUpVMTests.swift */; };
@@ -188,6 +190,8 @@
 		B9580FAC25AA686A00536179 /* libiOSDropDown.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libiOSDropDown.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9580FAE25AA6C9400536179 /* ItemDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailVM.swift; sourceTree = "<group>"; };
 		B968CCFF25AB543500EE6BFF /* EncodableEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableEx.swift; sourceTree = "<group>"; };
+		B98E8E0725AF879A000948DD /* ItemListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListVM.swift; sourceTree = "<group>"; };
+		B98E8E0925AFA753000948DD /* FireStoreItemQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreItemQueries.swift; sourceTree = "<group>"; };
 		B9AE3F2925A6168D00DC769B /* SignInUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUITest.swift; sourceTree = "<group>"; };
 		B9F8D6BC25A3391B00E277D5 /* SignInVMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVMTests.swift; sourceTree = "<group>"; };
 		B9F8D6BF25A43F9800E277D5 /* SignUpVMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVMTests.swift; sourceTree = "<group>"; };
@@ -535,6 +539,7 @@
 				B9580FA625A9F12900536179 /* HomeVM.swift */,
 				B9580FAE25AA6C9400536179 /* ItemDetailVM.swift */,
 				69DD7D8025AD37AF00B16670 /* StorageListVM.swift */,
+				B98E8E0725AF879A000948DD /* ItemListVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -543,6 +548,7 @@
 			isa = PBXGroup;
 			children = (
 				B94E985625A21E3D00875C7F /* FireStoreDatabase.swift */,
+				B98E8E0925AFA753000948DD /* FireStoreItemQueries.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -879,10 +885,12 @@
 				B94E986625A25FD800875C7F /* UIColorEx.swift in Sources */,
 				B94E985725A21E3D00875C7F /* FireStoreDatabase.swift in Sources */,
 				6934D4C82599E29600B4F846 /* ItemsMainViewController.swift in Sources */,
+				B98E8E0A25AFA753000948DD /* FireStoreItemQueries.swift in Sources */,
 				B9580FA725A9F12900536179 /* HomeVM.swift in Sources */,
 				6912E729259C9B1B007219B6 /* UpdateStorageViewController.swift in Sources */,
 				69461EE2259DEBE300035AF7 /* NotificationEmptyViewController.swift in Sources */,
 				69461EED259E083A00035AF7 /* UISearchBarEx.swift in Sources */,
+				B98E8E0825AF879A000948DD /* ItemListVM.swift in Sources */,
 				69461EEB259E048F00035AF7 /* ItemsListViewController.swift in Sources */,
 				6934D4CB2599E43900B4F846 /* StatisticsViewController.swift in Sources */,
 				69DD7D8125AD37AF00B16670 /* StorageListVM.swift in Sources */,

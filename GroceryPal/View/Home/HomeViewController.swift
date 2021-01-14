@@ -19,6 +19,7 @@ class HomeViewController: UIViewController,ItemEvents {
     @IBOutlet weak var itemCount: UILabel!
     
     let homeVM = HomeVM()
+    let fireStoreQueries = FireStoreItemQueries()
     var itemList = [Item]()
 
     // MARK: - Actions
@@ -48,9 +49,9 @@ class HomeViewController: UIViewController,ItemEvents {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        FireStoreDataBase.shared.delegateItemEvents = self
+        fireStoreQueries.delegateItemEvents = self
         configureUI()
-        homeVM.onLoad()
+        homeVM.onLoad(fireStoreQueries: fireStoreQueries)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,7 +73,7 @@ class HomeViewController: UIViewController,ItemEvents {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueItemMain"{
             if let vc = segue.destination as? ItemsMainViewController {
-                vc.itemList = itemList
+                vc.isEmpty = itemList.count == 0
             }
         }
     }

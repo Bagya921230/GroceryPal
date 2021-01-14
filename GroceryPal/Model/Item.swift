@@ -13,6 +13,7 @@ protocol ItemEvents {
 }
 
 struct Item: Codable {
+    var id: String
     var name: String
     var category: String
     var uom: String
@@ -31,5 +32,6 @@ struct Item: Codable {
         self.roLevel=roLevel
         self.notes=notes
         self.image=image
+        self.id = id
     }
 }
