@@ -54,8 +54,29 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "696D3263259984D2009ACCB3"
+               BuildableName = "GroceryPalTests.xctest"
+               BlueprintName = "GroceryPalTests"
+               ReferencedContainer = "container:GroceryPal.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "696D326E259984D2009ACCB3"
+               BuildableName = "GroceryPalUITests.xctest"
+               BlueprintName = "GroceryPalUITests"
+               ReferencedContainer = "container:GroceryPal.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
