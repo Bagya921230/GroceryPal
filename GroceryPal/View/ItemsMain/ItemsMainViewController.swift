@@ -14,12 +14,12 @@ class ItemsMainViewController: UIViewController {
     @IBOutlet weak var emptyContainer: UIView!
     @IBOutlet weak var listContainerView: UIView!
     
-    var itemList = [Item]()
+    var isEmpty: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if(itemList.count == 0){
+        if(isEmpty){
            showEmptyView()
         } else {
            showListView()
@@ -29,6 +29,8 @@ class ItemsMainViewController: UIViewController {
     func showEmptyView() {
         emptyContainer.alpha = 1
         listContainerView.alpha = 0
+        // hide add buttonn in nav bar
+        self.navigationItem.rightBarButtonItem  = nil
     }
     
     func showListView() {
@@ -45,9 +47,9 @@ class ItemsMainViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "itemList"{
             if let vc = segue.destination as? ItemsListViewController {
-                vc.itemList = itemList
+                let addBarItem = UIBarButtonItem(title: "Add", style: .done, target: vc, action: #selector(vc.onAdd))
+                self.navigationItem.rightBarButtonItem  = addBarItem
             }
         }
     }
-    
 }
