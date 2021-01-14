@@ -19,6 +19,11 @@ class ItemsMainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.onLoad()
+    }
+    
+    func onLoad()
+    {
         if(isEmpty){
            showEmptyView()
         } else {

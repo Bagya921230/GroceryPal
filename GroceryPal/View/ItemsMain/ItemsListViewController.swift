@@ -43,9 +43,17 @@ class ItemsListViewController: UIViewController, UISearchBarDelegate, ItemsListV
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
            if segue.identifier == "editItem"{
                if let vc = segue.destination as? ItemDetailViewController {
-                   print("xxx ddd",selectedItem)
-                   vc.selectedItem = selectedItem
-                   vc.isEditMode = true
+                
+                     guard let selectedItemCell = sender as? ItemListTableViewCell else {
+                         fatalError("Unexpected sender: \(String(describing: sender))")
+                     }
+
+                     guard let indexPath = tableView.indexPath(for: selectedItemCell) else {
+                     fatalError("The selected cell is not being displayed by the table")
+                     }
+
+                     vc.selectedItem = filteredItemList[indexPath.row]
+                     vc.isEditMode = true
                }
            }
     }
@@ -87,8 +95,20 @@ class ItemsListViewController: UIViewController, UISearchBarDelegate, ItemsListV
         self.itemList = itemList
         self.filteredItemList = itemList
         tableView.reloadData()
+        
+        self.handleBackgroundView()
     }
-
+    
+    func handleBackgroundView() {
+        if let vcs = self.navigationController?.viewControllers {
+            let previousVC = vcs[1]
+            if previousVC is ItemsMainViewController {
+                let isEmpty = itemList.count == 0
+                (previousVC as! ItemsMainViewController).isEmpty = isEmpty
+                (previousVC as! ItemsMainViewController).onLoad()
+            }
+        }
+    }
 }
 
 extension ItemsListViewController : UITableViewDataSource , UITableViewDelegate{
@@ -115,10 +135,6 @@ extension ItemsListViewController : UITableViewDataSource , UITableViewDelegate{
         return 95
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedItem = filteredItemList[indexPath.row]
-    }
-    
     // delete row
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
@@ -126,7 +142,7 @@ extension ItemsListViewController : UITableViewDataSource , UITableViewDelegate{
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            itemListVM.deleteItem(docId: filteredItemList[indexPath.row].id)
+            itemListVM.deleteItem(item: filteredItemList[indexPath.row])
         }
     }
 

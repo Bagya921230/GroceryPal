@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import FirebaseStorage
+import SDWebImage
 
 class FireStoreItemQueries
 {
@@ -51,8 +52,8 @@ class FireStoreItemQueries
     {
         
         let docRef = FireStoreDataBase.shared.firebaseDb.collection("user").document().collection("items").document()
-
-        self.uploadImagePic(image: image, docId: docRef.documentID){
+        
+        self.uploadImagePic(image: image, docId: docRef.documentID, previousPath: ""){
             path in
             
             do
@@ -71,8 +72,40 @@ class FireStoreItemQueries
                                            print("Error adding item: \(err)")
                                                                                                     completed(false)
 
+                                       } else {                                                                                                            completed(true)
+
+                                       }
+                }
+                
+            }
+            
+            catch{
+                completed(false)
+            }
+        }
+    }
+    
+    func updateItems(item: Item, image: UIImage?, completed: @escaping (Bool) -> Void)
+    {
+        self.uploadImagePic(image: image, docId: item.id, previousPath: item.image){
+            path in
+            do
+            {
+                let jsonData = try item.jsonData()
+                let json = try JSONSerialization.jsonObject(with: jsonData, options: [])
+                var dictionary = json as! [String : Any]
+                dictionary["id"] = item.id
+                dictionary["image"] = path
+                
+                FireStoreDataBase.shared.firebaseDb.collection("user").document(self.userId).collection("items").document(item.id).setData(dictionary)
+                {
+                        err in
+
+                                       if let err = err {
+                                           print("Error updating item: \(err)")
+                                                                                                    completed(false)
+
                                        } else {
-                                            print("Item data successfully written!")
                                                                                                             completed(true)
 
                                        }
@@ -86,13 +119,19 @@ class FireStoreItemQueries
         }
     }
 
-    func uploadImagePic(image: UIImage?, docId: String, completion: @escaping(String)->())
+    func uploadImagePic(image: UIImage?, docId: String, previousPath:String, completion: @escaping(String)->())
     {
-        
-        var path: String = ""
         if image != nil
         {
-            path = self.userId+"/"+docId+"/item.jpg"
+            let timestamp = NSDate().timeIntervalSince1970
+            let name = "image-"+String(timestamp)+".jpg"
+
+            let path = self.userId+"/"+docId+"/"+name
+            
+            if(previousPath != "")
+            {
+                Storage.storage().reference().child(previousPath).delete {_ in}
+            }
 
             let imageData: Data = image!.jpegData(compressionQuality: 0.1)!
             let storageRef = Storage.storage().reference().child(path)
@@ -107,19 +146,27 @@ class FireStoreItemQueries
         }
         else
         {
-             completion(path)
+            completion(previousPath)
         }
     }
 
-    func deleteItems(docId: String, completion: @escaping(Bool)->())
+    func deleteItems(item: Item, completion: @escaping(Bool)->())
     {
-        FireStoreDataBase.shared.firebaseDb.collection("user").document(self.userId).collection("items").document(docId).delete() { err in
+        FireStoreDataBase.shared.firebaseDb.collection("user").document(self.userId).collection("items").document(item.id).delete() { err in
             if let err = err {
-                print("Error removing document: \(err)")
+                print("Error removing item: \(err)")
                 completion(false)
             } else {
-                print("Document successfully removed!")
-                completion(true)
+                
+                // delete image from storage
+                Storage.storage().reference().child(item.image).delete { error in
+                           if let error = error {
+                               print("Error removing image: \(error)")
+                               completion(true)
+                           } else {
+                              completion(true)
+                           }
+                }
             }
         }
     }

@@ -27,9 +27,9 @@ class ItemListVM {
         }
     }
     
-    func deleteItem(docId: String)
+    func deleteItem(item: Item)
     {
-        fireStoreQueries!.deleteItems(docId: docId)
+        fireStoreQueries!.deleteItems(item: item)
         {
             status in
                            if(!status)
