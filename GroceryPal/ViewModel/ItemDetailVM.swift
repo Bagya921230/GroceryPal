@@ -70,12 +70,12 @@ class ItemDetailVM {
                           
             if(isEditMode)
             {
-                updateItem(item: item, image: image)
+                updateItem(item: item, image: image, completion: { _ in })
 
             }
             else
             {
-                storeItem(item: item, image: image)
+                storeItem(item: item, image: image, completion: { _ in })
             }
             return true
         }
@@ -88,30 +88,34 @@ class ItemDetailVM {
         return selectedUnit == "unit" ? price : nonUnitPrice;
     }
     
-    func storeItem(item: Item, image: UIImage?)
+    func storeItem(item: Item, image: UIImage?, completion: @escaping(Bool)->())
     {
         fireStoreQueries.addItems(item: item, image: image){ transaction in
                             if(transaction)
                             {
                                 self.delegate?.performSuccess()
+                                completion(true)
                             }
                             else
                             {
                                 self.delegate?.displayError(msg: "Cannot add the item")
+                                completion(false)
                             }
          }
     }
     
-    func updateItem(item: Item, image: UIImage?)
+    func updateItem(item: Item, image: UIImage?, completion: @escaping(Bool)->())
     {
         fireStoreQueries.updateItems(item: item, image: image){ transaction in
                             if(transaction)
                             {
                                 self.delegate?.performSuccess()
+                                completion(true)
                             }
                             else
                             {
                                 self.delegate?.displayError(msg: "Cannot update the item")
+                                completion(false)
                             }
          }
     }

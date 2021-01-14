@@ -51,6 +51,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <accessibility key="accessibilityConfiguration" identifier="itemsEmptyView"/>
                         <constraints>
                             <constraint firstItem="d9y-hX-fNf" firstAttribute="leading" secondItem="G7g-Zv-Egf" secondAttribute="leading" constant="40" id="GAC-N0-hdN"/>
                             <constraint firstAttribute="trailing" secondItem="d9y-hX-fNf" secondAttribute="trailing" constant="40" id="ZeX-VU-RhA"/>
@@ -96,7 +97,7 @@
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JFy-ZD-cI4">
                                                 <rect key="frame" x="0.0" y="260.5" width="314" height="34"/>
-                                                <accessibility key="accessibilityConfiguration" identifier="name_SignUp"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="name_Item"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -108,7 +109,6 @@
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p55-7e-S9y" customClass="DropDown" customModule="iOSDropDown">
                                                 <rect key="frame" x="0.0" y="355" width="314" height="34"/>
-                                                <accessibility key="accessibilityConfiguration" identifier="name_SignUp"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
@@ -131,7 +131,7 @@
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z6E-HI-cyh" customClass="DropDown" customModule="iOSDropDown">
                                                 <rect key="frame" x="0.0" y="449.5" width="314" height="34"/>
-                                                <accessibility key="accessibilityConfiguration" identifier="name_SignUp"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="uom_Item"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
@@ -154,7 +154,7 @@
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wm7-L2-Ieb">
                                                 <rect key="frame" x="0.0" y="544" width="314" height="34"/>
-                                                <accessibility key="accessibilityConfiguration" identifier="email_SignUp"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="price_Item"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                             </textField>
@@ -163,7 +163,7 @@
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mmu-13-gFO">
                                                         <rect key="frame" x="0.0" y="0.0" width="176" height="34"/>
-                                                        <accessibility key="accessibilityConfiguration" identifier="email_SignUp"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="nonUnitPrice_Item"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                     </textField>
@@ -175,7 +175,7 @@
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XRm-v3-a95">
                                                         <rect key="frame" x="242" y="0.0" width="32" height="34"/>
-                                                        <accessibility key="accessibilityConfiguration" identifier="email_SignUp"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="perVal_Item"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                     </textField>
@@ -198,7 +198,6 @@
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OCQ-gc-yFL">
                                                         <rect key="frame" x="0.0" y="0.0" width="274" height="34"/>
-                                                        <accessibility key="accessibilityConfiguration" identifier="email_SignUp"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                     </textField>
@@ -237,6 +236,7 @@
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <accessibility key="accessibilityConfiguration" identifier="itemDetailView"/>
                         <constraints>
                             <constraint firstItem="wr4-qF-3xy" firstAttribute="leading" secondItem="hKU-Oz-wSH" secondAttribute="leading" id="Lba-Na-eby"/>
                             <constraint firstAttribute="bottom" secondItem="wr4-qF-3xy" secondAttribute="bottom" id="Var-ip-uQx"/>
@@ -296,6 +296,7 @@
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <accessibility key="accessibilityConfiguration" identifier="itemsMainView"/>
                         <constraints>
                             <constraint firstItem="nXR-1a-R4p" firstAttribute="leading" secondItem="DqH-kJ-ACf" secondAttribute="leading" id="2H8-eo-oM4"/>
                             <constraint firstItem="Y3i-LK-Ygm" firstAttribute="leading" secondItem="DqH-kJ-ACf" secondAttribute="leading" id="4II-eM-Ogg"/>
@@ -325,7 +326,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="HY3-dV-n50">
+                            <searchBar contentMode="redraw" restorationIdentifier="itemSearchBar" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="HY3-dV-n50">
                                 <rect key="frame" x="10" y="20" width="394" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
@@ -417,6 +418,7 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <accessibility key="accessibilityConfiguration" identifier="itemListView"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="jZG-hH-QBQ" secondAttribute="trailing" id="8rz-7W-JTg"/>
                             <constraint firstItem="jZG-hH-QBQ" firstAttribute="top" secondItem="HY3-dV-n50" secondAttribute="bottom" constant="20" id="9qW-Z5-sWQ"/>

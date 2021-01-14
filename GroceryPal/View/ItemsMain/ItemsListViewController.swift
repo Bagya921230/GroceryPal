@@ -29,7 +29,6 @@ class ItemsListViewController: UIViewController, UISearchBarDelegate, ItemsListV
         tableView.dataSource = self
         tableView.delegate = self
         searchBar.delegate = self
-        itemListVM.delegate = self
         fireStoreQueries.delegateItemEvents = self
         itemListVM.onLoad(fireStoreQueries: fireStoreQueries)
     }
@@ -142,7 +141,13 @@ extension ItemsListViewController : UITableViewDataSource , UITableViewDelegate{
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            itemListVM.deleteItem(item: filteredItemList[indexPath.row])
+            itemListVM.deleteItem(item: filteredItemList[indexPath.row], completion: {
+                status in
+                      if(!status)
+                      {
+                          self.displayError(msg: "Cannot delete the item")
+                      }
+            })
         }
     }
 
