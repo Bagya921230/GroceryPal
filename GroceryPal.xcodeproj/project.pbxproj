@@ -82,6 +82,9 @@
 		B9580FAD25AA686A00536179 /* libiOSDropDown.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9580FAC25AA686A00536179 /* libiOSDropDown.a */; };
 		B9580FAF25AA6C9400536179 /* ItemDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9580FAE25AA6C9400536179 /* ItemDetailVM.swift */; };
 		B968CD0025AB543500EE6BFF /* EncodableEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B968CCFF25AB543500EE6BFF /* EncodableEx.swift */; };
+		B989EEE725B0A8840072BC93 /* ItemListVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B989EEE625B0A8840072BC93 /* ItemListVMTests.swift */; };
+		B989EEE925B0C8370072BC93 /* ItemDetailVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B989EEE825B0C8370072BC93 /* ItemDetailVMTests.swift */; };
+		B989EEED25B0D6030072BC93 /* ItemMainUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B989EEEC25B0D6030072BC93 /* ItemMainUITest.swift */; };
 		B98E8E0825AF879A000948DD /* ItemListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E8E0725AF879A000948DD /* ItemListVM.swift */; };
 		B98E8E0A25AFA753000948DD /* FireStoreItemQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98E8E0925AFA753000948DD /* FireStoreItemQueries.swift */; };
 		B9AE3F2A25A6168D00DC769B /* SignInUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE3F2925A6168D00DC769B /* SignInUITest.swift */; };
@@ -190,6 +193,9 @@
 		B9580FAC25AA686A00536179 /* libiOSDropDown.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libiOSDropDown.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9580FAE25AA6C9400536179 /* ItemDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailVM.swift; sourceTree = "<group>"; };
 		B968CCFF25AB543500EE6BFF /* EncodableEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableEx.swift; sourceTree = "<group>"; };
+		B989EEE625B0A8840072BC93 /* ItemListVMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListVMTests.swift; sourceTree = "<group>"; };
+		B989EEE825B0C8370072BC93 /* ItemDetailVMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailVMTests.swift; sourceTree = "<group>"; };
+		B989EEEC25B0D6030072BC93 /* ItemMainUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemMainUITest.swift; sourceTree = "<group>"; };
 		B98E8E0725AF879A000948DD /* ItemListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListVM.swift; sourceTree = "<group>"; };
 		B98E8E0925AFA753000948DD /* FireStoreItemQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreItemQueries.swift; sourceTree = "<group>"; };
 		B9AE3F2925A6168D00DC769B /* SignInUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUITest.swift; sourceTree = "<group>"; };
@@ -339,6 +345,8 @@
 				696D326A259984D2009ACCB3 /* Info.plist */,
 				B9F8D6BC25A3391B00E277D5 /* SignInVMTests.swift */,
 				B9F8D6BF25A43F9800E277D5 /* SignUpVMTests.swift */,
+				B989EEE625B0A8840072BC93 /* ItemListVMTests.swift */,
+				B989EEE825B0C8370072BC93 /* ItemDetailVMTests.swift */,
 			);
 			path = GroceryPalTests;
 			sourceTree = "<group>";
@@ -350,6 +358,7 @@
 				696D3275259984D2009ACCB3 /* Info.plist */,
 				B9AE3F2925A6168D00DC769B /* SignInUITest.swift */,
 				B92899C925A82CE100D37313 /* SignUpUITest.swift */,
+				B989EEEC25B0D6030072BC93 /* ItemMainUITest.swift */,
 			);
 			path = GroceryPalUITests;
 			sourceTree = "<group>";
@@ -902,7 +911,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B989EEE925B0C8370072BC93 /* ItemDetailVMTests.swift in Sources */,
 				696D3269259984D2009ACCB3 /* GroceryPalTests.swift in Sources */,
+				B989EEE725B0A8840072BC93 /* ItemListVMTests.swift in Sources */,
 				B9F8D6C025A43F9800E277D5 /* SignUpVMTests.swift in Sources */,
 				B9F8D6BD25A3391B00E277D5 /* SignInVMTests.swift in Sources */,
 			);
@@ -912,6 +923,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B989EEED25B0D6030072BC93 /* ItemMainUITest.swift in Sources */,
 				696D3274259984D2009ACCB3 /* GroceryPalUITests.swift in Sources */,
 				B92899CA25A82CE100D37313 /* SignUpUITest.swift in Sources */,
 				B9AE3F2A25A6168D00DC769B /* SignInUITest.swift in Sources */,

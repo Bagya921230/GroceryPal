@@ -63,8 +63,9 @@ class SignUpVM {
     {
         Auth.auth().createUser(withEmail: email, password: pw) { authResult, error in
             if authResult != nil {
-                self.addToFireStore(name: name, uid: (authResult?.user.uid)!)
-                completion(true)
+                self.addToFireStore(name: name, uid: (authResult?.user.uid)!, completion: { status in
+                   completion(status)
+                })
             }
            else {
                 self.delegate?.displayError(msg: error!.localizedDescription)
@@ -73,7 +74,7 @@ class SignUpVM {
         }
     }
     
-    func addToFireStore(name:String, uid: String)
+    func addToFireStore(name:String, uid: String, completion: @escaping(Bool)->())
     {
         FireStoreDataBase.shared.addUser(docId: uid, name: name){status in
                    if(status)
@@ -81,6 +82,11 @@ class SignUpVM {
                             UserDefaults.standard.set(true, forKey: "loggedIn")
                             UserDefaults.standard.set(uid, forKey: "userId")
                             self.delegate?.signUpSuccess()
+                            completion(true)
+                   }
+                   else
+                   {
+                            completion(false)
                    }
         }
     }

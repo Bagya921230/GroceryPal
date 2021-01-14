@@ -10,7 +10,6 @@ import Foundation
 
 class ItemListVM {
 
-    var delegate: ItemsListViewControllerDelegate?
     var fireStoreQueries: FireStoreItemQueries?
 
     func onLoad(fireStoreQueries: FireStoreItemQueries)
@@ -27,15 +26,12 @@ class ItemListVM {
         }
     }
     
-    func deleteItem(docId: String)
+    func deleteItem(item: Item, completion: @escaping(Bool)->())
     {
-        fireStoreQueries!.deleteItems(docId: docId)
+        fireStoreQueries!.deleteItems(item: item)
         {
             status in
-                           if(!status)
-                           {
-                               self.delegate?.displayError(msg: "Cannot delete the item")
-                           }
+            completion(status)
         }
     }
 }
