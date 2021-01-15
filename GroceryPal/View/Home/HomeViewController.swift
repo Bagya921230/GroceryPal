@@ -8,7 +8,12 @@
 
 import UIKit
 
-class HomeViewController: UIViewController,ItemEvents, StockItemEvents , RestockItemEvents{
+protocol HomeViewControllerDelegate {
+    func displayError(msg: String)
+    func addSuccess()
+}
+
+class HomeViewController: UIViewController,ItemEvents, StockItemEvents , RestockItemEvents,HomeViewControllerDelegate{
         
     // MARK: - Outlet
     @IBOutlet weak var storageView: UIView!
@@ -63,6 +68,41 @@ class HomeViewController: UIViewController,ItemEvents, StockItemEvents , Restock
         fireStoreStockQueries.delegateRestockItemEvents = self
         configureUI()
         homeVM.onLoad(fireStoreQueries: fireStoreQueries, fireStoreStockQueries: fireStoreStockQueries)
+        configureNotificationObserver()
+    }
+    
+    private func configureNotificationObserver() {
+        NotificationCenter.default.addObserver(
+        self,
+        selector: #selector(self.updateWhenNotificationReceived),
+        name: Notification.Name(rawValue: "ADD_NOTIFICATION"),
+        object: nil)
+    }
+    
+    func displayError(msg: String) {
+        Common.stopActivityIndicatory()
+        Common.showAlert(msg: msg, viewController: self)
+    }
+    
+    func addSuccess() {
+        
+    }
+    
+    @objc private func updateWhenNotificationReceived(notification: NSNotification){
+        if let userInfo = notification.userInfo {
+            // Safely unwrap the name sent out by the notification sender
+            if let name = userInfo["name"], let qty = userInfo["quantity"], let uom = userInfo["uom"],let expDate = userInfo["expDate"], let type = userInfo["type"], let stockId = userInfo["id"] {
+                var message =  "Available Quantity"
+                var title = "Restock"
+                if ((type as? String) == "expired") {
+                    message = "Affected Quantity"
+                    title = "Expired"
+                }
+                //print("stockId\(userInfo["id"])")
+                Common.showActivityIndicatory(view: self.view)
+                _ = homeVM.sendValues(id: "", itemName: name as! String, quantity: qty as! Double, uom: uom as! String, expDate: expDate as! String, type: type as! String, message: message, title: title, stockItemId: stockId as! String )
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,10 +110,6 @@ class HomeViewController: UIViewController,ItemEvents, StockItemEvents , Restock
         self.tabBarController?.tabBar.isHidden = true
         navigationController?.setNavigationBarHidden(true, animated: animated)
         navigationController?.navigationBar.tintColor = UIColor.themeColor()
-        let nav = self.tabBarController?.viewControllers?[1] as! UINavigationController
-        let vc = nav.topViewController as! StorageMainViewController
-        vc.isEmpty = stockItemList.count == 0
-        vc.noItems = itemList.count == 0
     }
     
     func configureUI() {

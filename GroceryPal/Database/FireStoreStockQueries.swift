@@ -83,6 +83,7 @@ class FireStoreStockQueries {
             dictionary["quantity"] = newQty
             if (newQty <= item.roLevel) {
                 dictionary["status"] = "restock"
+                LocalNotification.scheduleLocalNotification(type: "restock", item: item, mins: 1)
             } else {
                 dictionary["status"] = "active"
             }
@@ -101,6 +102,7 @@ class FireStoreStockQueries {
             completed(false)
         }
     }
+    
 
     func fetchRestockItems()
     {

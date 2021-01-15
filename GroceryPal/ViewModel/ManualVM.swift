@@ -79,7 +79,7 @@ class ManualVM {
         fireStoreStockQueries.addStockItems(item: item){ transaction in
                             if(transaction)
                             {
-                                self.delegate?.addSuccess()
+                                self.delegate?.addSuccess(item: item)
                             }
                             else
                             {

@@ -11,7 +11,7 @@ import iOSDropDown
 
 protocol ManualViewControllerDelegate {
     func displayError(msg: String)
-    func addSuccess()
+    func addSuccess(item: StockItem)
 }
 
 class ManualViewController: UIViewController, ManualViewControllerDelegate, ItemEvents {
@@ -31,6 +31,7 @@ class ManualViewController: UIViewController, ManualViewControllerDelegate, Item
     var selectedItem: Item?
     let fireStoreItemQueries = FireStoreItemQueries()
     var addToStoragedelegate: AddToStorageViewControllerDelegate?
+    var timeDiff : Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +61,8 @@ class ManualViewController: UIViewController, ManualViewControllerDelegate, Item
              let dateformatter = DateFormatter()
              dateformatter.dateStyle = .medium
              self.expiryTextField.text = dateformatter.string(from: datePicker.date)
+            let diffComponents = Calendar.current.dateComponents([.minute], from: Date(), to: datePicker.date)
+            self.timeDiff = diffComponents.minute
          }
          self.expiryTextField.resignFirstResponder()
      }
@@ -101,9 +104,14 @@ class ManualViewController: UIViewController, ManualViewControllerDelegate, Item
         Common.showAlert(msg: msg, viewController: self)
     }
     
-    func addSuccess() {
+    func addSuccess(item: StockItem) {
         Common.stopActivityIndicatory()
         navigationController?.popViewController(animated: true)
+        
+        if let timeDif = self.timeDiff {
+            print("set expiry notification to trigger in \(timeDif) mins")
+            LocalNotification.scheduleLocalNotification(type: "expired", item: item, mins: timeDif)
+        }
     }
     
     @objc

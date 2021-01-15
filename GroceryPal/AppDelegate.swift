@@ -11,16 +11,41 @@ import CoreData
 import Firebase
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
-
+    let notificationCenter = UNUserNotificationCenter.current()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        requestAuthForLocalNotifications()
         return true
     }
-
+    
+    func requestAuthForLocalNotifications() {
+        notificationCenter.delegate = self
+        notificationCenter.requestAuthorization(options: [.alert,.sound]){ (granted, error) in
+            if error != nil {
+            
+            }
+        }
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        if let customData = notification.request.content.userInfo["addedDate"] as? String {
+            print(customData)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                NotificationCenter.default.post(name: Notification.Name("ADD_NOTIFICATION"), object: nil, userInfo: notification.request.content.userInfo)
+                
+            }
+        }
+        completionHandler(UNNotificationPresentationOptions.init(arrayLiteral: [.alert, .badge]))
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
