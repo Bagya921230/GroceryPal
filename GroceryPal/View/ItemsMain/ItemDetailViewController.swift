@@ -15,7 +15,7 @@ protocol ItemDetailViewControllerDelegate {
     func displayCategories(list: [String])
     func displayUOM(list: [String])
     func displayError(msg: String)
-    func addSuccess()
+    func performSuccess()
     func displayValuesInScreen()
 }
 
@@ -48,8 +48,10 @@ class ItemDetailViewController: UIViewController, ImagePickerDelegate, ItemDetai
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         self.hideKeyboardWhenTappedAround(scrollView: scrollView)
         itemDetailVM.delegate = self
+        
         itemDetailVM.onLoad()
         self.handleDropDown()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,6 +90,9 @@ class ItemDetailViewController: UIViewController, ImagePickerDelegate, ItemDetai
         if isEditMode == true
         {
             if let item = selectedItem {
+                
+                self.handlePrice(selectedUnit: item.uom)
+
                 name.text = item.name
                 
                 categoryDropDown.selectedIndex = itemDetailVM.getSelectedDropDownIndex(list: categoryDropDown.optionArray, findText: item.category)
@@ -153,7 +158,7 @@ class ItemDetailViewController: UIViewController, ImagePickerDelegate, ItemDetai
         let perVal =  self.perVal.text!
 
         Common.showActivityIndicatory(view: self.view)
-        _ = itemDetailVM.sendValues(name: name, category: category, uom: uom,notes:notes,price:price,nonUnitPrice:nonUnitPrice,perVal:perVal, roLevel:roLevel, image:selectedImage)
+        _ = itemDetailVM.sendValues(name: name, category: category, uom: uom,notes:notes,price:price,nonUnitPrice:nonUnitPrice,perVal:perVal, roLevel:roLevel, image:selectedImage, isEditMode: isEditMode, selectedItem: selectedItem)
     }
 
     
@@ -185,7 +190,7 @@ class ItemDetailViewController: UIViewController, ImagePickerDelegate, ItemDetai
          self.handlePrice(selectedUnit: selectedVal)
      }
      
-    func addSuccess() {
+    func performSuccess() {
         Common.stopActivityIndicatory()
         navigationController?.popViewController(animated: true)
     }
@@ -194,4 +199,5 @@ class ItemDetailViewController: UIViewController, ImagePickerDelegate, ItemDetai
         Common.stopActivityIndicatory()
         Common.showAlert(msg: msg, viewController: self)
     }
+    
 }

@@ -91,6 +91,7 @@ class SignUpVMTests: XCTestCase {
             let exp = expectation(description: "Check firestore issue")
             var finalResult: Bool = false
             
+            
             viewModel.addToFireStore(name: "aparna", uid: "NxCxS6GaFzM7C7Z6UQftA16VZV03", completion: { (result) in
                 finalResult=result
                 exp.fulfill()

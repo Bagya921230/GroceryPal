@@ -30,6 +30,7 @@ class ItemListTableViewCell: UITableViewCell {
         categoryLabel.text = item.category
         
         let referenceImage = Storage.storage().reference().child(item.image)
+        SDImageCache.shared.removeImage(forKey: referenceImage.fullPath)
         itemImageView.sd_setImage(with: referenceImage,placeholderImage: UIImage(named: "placeholder"))
     }
 

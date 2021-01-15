@@ -125,6 +125,7 @@
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="homeItemsListView"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="1ti-hl-vPd" firstAttribute="leading" secondItem="g5L-n1-4E3" secondAttribute="trailing" constant="20" id="Gbm-eK-ZK2"/>
@@ -269,6 +270,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <accessibility key="accessibilityConfiguration" identifier="homeView"/>
                         <constraints>
                             <constraint firstItem="Ddp-rc-pz1" firstAttribute="trailing" secondItem="zLT-i6-kGj" secondAttribute="trailing" constant="20" id="6Qf-qZ-hfA"/>
                             <constraint firstItem="zLT-i6-kGj" firstAttribute="leading" secondItem="Ddp-rc-pz1" secondAttribute="leading" constant="20" id="bLo-nY-C48"/>

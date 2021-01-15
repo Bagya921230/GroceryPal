@@ -37,6 +37,7 @@ class SignInVMTests: XCTestCase {
         let exp = expectation(description: "Check login is successful")
         var finalResult: Bool = false
         
+        
         viewModel.signInUser(email: "aparna@mailinator.com", pw: "test12345", completion: { (result) in
             finalResult=result
             exp.fulfill()
