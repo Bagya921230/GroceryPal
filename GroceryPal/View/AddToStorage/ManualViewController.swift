@@ -46,16 +46,16 @@ class ManualViewController: UIViewController, ManualViewControllerDelegate, Item
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = true
         navigationController?.setNavigationBarHidden(false, animated: animated)
         let onSaveBarItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(onDoneAction))
         self.navigationItem.rightBarButtonItem  = onSaveBarItem
     }
     
     func configureUI() {
-        expiryTextField.setRightIcon(icon: UIImage(systemName: "calendar")!)
+        expiryTextField.setRightIcon(icon: UIImage(named: "calendar")!)
         priceTextField.setRightLabel(text: "LKR")
-        itemNameDropdown.setLeftIcon(icon: UIImage(systemName: "magnifyingglass")!)
+        itemNameDropdown.setLeftIcon(icon: UIImage(named: "search")!)
         expiryTextField.setInputViewDatePicker(target: self, selector: #selector(tapDatePickerDone))
     }
     

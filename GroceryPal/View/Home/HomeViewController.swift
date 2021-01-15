@@ -99,10 +99,10 @@ class HomeViewController: UIViewController,ItemEvents, StockItemEvents , Restock
     }
 
     @IBAction func onLogout(_ sender: Any) {
-        UserDefaults.standard.set(false, forKey: "loggedIn")
+        /*UserDefaults.standard.set(false, forKey: "loggedIn")
         let storyboard = UIStoryboard(name: "Landing", bundle: nil)
         let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
-        sceneDelegate?.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "landingNavigation")
+        sceneDelegate?.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "landingNavigation")*/
     }
     
     func itemList(itemList: [Item]) {
