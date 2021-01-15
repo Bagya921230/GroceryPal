@@ -16,7 +16,7 @@ target 'GroceryPal' do
   pod 'Firebase/Storage'
   pod 'SDWebImage', '~> 5.0'
   pod 'FirebaseUI/Storage', '~> 8.0'
-
+  pod 'BarcodeScanner'
 
   target 'GroceryPalTests' do
     inherit! :search_paths
