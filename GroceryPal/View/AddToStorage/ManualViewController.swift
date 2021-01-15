@@ -33,11 +33,7 @@ class ManualViewController: UIViewController, ManualViewControllerDelegate, Item
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if #available(iOS 13.0, *) {
-            configureUI()
-        } else {
-            // Fallback on earlier versions
-        }
+        configureUI()
         fireStoreItemQueries.delegateItemEvents = self
         manualVM.delegate = self
         manualVM.onLoad(fireStoreQueries: fireStoreItemQueries)
@@ -75,19 +71,19 @@ class ManualViewController: UIViewController, ManualViewControllerDelegate, Item
     @objc
     func onDoneAction() {
         let name =  self.itemNameDropdown.text!
-        let category =  self.selectedItem?.category
-        let uom =  self.selectedItem?.uom
-        let notes = self.selectedItem?.notes
-        let image = self.selectedItem?.image
+        let category =  self.selectedItem?.category ?? ""
+        let uom =  self.selectedItem?.uom ?? ""
+        let notes = self.selectedItem?.notes ?? ""
+        let image = self.selectedItem?.image ?? ""
         let unitPrice =  self.unitPriceTextField.text!
         let nonUnitPrice =  self.priceTextField.text!
         let perVal =  self.measurementTextField.text!
-        let roLevel =  self.selectedItem?.roLevel
+        let roLevel =  self.selectedItem?.roLevel ?? 0
         let quantity = self.quantityTextField.text!
         let expDate = self.expiryTextField.text!
 
         Common.showActivityIndicatory(view: self.view)
-        _ = manualVM.sendValues(name: name, category: category!, uom: uom!, notes:notes!,unitPrice: unitPrice, nonUnitPrice:nonUnitPrice, perVal:perVal, roLevel:roLevel!, quantity: quantity, expDate: expDate, image: image!)
+        _ = manualVM.sendValues(name: name, category: category, uom: uom, notes:notes,unitPrice: unitPrice, nonUnitPrice:nonUnitPrice, perVal:perVal, roLevel:roLevel, quantity: quantity, expDate: expDate, image: image)
     }
     
     func didScan(msg: String) {
