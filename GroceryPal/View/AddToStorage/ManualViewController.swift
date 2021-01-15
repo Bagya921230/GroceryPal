@@ -24,6 +24,7 @@ class ManualViewController: UIViewController, ManualViewControllerDelegate, Item
     @IBOutlet weak var priceTextField: UITextField!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var unitPriceTextField: UITextField!
+    @IBOutlet weak var scrollViewATS: UIScrollView!
     
     let datePicker = UIDatePicker()
     let manualVM = ManualVM()
@@ -36,6 +37,7 @@ class ManualViewController: UIViewController, ManualViewControllerDelegate, Item
         configureUI()
         fireStoreItemQueries.delegateItemEvents = self
         manualVM.delegate = self
+        self.hideKeyboardWhenTappedAround(scrollView: scrollViewATS)
         manualVM.onLoad(fireStoreQueries: fireStoreItemQueries)
         handleItemDropDown()
     }
