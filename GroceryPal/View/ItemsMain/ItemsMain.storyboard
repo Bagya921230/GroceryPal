@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Yy7-k4-8I4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Yy7-k4-8I4">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -44,7 +44,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="1uU-nL-EAS" kind="showDetail" id="L9p-xP-YJ2"/>
+                                            <segue destination="1uU-nL-EAS" kind="show" id="L9p-xP-YJ2"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -62,23 +62,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i1I-VV-DYj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-497" y="935"/>
+            <point key="canvasLocation" x="-496" y="935"/>
         </scene>
-        <!--Add Item-->
+        <!--Item Detail View Controller-->
         <scene sceneID="rvZ-Lx-L4w">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="1uU-nL-EAS" customClass="ItemDetailViewController" customModule="GroceryPal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="itemsDetailVC" modalPresentationStyle="fullScreen" id="1uU-nL-EAS" customClass="ItemDetailViewController" customModule="GroceryPal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hKU-Oz-wSH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wr4-qF-3xy">
-                                <rect key="frame" x="0.0" y="88" width="414" height="1078"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="1100"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="PBg-9v-kX2">
                                         <rect key="frame" x="50" y="20" width="314" height="887"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_item" translatesAutoresizingMaskIntoConstraints="NO" id="yoe-Sg-Gqa">
+                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_item" translatesAutoresizingMaskIntoConstraints="NO" id="yoe-Sg-Gqa" customClass="SDAnimatedImageView">
                                                 <rect key="frame" x="0.0" y="0.0" width="314" height="200"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
@@ -235,44 +235,20 @@
                                     <constraint firstAttribute="bottom" secondItem="PBg-9v-kX2" secondAttribute="bottom" constant="20" id="jVM-5p-Djj"/>
                                 </constraints>
                             </scrollView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n8t-AJ-EVi">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <navigationItem title="Add Item" id="Vb4-Uu-60q">
-                                        <barButtonItem key="backBarButtonItem" title="Back" id="Nc6-Tj-sWz"/>
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="XvA-bI-JRI">
-                                            <connections>
-                                                <action selector="onBack:" destination="1uU-nL-EAS" id="ABI-bm-Y7B"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Save" id="0wU-de-aer">
-                                            <connections>
-                                                <action selector="onSave:" destination="1uU-nL-EAS" id="fBQ-ue-PYi"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="n8t-AJ-EVi" firstAttribute="top" secondItem="yMX-fB-tm0" secondAttribute="top" id="25S-JJ-fmf"/>
-                            <constraint firstItem="wr4-qF-3xy" firstAttribute="top" secondItem="n8t-AJ-EVi" secondAttribute="bottom" id="AwS-SH-tyL"/>
-                            <constraint firstItem="wr4-qF-3xy" firstAttribute="leading" secondItem="yMX-fB-tm0" secondAttribute="leading" id="Lba-Na-eby"/>
-                            <constraint firstItem="yMX-fB-tm0" firstAttribute="bottom" secondItem="wr4-qF-3xy" secondAttribute="bottom" id="Var-ip-uQx"/>
+                            <constraint firstItem="wr4-qF-3xy" firstAttribute="leading" secondItem="hKU-Oz-wSH" secondAttribute="leading" id="Lba-Na-eby"/>
+                            <constraint firstAttribute="bottom" secondItem="wr4-qF-3xy" secondAttribute="bottom" id="Var-ip-uQx"/>
                             <constraint firstItem="PBg-9v-kX2" firstAttribute="width" secondItem="hKU-Oz-wSH" secondAttribute="width" constant="-100" id="W4J-ur-QDt"/>
-                            <constraint firstItem="n8t-AJ-EVi" firstAttribute="leading" secondItem="yMX-fB-tm0" secondAttribute="leading" id="e8v-MO-WXv"/>
                             <constraint firstItem="PBg-9v-kX2" firstAttribute="centerX" secondItem="yMX-fB-tm0" secondAttribute="centerX" id="mJX-oO-MQD"/>
-                            <constraint firstItem="wr4-qF-3xy" firstAttribute="trailing" secondItem="yMX-fB-tm0" secondAttribute="trailing" id="obh-vk-W5a"/>
-                            <constraint firstItem="n8t-AJ-EVi" firstAttribute="trailing" secondItem="yMX-fB-tm0" secondAttribute="trailing" id="s3d-bI-ybJ"/>
+                            <constraint firstItem="wr4-qF-3xy" firstAttribute="trailing" secondItem="hKU-Oz-wSH" secondAttribute="trailing" id="obh-vk-W5a"/>
+                            <constraint firstItem="wr4-qF-3xy" firstAttribute="top" secondItem="hKU-Oz-wSH" secondAttribute="top" id="rh0-gr-xdB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yMX-fB-tm0"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Item" id="Bgf-q0-AhH">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="Kjo-3s-ErC"/>
-                    </navigationItem>
-                    <size key="freeformSize" width="414" height="1200"/>
+                    <navigationItem key="navigationItem" id="h6G-Df-5H3"/>
+                    <size key="freeformSize" width="414" height="1100"/>
                     <connections>
                         <outlet property="categoryDropDown" destination="p55-7e-S9y" id="QT4-Pa-3c4"/>
                         <outlet property="imageView" destination="yoe-Sg-Gqa" id="0Yw-tO-0Fe"/>
@@ -296,12 +272,12 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1022" y="1047"/>
+            <point key="canvasLocation" x="1029" y="935"/>
         </scene>
         <!--Items-->
         <scene sceneID="vcd-YG-NAk">
             <objects>
-                <viewController title="Items" id="Yy7-k4-8I4" customClass="ItemsMainViewController" customModule="GroceryPal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="itemsMainVC" title="Items" id="Yy7-k4-8I4" customClass="ItemsMainViewController" customModule="GroceryPal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vgv-4t-qnd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -452,7 +428,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="p5b-mX-nMU"/>
                     </view>
-                    <navigationItem key="navigationItem" id="X0n-aq-K6J"/>
                     <connections>
                         <outlet property="searchBar" destination="HY3-dV-n50" id="e4H-ss-G5Z"/>
                         <outlet property="tableView" destination="jZG-hH-QBQ" id="uNM-bj-xIa"/>
@@ -460,15 +435,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6qK-zM-jEr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="620" y="144"/>
+            <point key="canvasLocation" x="1029" y="151"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="DPz-YI-uvt"/>
+    </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.0" green="0.53333333329999999" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
     <resources>
         <image name="add_item" width="407" height="190"/>
         <image name="no_items" width="96" height="87.5"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="L9p-xP-YJ2"/>
-    </inferredMetricsTieBreakers>
-    <color key="tintColor" red="0.0" green="0.53333333329999999" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
 </document>

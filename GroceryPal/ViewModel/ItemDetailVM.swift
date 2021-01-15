@@ -13,23 +13,29 @@ import UIKit
 class ItemDetailVM {
 
     var delegate: ItemDetailViewController?
-    let dispatch = DispatchGroup()
+    var fireStoreQueries = FireStoreItemQueries()
 
     func onLoad()
     {
-        FireStoreDataBase.shared.fetchCategories(dispatch: dispatch){(catList) in
-            self.dispatch.notify(queue: .main, execute: {
-                self.delegate?.displayCategories(list: catList)
-             })
+        let group = DispatchGroup()
+
+        group.enter()
+        FireStoreDataBase.shared.fetchCategories(){(catList) in
+            self.delegate?.displayCategories(list: catList)
+            group.leave()
         }
         
-        FireStoreDataBase.shared.fetchUOM(dispatch: dispatch){(uomList) in
-            self.dispatch.notify(queue: .main, execute: {
-                self.delegate?.displayUOM(list: uomList)
-            })
+        group.enter()
+        FireStoreDataBase.shared.fetchUOM(){(uomList) in
+            self.delegate?.displayUOM(list: uomList)
+            group.leave()
+        }
+        
+        group.notify(queue: DispatchQueue.main) {
+            self.delegate?.displayValuesInScreen()
         }
     }
-    
+        
     func sendValues(name: String, category: String, uom: String,notes:String,price:String,nonUnitPrice:String,perVal:String, roLevel:String, image: UIImage?) -> Bool
     {
         if name.trimmingCharacters(in: .whitespaces).isEmpty{
@@ -59,7 +65,7 @@ class ItemDetailVM {
             
             let item = Item(name: name, category: category, uom: uom, unitPrice: unitPrice, perValue: perValDouble, roLevel: roLevelDouble, notes: notes, image: "", id: "")
                         
-            storeItem(item: item, image: image, completion: { _ in })
+            storeItem(item: item, image: image)
             return true
         }
         
@@ -71,23 +77,29 @@ class ItemDetailVM {
         return selectedUnit == "unit" ? price : nonUnitPrice;
     }
     
-    func storeItem(item: Item, image: UIImage?, completion: @escaping(Bool)->())
+    func storeItem(item: Item, image: UIImage?)
     {
-        let dispatch = DispatchGroup()
-        FireStoreDataBase.shared.addItems(item: item, image: image, dispatch: dispatch){ transaction in
-                          dispatch.notify(queue: .main, execute: {
-                                   
+        fireStoreQueries.addItems(item: item, image: image){ transaction in
                             if(transaction)
                             {
                                 self.delegate?.addSuccess()
-                                completion(true)
                             }
                             else
                             {
                                 self.delegate?.displayError(msg: "Cannot add the item")
-                                completion(true)
                             }
-                 })
          }
+    }
+    
+    func getSelectedDropDownIndex(list: [String], findText: String) -> Int
+    {
+        if(list.count > 0)
+        {
+            return list.firstIndex(of: findText)!
+        }
+        else
+        {
+            return 0
+        }
     }
 }

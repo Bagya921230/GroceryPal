@@ -13,20 +13,26 @@ class StorageListVM {
     
     var delegate: StorageListViewControllerDelegate?
     let dispatch = DispatchGroup()
+    var fireStoreStockQueries = FireStoreStockQueries()
 
-    func onLoad()
+    func onLoad(fireStoreStockQueries: FireStoreStockQueries)
     {
-        FireStoreDataBase.shared.fetchCategories(dispatch: dispatch){(catList) in
-            self.dispatch.notify(queue: .main, execute: {
-                self.delegate?.displayCategories(list: catList)
-             })
+        let group = DispatchGroup()
+
+        group.enter()
+        FireStoreDataBase.shared.fetchCategories(){(catList) in
+            self.delegate?.displayCategories(list: catList)
+            group.leave()
         }
         
-        FireStoreDataBase.shared.fetchStatuses(dispatch: dispatch){(statusList) in
-            self.dispatch.notify(queue: .main, execute: {
-                self.delegate?.displayStatus(list: statusList)
-            })
+        group.enter()
+        FireStoreDataBase.shared.fetchStatus(){(statusList) in
+            self.delegate?.displayStatus(list: statusList)
+            group.leave()
         }
+        
+        self.fireStoreStockQueries = fireStoreStockQueries
+        fireStoreStockQueries.fetchStockItems()
     }
 
 }

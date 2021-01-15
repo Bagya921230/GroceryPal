@@ -9,12 +9,14 @@
 import Foundation
 import UIKit
 import iOSDropDown
+import FirebaseStorage
 
 protocol ItemDetailViewControllerDelegate {
     func displayCategories(list: [String])
     func displayUOM(list: [String])
     func displayError(msg: String)
     func addSuccess()
+    func displayValuesInScreen()
 }
 
 class ItemDetailViewController: UIViewController, ImagePickerDelegate, ItemDetailViewControllerDelegate {
@@ -42,31 +44,78 @@ class ItemDetailViewController: UIViewController, ImagePickerDelegate, ItemDetai
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        itemDetailVM.delegate = self
+        self.configureUI()
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         self.hideKeyboardWhenTappedAround(scrollView: scrollView)
+        itemDetailVM.delegate = self
         itemDetailVM.onLoad()
         self.handleDropDown()
-        
-        if(isEditMode)
-        {
-            self.prepareEditMode()
-        }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.addTextViewBorder()
     }
     
-    func prepareEditMode()
+    @IBAction func tapGesture(_ sender: UITapGestureRecognizer) {
+         self.imagePicker.present(from: self.view)
+     }
+    
+    func configureUI() {
+        notes.layer.borderColor = UIColor(red: 0.76, green: 0.76, blue: 0.76, alpha: 1.0).cgColor;
+        notes.layer.borderWidth = 1.0;
+        notes.layer.cornerRadius = 5.0;
+        
+        if(isEditMode)
+        {
+            let onSaveBarItem = UIBarButtonItem(title: "Update", style: .done, target: self, action: #selector(onSave))
+            self.navigationItem.rightBarButtonItem  = onSaveBarItem
+            
+            self.navigationItem.title = "Update Item"
+            
+        }
+        else
+        {
+            let onSaveBarItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(onSave))
+            self.navigationItem.rightBarButtonItem  = onSaveBarItem
+            
+            self.navigationItem.title = "Add Item"
+        }
+    }
+
+    
+    func displayValuesInScreen()
     {
-        /*name.text = selectedItem.name
-        categoryDropDown.text = selectedItem.category
-        uomDropDown.text = selectedItem.uom*/
-         //uomDropDown.sele = "kg"
-        print(selectedItem)
+        if isEditMode == true
+        {
+            if let item = selectedItem {
+                name.text = item.name
+                
+                categoryDropDown.selectedIndex = itemDetailVM.getSelectedDropDownIndex(list: categoryDropDown.optionArray, findText: item.category)
+                categoryDropDown.text = item.category
+                
+                uomDropDown.selectedIndex = itemDetailVM.getSelectedDropDownIndex(list: uomDropDown.optionArray, findText: item.uom)
+                uomDropDown.text = item.uom
+                
+                roLevel.text = Common.getFormattedDecimalString(value: item.roLevel)
+                notes.text = item.notes
+                
+                if(item.uom == "unit")
+                {
+                    price.text = Common.getFormattedDecimalString(value: item.unitPrice)
+                }
+                else
+                {
+                    nonUnitPrice.text = Common.getFormattedDecimalString(value: item.unitPrice)
+                    perVal.text = Common.getFormattedDecimalString(value: item.perValue)
+                }
+                
+                if(item.image != "")
+                {
+                    let referenceImage = Storage.storage().reference().child(item.image)
+                    imageView.sd_setImage(with: referenceImage,placeholderImage: UIImage(named: "add_item"))
+                }
+            }
+        }
     }
     
     func handleDropDown()
@@ -91,20 +140,9 @@ class ItemDetailViewController: UIViewController, ImagePickerDelegate, ItemDetai
             self.price.isHidden = true
         }
     }
-    
-    func addTextViewBorder()
-    {
-        notes.layer.borderColor = UIColor(red: 0.76, green: 0.76, blue: 0.76, alpha: 1.0).cgColor;
-        notes.layer.borderWidth = 1.0;
-        notes.layer.cornerRadius = 5.0;
-    }
 
-    @IBAction func tapGesture(_ sender: UITapGestureRecognizer) {
-        self.imagePicker.present(from: self.view)
-    }
-    
-    
-    @IBAction func onSave(_ sender: Any) {
+
+    @objc func onSave() {
         let name =  self.name.text!
         let category =  self.categoryDropDown.text!
         let uom =  self.uomDropDown.text!
@@ -117,10 +155,7 @@ class ItemDetailViewController: UIViewController, ImagePickerDelegate, ItemDetai
         Common.showActivityIndicatory(view: self.view)
         _ = itemDetailVM.sendValues(name: name, category: category, uom: uom,notes:notes,price:price,nonUnitPrice:nonUnitPrice,perVal:perVal, roLevel:roLevel, image:selectedImage)
     }
-    
-    @IBAction func onBack(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
+
     
     // image picker
     func didSelect(image: UIImage?) {
@@ -151,13 +186,12 @@ class ItemDetailViewController: UIViewController, ImagePickerDelegate, ItemDetai
      }
      
     func addSuccess() {
-           /*let storyboard = UIStoryboard(name: "Home", bundle: nil)
-           let homeViewController = storyboard.instantiateViewController(withIdentifier: "homeViewController") as! HomeViewController
-           self.navigationController?.pushViewController(homeViewController, animated: true)*/
+        Common.stopActivityIndicatory()
+        navigationController?.popViewController(animated: true)
     }
        
     func displayError(msg: String) {
-           Common.stopActivityIndicatory()
-           Common.showAlert(msg: msg, viewController: self)
+        Common.stopActivityIndicatory()
+        Common.showAlert(msg: msg, viewController: self)
     }
 }

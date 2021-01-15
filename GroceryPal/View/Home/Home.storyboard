@@ -73,7 +73,7 @@
                                                         <color key="textColor" red="0.0" green="0.53333333329999999" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 items stored" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iGZ-gV-cmb">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iGZ-gV-cmb">
                                                         <rect key="frame" x="0.0" y="25.333333333333343" width="214" height="17"/>
                                                         <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
                                                         <color key="textColor" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
@@ -115,7 +115,7 @@
                                                         <color key="textColor" red="0.0" green="0.53333333329999999" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="54 items available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLr-YU-fCD">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLr-YU-fCD">
                                                         <rect key="frame" x="0.0" y="25.333333333333314" width="214" height="17"/>
                                                         <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
                                                         <color key="textColor" red="0.59215686270000001" green="0.59215686270000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -287,6 +287,7 @@
                         <outlet property="itemsView" destination="Dtk-Re-rt3" id="fnx-zf-1vf"/>
                         <outlet property="restockNeededView" destination="Tkj-TA-df7" id="jVy-7F-bIU"/>
                         <outlet property="statisticsView" destination="Hor-48-vDf" id="4wO-Nw-Jft"/>
+                        <outlet property="stockItemCount" destination="iGZ-gV-cmb" id="DnZ-KK-l9s"/>
                         <outlet property="storageView" destination="MCr-Do-PbF" id="dFr-vG-hmZ"/>
                         <segue destination="Lee-Og-2AI" kind="show" identifier="segueItemMain" id="gkh-Tg-uUK"/>
                         <segue destination="8LY-vX-JKv" kind="show" identifier="segueRestockMain" id="EDn-QE-izS"/>

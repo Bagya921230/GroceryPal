@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController,ItemEvents {
+class HomeViewController: UIViewController,ItemEvents, StockItemEvents {
     
     // MARK: - Outlet
     @IBOutlet weak var storageView: UIView!
@@ -17,13 +17,20 @@ class HomeViewController: UIViewController,ItemEvents {
     @IBOutlet weak var restockNeededView: UIView!
     @IBOutlet weak var statisticsView: UIView!
     @IBOutlet weak var itemCount: UILabel!
+    @IBOutlet weak var stockItemCount: UILabel!
     
     let homeVM = HomeVM()
+    let fireStoreQueries = FireStoreItemQueries()
+    let fireStoreStockQueries = FireStoreStockQueries()
     var itemList = [Item]()
+    var stockItemList = [StockItem]()
 
     // MARK: - Actions
     @IBAction func clickStorage(_ sender: Any) {
         self.tabBarController?.selectedIndex = 1
+        let nav = self.tabBarController?.viewControllers?[1] as! UINavigationController
+        let vc = nav.topViewController as! StorageMainViewController
+        vc.isEmpty = stockItemList.count == 0
     }
     
     @IBAction func clickGrocery(_ sender: Any) {
@@ -48,9 +55,10 @@ class HomeViewController: UIViewController,ItemEvents {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        FireStoreDataBase.shared.delegateItemEvents = self
+        fireStoreQueries.delegateItemEvents = self
+        fireStoreStockQueries.delegateStockItemEvents = self
         configureUI()
-        homeVM.onLoad()
+        homeVM.onLoad(fireStoreQueries: fireStoreQueries, fireStoreStockQueries: fireStoreStockQueries)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,7 +80,7 @@ class HomeViewController: UIViewController,ItemEvents {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueItemMain"{
             if let vc = segue.destination as? ItemsMainViewController {
-                vc.itemList = itemList
+                vc.isEmpty = itemList.count == 0
             }
         }
     }
@@ -87,6 +95,11 @@ class HomeViewController: UIViewController,ItemEvents {
     func itemList(itemList: [Item]) {
         self.itemList = itemList
         itemCount.text = String(itemList.count)+" "+(itemList.count < 2 ? "item" : "items")+" available"
+    }
+    
+    func stockItemList(stockItemList: [StockItem]) {
+        self.stockItemList = stockItemList
+        stockItemCount.text = String(stockItemList.count)+" "+(stockItemList.count < 2 ? "item" : "items")+" available"
     }
     
 }

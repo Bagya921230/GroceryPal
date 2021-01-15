@@ -16,7 +16,7 @@ protocol StorageListViewControllerDelegate {
     func addSuccess()
 }
 
-class StorageListViewController: UIViewController, StorageListViewControllerDelegate {
+class StorageListViewController: UIViewController, StorageListViewControllerDelegate, StockItemEvents {
 
     //MARK: - Outlet
     @IBOutlet weak var categoryDropDown: DropDown!
@@ -25,12 +25,17 @@ class StorageListViewController: UIViewController, StorageListViewControllerDele
     
     var isEditMode: Bool = false
     let storageListVM = StorageListVM()
+    var stockItemList = [StockItem]()
+    var filteredStockItemList = [StockItem]()
+    var selectedItem: StockItem?
+    let fireStoreStockQueries = FireStoreStockQueries()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         storageListVM.delegate = self
-        storageListVM.onLoad()
+        fireStoreStockQueries.delegateStockItemEvents = self
+        storageListVM.onLoad(fireStoreStockQueries: fireStoreStockQueries)
     }
     
     func configureUI() {
@@ -44,18 +49,23 @@ class StorageListViewController: UIViewController, StorageListViewControllerDele
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        tableView.reloadData()
     }
     
     func displayCategories(list: [String]) {
-        let selectedVal = list[0]
-        self.categoryDropDown.optionArray = list
+        var catist = list
+        catist.insert("All", at: 0)
+        let selectedVal = catist[0]
+        self.categoryDropDown.optionArray = catist
         self.categoryDropDown.selectedIndex = 0
         self.categoryDropDown.text = selectedVal
     }
     
     func displayStatus(list: [String]) {
-        let selectedVal = list[0]
-        self.statusDropDown.optionArray = list
+        var statList = list
+        statList.insert("All", at: 0)
+        let selectedVal = statList[0]
+        self.statusDropDown.optionArray = statList
         self.statusDropDown.selectedIndex = 0
         self.statusDropDown.text = selectedVal
     }
@@ -68,6 +78,22 @@ class StorageListViewController: UIViewController, StorageListViewControllerDele
     func addSuccess() {
         
     }
+    
+    func stockItemList(stockItemList: [StockItem]) {
+        self.stockItemList = stockItemList
+        self.filteredStockItemList = stockItemList
+        tableView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueUpdateStorage"{
+            if let vc = segue.destination as? UpdateStorageViewController {
+                let addBarItem = UIBarButtonItem(title: "Update", style: .done, target: vc, action: #selector(vc.onUpdate))
+                self.navigationItem.rightBarButtonItem  = addBarItem
+                vc.selectedItem = selectedItem
+            }
+        }
+    }
 
 }
 
@@ -77,7 +103,7 @@ extension StorageListViewController : UITableViewDataSource , UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return filteredStockItemList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -85,18 +111,13 @@ extension StorageListViewController : UITableViewDataSource , UITableViewDelegat
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? StorageItemTableViewCell else {
             fatalError("The dequed cell is not an instance of StorageItemTableViewCell")
         }
-        
-        if (indexPath.row == 1) {
-           cell.setUp(name: "Coconut Oil 500ml", image: UIImage(named: "temp")!, quantity: "25", date: "02/01/2021", level: "100ml", expired: true, outOfStock: false)
-        } else if (indexPath.row == 2) {
-           cell.setUp(name: "Coconut Oil 500ml", image: UIImage(named: "temp")!, quantity: "25", date: "02/01/2021", level: "100ml", expired: false, outOfStock: true)
-        } else {
-            cell.setUp(name: "Coconut Oil 500ml", image: UIImage(named: "temp")!, quantity: "25", date: "02/01/2021", level: "100ml", expired: false, outOfStock: false)
-        }
+        let item = filteredStockItemList[indexPath.row]
+        cell.setUp(item: item)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedItem = filteredStockItemList[indexPath.row]
         performSegue(withIdentifier: "segueUpdateStorage", sender: nil)
     }
     

@@ -22,4 +22,8 @@ class ScanViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
+    @objc
+    func onDoneAction() {
+        print("done from scan")
+    }
 }

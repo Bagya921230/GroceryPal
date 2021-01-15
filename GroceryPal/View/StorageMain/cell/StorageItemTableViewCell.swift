@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SDWebImage
+import FirebaseUI
 
 class StorageItemTableViewCell: UITableViewCell {
 
@@ -29,17 +31,18 @@ class StorageItemTableViewCell: UITableViewCell {
         self.expiredImageView.isHidden = true
     }
     
-    func setUp(name: String,image: UIImage, quantity: String, date: String, level: String, expired: Bool, outOfStock: Bool) {
-        nameLabel.text = name
-        quantityLabel.text = quantity
-        dateLabel.text = date
-        levelLabel.text = level
-        itemImageView.image = image
-        if (outOfStock) {
+    func setUp(item: StockItem) {
+        nameLabel.text = item.name
+        quantityLabel.text = String(format: "%.2f",item.quantity)
+        dateLabel.text = item.expDate
+        levelLabel.text = String(format: "%.2f",item.roLevel)
+        let referenceImage = Storage.storage().reference().child(item.image)
+        itemImageView.sd_setImage(with: referenceImage,placeholderImage: UIImage(named: "placeholder"))
+        if (item.status == "restock") {
             stockImageView.isHidden = false
             expiredImageView.isHidden = true
         }
-        if (expired) {
+        if (item.status == "expired" ) {
             expiredImageView.isHidden = false
             stockImageView.isHidden = true
         }

@@ -23,27 +23,29 @@ class ManualViewController: UIViewController, ManualViewControllerDelegate, Item
     @IBOutlet weak var measurementTextField: UITextField!
     @IBOutlet weak var priceTextField: UITextField!
     @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var unitPriceTextField: UITextField!
     
     let datePicker = UIDatePicker()
     let manualVM = ManualVM()
     var itemList = [Item]()
     var selectedItem: Item?
+    let fireStoreItemQueries = FireStoreItemQueries()
+    var addToStoragedelegate: AddToStorageViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        FireStoreDataBase.shared.delegateItemEvents = self
-        manualVM.onLoad()
+        fireStoreItemQueries.delegateItemEvents = self
+        manualVM.delegate = self
+        manualVM.onLoad(fireStoreQueries: fireStoreItemQueries)
         handleItemDropDown()
     }
     
     func configureUI() {
         expiryTextField.setRightIcon(icon: UIImage(systemName: "calendar")!)
-        quantityTextField.setRightLabel(text: "kg")
-        measurementTextField.setRightLabel(text: "kg")
         priceTextField.setRightLabel(text: "LKR")
         itemNameDropdown.setLeftIcon(icon: UIImage(systemName: "magnifyingglass")!)
-        expiryTextField.setInputViewDatePicker(target: self, selector: #selector(tapDone))
+        expiryTextField.setInputViewDatePicker(target: self, selector: #selector(tapDatePickerDone))
 
     }
 
@@ -52,8 +54,8 @@ class ManualViewController: UIViewController, ManualViewControllerDelegate, Item
         self.tabBarController?.tabBar.isHidden = false
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-
-    @objc func tapDone() {
+    
+    @objc func tapDatePickerDone() {
          if let datePicker = self.expiryTextField.inputView as? UIDatePicker {
              let dateformatter = DateFormatter()
              dateformatter.dateStyle = .medium
@@ -67,19 +69,30 @@ class ManualViewController: UIViewController, ManualViewControllerDelegate, Item
      }
     
     func displayItems(list: [String]) {
-        //let selectedVal = list[0]
         self.itemNameDropdown.optionArray = list
-        //self.itemNameDropdown.selectedIndex = 0
-        //self.itemNameDropdown.text = selectedVal
     }
     
     func handleItemDropDown()
     {
         itemNameDropdown.didSelect{(selectedText , index ,id) in
+            self.selectedItem = self.itemList[index]
+            
             self.categoryLabel.text = self.itemList[index].category
-            self.measurementTextField.setRightLabel(text: self.itemList[index].uom)
-            self.measurementTextField.text = String(format: "%.2f", self.itemList[index].perValue)
-            self.priceTextField.text = String(format: "%.2f", self.itemList[index].unitPrice)
+            if self.itemList[index].uom == "unit" {
+                self.unitPriceTextField.text = String(format: "%.2f", self.itemList[index].unitPrice)
+                self.unitPriceTextField.isHidden = false
+                self.priceTextField.isHidden = true
+                self.measurementTextField.isHidden = true
+                self.quantityTextField.setRightLabel(text: "")
+            } else {
+                self.measurementTextField.setRightLabel(text: self.itemList[index].uom)
+                self.quantityTextField.setRightLabel(text: self.itemList[index].uom)
+                self.measurementTextField.text = String(format: "%.2f", self.itemList[index].perValue)
+                self.priceTextField.text = String(format: "%.2f", self.itemList[index].unitPrice)
+                self.unitPriceTextField.isHidden = true
+                self.priceTextField.isHidden = false
+                self.measurementTextField.isHidden = false
+            }
         }
     }
     
@@ -89,8 +102,28 @@ class ManualViewController: UIViewController, ManualViewControllerDelegate, Item
     }
     
     func addSuccess() {
-        
+        Common.stopActivityIndicatory()
+        navigationController?.popViewController(animated: true)
     }
+    
+    @objc
+    func onDoneAction() {
+        let name =  self.itemNameDropdown.text!
+        let category =  self.selectedItem?.category
+        let uom =  self.selectedItem?.uom
+        let notes = self.selectedItem?.notes
+        let image = self.selectedItem?.image
+        let unitPrice =  self.unitPriceTextField.text!
+        let nonUnitPrice =  self.priceTextField.text!
+        let perVal =  self.measurementTextField.text!
+        let roLevel =  self.selectedItem?.roLevel
+        let quantity = self.quantityTextField.text!
+        let expDate = self.expiryTextField.text!
+
+        Common.showActivityIndicatory(view: self.view)
+        _ = manualVM.sendValues(name: name, category: category!, uom: uom!, notes:notes!,unitPrice: unitPrice, nonUnitPrice:nonUnitPrice, perVal:perVal, roLevel:roLevel!, quantity: quantity, expDate: expDate, image: image!)
+    }
+
     
     func itemList(itemList: [Item]) {
         self.itemList = itemList

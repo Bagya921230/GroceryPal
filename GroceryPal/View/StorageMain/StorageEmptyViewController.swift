@@ -10,10 +10,13 @@ import UIKit
 
 class StorageEmptyViewController: UIViewController {
 
+    @IBAction func addToStoreAction(_ sender: Any) {
+        performSegue(withIdentifier: "segueAddToStore", sender: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
 
     override func viewWillAppear(_ animated: Bool) {

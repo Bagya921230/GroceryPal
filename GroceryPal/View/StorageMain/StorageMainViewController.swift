@@ -14,6 +14,7 @@ class StorageMainViewController: UIViewController {
     @IBOutlet weak var emptyContainer: UIView!
     @IBOutlet weak var listContainerView: UIView!
     @IBOutlet weak var addNewBtn: UIButton!
+    var isEmpty: Bool = true
     
     // MARK: - Actions
     @IBAction func addToStorageAction(_ sender: Any) {
@@ -22,8 +23,11 @@ class StorageMainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //showEmptyView()
-        showListView()
+        if(isEmpty){
+           showEmptyView()
+        } else {
+           showListView()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

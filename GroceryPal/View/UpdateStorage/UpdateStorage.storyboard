@@ -208,19 +208,19 @@
                                         <color key="textColor" red="0.59215686270000001" green="0.59215686270000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="FWI-Uf-s89">
-                                        <rect key="frame" x="28" y="50.5" width="358" height="2.5"/>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="FWI-Uf-s89">
+                                        <rect key="frame" x="28" y="50.5" width="358" height="2"/>
                                         <color key="progressTintColor" red="0.3411764706" green="0.62352941179999999" blue="0.81568627449999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="trackTintColor" red="0.59215686270000001" green="0.59215686270000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </progressView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pm-yg-2uC">
-                                        <rect key="frame" x="194" y="68" width="26.5" height="14.5"/>
+                                        <rect key="frame" x="194" y="68.5" width="26.5" height="14.5"/>
                                         <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
                                         <color key="textColor" red="0.058823529409999999" green="0.18823529410000001" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Approximately 300ml " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9V2-MD-ukN">
-                                        <rect key="frame" x="145" y="90.5" width="124.5" height="14.5"/>
+                                        <rect key="frame" x="145" y="91" width="124.5" height="14.5"/>
                                         <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
                                         <color key="textColor" red="0.59215686270000001" green="0.59215686270000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -239,7 +239,7 @@
                                     <constraint firstItem="MOe-AR-Pxx" firstAttribute="centerX" secondItem="5NU-Pw-LEe" secondAttribute="centerX" id="tk5-9l-1Ww"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WIg-dj-MYd" userLabel="unit view">
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WIg-dj-MYd" userLabel="unit view">
                                 <rect key="frame" x="0.0" y="504" width="414" height="348"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remaining Quantity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpX-st-wdm">
@@ -311,6 +311,22 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sHL-R2-mZq"/>
                     </view>
+                    <connections>
+                        <outlet property="addedOn" destination="Qp6-Gv-5vs" id="kuj-gE-pHO"/>
+                        <outlet property="addedQty" destination="Zmz-Cq-ogU" id="mUn-gh-cPp"/>
+                        <outlet property="approxQty" destination="9V2-MD-ukN" id="gSA-Cb-KPQ"/>
+                        <outlet property="category" destination="3Or-Mh-9Mo" id="xSf-Vq-peT"/>
+                        <outlet property="expDate" destination="nb9-Rl-xaG" id="OML-7u-Jo0"/>
+                        <outlet property="name" destination="Sa5-8H-rOM" id="LZl-Cs-1dJ"/>
+                        <outlet property="nonUnitView" destination="5NU-Pw-LEe" id="aa7-Wk-xSU"/>
+                        <outlet property="notes" destination="Z2t-em-4iH" id="Ry4-mm-TAh"/>
+                        <outlet property="price" destination="5Dv-77-FLo" id="5YI-LV-LNp"/>
+                        <outlet property="remainNonunitQty" destination="lc4-D6-TYL" id="FEa-r8-hLf"/>
+                        <outlet property="remainQty" destination="lc4-D6-TYL" id="wqH-oW-E8I"/>
+                        <outlet property="roLevel" destination="wwa-Am-yVF" id="UF9-Ec-RSn"/>
+                        <outlet property="unitView" destination="WIg-dj-MYd" id="O7M-MN-R1g"/>
+                        <outlet property="uom" destination="5pc-LN-aCI" id="rgh-II-193"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vgx-1n-ozG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

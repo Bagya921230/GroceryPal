@@ -11,9 +11,10 @@ import Foundation
 
 class HomeVM {
     
-    func onLoad()
+    func onLoad(fireStoreQueries: FireStoreItemQueries, fireStoreStockQueries: FireStoreStockQueries)
     {
-        FireStoreDataBase.shared.fetchItems()
+        fireStoreQueries.fetchItems()
+        fireStoreStockQueries.fetchStockItems()
     }
 
 }

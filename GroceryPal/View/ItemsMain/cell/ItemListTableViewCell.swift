@@ -30,7 +30,7 @@ class ItemListTableViewCell: UITableViewCell {
         categoryLabel.text = item.category
         
         let referenceImage = Storage.storage().reference().child(item.image)
-        itemImageView.sd_setImage(with: referenceImage,placeholderImage: nil)
+        itemImageView.sd_setImage(with: referenceImage,placeholderImage: UIImage(named: "placeholder"))
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -126,6 +126,9 @@
                                         <integer key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="addToStoreAction:" destination="aR8-GP-7aA" eventType="touchUpInside" id="fJi-nb-TSy"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -141,10 +144,23 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Sws-iL-ggH"/>
                     </view>
+                    <connections>
+                        <segue destination="Cou-rU-4Ao" kind="show" identifier="segueAddToStore" id="ZBc-EP-091"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8xH-ob-wYx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1613.0434782608697" y="79.6875"/>
+        </scene>
+        <!--AddToStorage-->
+        <scene sceneID="IT1-yG-TKb">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddToStorage" id="Cou-rU-4Ao" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Yfy-Eg-aCH"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w46-Rx-B2R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2269" y="33"/>
         </scene>
         <!--Storage List View Controller-->
         <scene sceneID="qOd-z2-yc7">

@@ -63,7 +63,7 @@ class SignUpVM {
     {
         Auth.auth().createUser(withEmail: email, password: pw) { authResult, error in
             if authResult != nil {
-                self.addToFireStore(name: name, uid: (authResult?.user.uid)!, completion: { _ in })
+                self.addToFireStore(name: name, uid: (authResult?.user.uid)!)
                 completion(true)
             }
            else {
@@ -73,16 +73,15 @@ class SignUpVM {
         }
     }
     
-    func addToFireStore(name:String, uid: String, completion: @escaping(Bool)->())
+    func addToFireStore(name:String, uid: String)
     {
-        let dispatch = DispatchGroup()
-        FireStoreDataBase.shared.addUser(dispatch: dispatch, docId: uid, name: name){_ in
-                   dispatch.notify(queue: .main, execute: {
+        FireStoreDataBase.shared.addUser(docId: uid, name: name){status in
+                   if(status)
+                   {
                             UserDefaults.standard.set(true, forKey: "loggedIn")
                             UserDefaults.standard.set(uid, forKey: "userId")
                             self.delegate?.signUpSuccess()
-                            completion(true)
-                   })
+                   }
         }
     }
 }

@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol AddToStorageViewControllerDelegate {
+    func onDoneAction()
+}
+
 class AddToStorageViewController: UIViewController {
     
     //MARK:- Outlet
@@ -30,6 +34,7 @@ class AddToStorageViewController: UIViewController {
         }
     }
     
+    var delegate: AddToStorageViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,17 +45,34 @@ class AddToStorageViewController: UIViewController {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         navigationController?.setNavigationBarHidden(false, animated: animated)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done",
-        style: .plain,
-        target: self,
-        action: #selector(onDoneAction))
-        self.navigationItem.rightBarButtonItem?.tintColor = UIColor(hex: "#008891ff")
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done",
+//        style: .plain,
+//        target: self,
+//        action: #selector(onDoneAction))
+//        self.navigationItem.rightBarButtonItem?.tintColor = UIColor(hex: "#008891ff")
 
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueManual"{
+            if let vc = segue.destination as? ManualViewController {
+                let addBarItem = UIBarButtonItem(title: "Done", style: .done, target: vc, action: #selector(vc.onDoneAction))
+                self.navigationItem.rightBarButtonItem  = addBarItem
+            }
+        }
+        if segue.identifier == "segueScan" && segmentedControl.selectedSegmentIndex == 0{
+            if let vc = segue.destination as? ScanViewController {
+                let addBarItem = UIBarButtonItem(title: "Done", style: .done, target: vc, action: #selector(vc.onDoneAction))
+                self.navigationItem.rightBarButtonItem  = addBarItem
+            }
+        }
     }
     
     @objc
     func onDoneAction() {
-        self.navigationController?.popViewController(animated: true)
+        if self.delegate != nil {
+            self.delegate?.onDoneAction()
+        }
     }
     
     func configureUI() {
