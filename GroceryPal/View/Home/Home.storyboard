@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="giy-wx-PYL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="giy-wx-PYL">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,11 +20,18 @@
                                 <rect key="frame" x="20" y="64" width="374" height="25"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grocery Pal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kwr-dp-n2i">
-                                        <rect key="frame" x="0.0" y="0.0" width="314" height="25"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="210" height="25"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NU4-gx-m8w">
+                                        <rect key="frame" x="215" y="0.0" width="99" height="25"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <segue destination="PeE-jJ-cof" kind="show" id="91U-4W-5QQ"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y5H-rG-7vh">
                                         <rect key="frame" x="319" y="0.0" width="25" height="25"/>
                                         <accessibility key="accessibilityConfiguration" identifier="logout_home"/>
@@ -326,6 +334,16 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1120.2898550724638" y="-1170.6521739130435"/>
+        </scene>
+        <!--AddToStorage-->
+        <scene sceneID="lkU-zN-6o1">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddToStorage" id="PeE-jJ-cof" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="pkd-VN-Fgb"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RgE-ew-xiP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1812" y="-1469"/>
         </scene>
         <!--Notifications-->
         <scene sceneID="bYL-aM-EWB">

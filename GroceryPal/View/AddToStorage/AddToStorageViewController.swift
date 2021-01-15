@@ -7,79 +7,70 @@
 //
 
 import UIKit
+import BarcodeScanner
 
-protocol AddToStorageViewControllerDelegate {
-    func onDoneAction()
+protocol ScanViewControllerDelegate {
+    func didScan(msg: String)
 }
 
-class AddToStorageViewController: UIViewController {
+class AddToStorageViewController: UIViewController, BarcodeScannerCodeDelegate, BarcodeScannerErrorDelegate {
     
     //MARK:- Outlet
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    @IBOutlet weak var scanContainer: UIView!
+    @IBOutlet weak var scanButton: UIButton!
     @IBOutlet weak var manualContainerView: UIView!
-
-    //MARK:- Action
-    @IBAction func indexChanged(_ sender: Any) {
-        switch segmentedControl.selectedSegmentIndex
-        {
-        case 0:
-            scanContainer.alpha = 1
-            manualContainerView.alpha = 0
-        case 1:
-            scanContainer.alpha = 0
-            manualContainerView.alpha = 1
-        default:
-            break
-        }
-    }
+    let viewController = BarcodeScannerViewController()
     
-    var delegate: AddToStorageViewControllerDelegate?
+    var delegate: ScanViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
+        viewController.codeDelegate = self
+        scanButton.createRoundedButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         navigationController?.setNavigationBarHidden(false, animated: animated)
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done",
-//        style: .plain,
-//        target: self,
-//        action: #selector(onDoneAction))
-//        self.navigationItem.rightBarButtonItem?.tintColor = UIColor(hex: "#008891ff")
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueManual"{
             if let vc = segue.destination as? ManualViewController {
-                let addBarItem = UIBarButtonItem(title: "Done", style: .done, target: vc, action: #selector(vc.onDoneAction))
-                self.navigationItem.rightBarButtonItem  = addBarItem
-            }
-        }
-        if segue.identifier == "segueScan" && segmentedControl.selectedSegmentIndex == 0{
-            if let vc = segue.destination as? ScanViewController {
-                let addBarItem = UIBarButtonItem(title: "Done", style: .done, target: vc, action: #selector(vc.onDoneAction))
-                self.navigationItem.rightBarButtonItem  = addBarItem
+                delegate = vc
+                let onSaveBarItem = UIBarButtonItem(title: "Done", style: .done, target: vc, action: #selector(vc.onDoneAction))
+                self.navigationItem.rightBarButtonItem  = onSaveBarItem
             }
         }
     }
     
-    @objc
-    func onDoneAction() {
-        if self.delegate != nil {
-            self.delegate?.onDoneAction()
-        }
+    // scan
+    @IBAction func onScanClick(_ sender: Any) {
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
-    func configureUI() {
-        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.selected)
-        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: UIControl.State.normal)
-        scanContainer.alpha = 1
-        manualContainerView.alpha = 0
+    func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {
+         if code.contains("expDate") {
+                let date : [String] = code.components(separatedBy: "=")
+                delegate!.didScan(msg: date[1])
+         }
+         else
+         {
+            Common.showAlert(msg: "Cannot capture the expiry date", viewController: self)
+         }
+         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
+           controller.reset()
+           controller.dismiss(animated: true, completion: nil)
+           self.navigationController?.popViewController(animated: true)
+         }
     }
-
+       
+    func scanner(_ controller: BarcodeScannerViewController, didReceiveError error: Error) {
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
+          controller.reset()
+          controller.dismiss(animated: true, completion: nil)
+          self.navigationController?.popViewController(animated: true)
+          Common.showAlert(msg: "Error occured in scanning", viewController: self)
+        }
+    }
 }

@@ -11,7 +11,7 @@ import UIKit
 
 class Common
 {
-    static let myActivityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+    static let myActivityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.whiteLarge)
 
     static func showActivityIndicatory(view: UIView) {
         myActivityIndicator.center = view.center

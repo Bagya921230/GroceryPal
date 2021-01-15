@@ -25,13 +25,13 @@ class SignInViewController: UIViewController,SignInViewControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        signIn.createRoundedButton()
         signInVM.delegate = self
         self.hideKeyboardWhenTappedAround(scrollView: scrollView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        signIn.createRoundedButton()
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
