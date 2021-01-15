@@ -29,6 +29,8 @@ class StorageListViewController: UIViewController, StorageListViewControllerDele
     var filteredStockItemList = [StockItem]()
     var selectedItem: StockItem?
     let fireStoreStockQueries = FireStoreStockQueries()
+    var selectedCategory = "All"
+    var selectedStatus = "All"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +38,7 @@ class StorageListViewController: UIViewController, StorageListViewControllerDele
         storageListVM.delegate = self
         fireStoreStockQueries.delegateStockItemEvents = self
         storageListVM.onLoad(fireStoreStockQueries: fireStoreStockQueries)
+        handleDropDowns()
     }
     
     func configureUI() {
@@ -43,6 +46,31 @@ class StorageListViewController: UIViewController, StorageListViewControllerDele
         tableView.delegate = self
         tableView.allowsSelection = true
         tableView.separatorStyle = .none
+    }
+    
+    func handleDropDowns()
+    {
+        categoryDropDown.didSelect{(selectedText , index ,id) in
+            self.selectedCategory = selectedText
+            self.filterList()
+        }
+        statusDropDown.didSelect{(selectedText , index ,id) in
+            self.selectedStatus = selectedText
+            self.filterList()
+        }
+    }
+    
+    func filterList() {
+        if self.selectedStatus == "All" && self.selectedCategory == "All"{
+            self.filteredStockItemList = self.stockItemList
+        } else if self.selectedStatus == "All" {
+            self.filteredStockItemList = self.stockItemList.filter{ $0.category.contains(self.selectedCategory)}
+        } else if self.selectedCategory == "All" {
+            self.filteredStockItemList = self.stockItemList.filter{ $0.status.contains(self.selectedStatus)}
+        } else {
+            self.filteredStockItemList = self.stockItemList.filter{ $0.category.contains(self.selectedCategory) && $0.status.contains(self.selectedStatus)}
+        }
+        self.tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,7 +111,19 @@ class StorageListViewController: UIViewController, StorageListViewControllerDele
         self.stockItemList = stockItemList
         self.filteredStockItemList = stockItemList
         tableView.reloadData()
+        handleBackgroundView()
     }
+    
+    func handleBackgroundView() {
+           if let vcs = self.navigationController?.viewControllers {
+               let previousVC = vcs[0]
+               if previousVC is StorageMainViewController {
+                   let isEmpty = stockItemList.count == 0
+                   (previousVC as! StorageMainViewController).isEmpty = isEmpty
+                   (previousVC as! StorageMainViewController).onLoad()
+               }
+           }
+       }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueUpdateStorage"{
@@ -121,6 +161,18 @@ extension StorageListViewController : UITableViewDataSource , UITableViewDelegat
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 140
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            storageListVM.deleteItem(item: filteredStockItemList[indexPath.row], completion: {
+                status in
+                      if(!status)
+                      {
+                          self.displayError(msg: "Cannot delete the item")
+                      }
+            })
+        }
     }
     
 }

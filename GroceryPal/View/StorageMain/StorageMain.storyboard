@@ -24,7 +24,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W8l-ua-bQk">
                                 <rect key="frame" x="0.0" y="137" width="414" height="676"/>
                                 <connections>
-                                    <segue destination="aR8-GP-7aA" kind="embed" id="a4Z-3H-YnF"/>
+                                    <segue destination="aR8-GP-7aA" kind="embed" identifier="segueStoreEmpty" id="a4Z-3H-YnF"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ujO-oj-IKJ">
@@ -145,6 +145,7 @@
                         <viewLayoutGuide key="safeArea" id="Sws-iL-ggH"/>
                     </view>
                     <connections>
+                        <outlet property="addNewBtn" destination="adf-NW-L1p" id="irH-Uh-Pe2"/>
                         <segue destination="Cou-rU-4Ao" kind="show" identifier="segueAddToStore" id="ZBc-EP-091"/>
                     </connections>
                 </viewController>

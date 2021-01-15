@@ -15,6 +15,7 @@ class StorageMainViewController: UIViewController {
     @IBOutlet weak var listContainerView: UIView!
     @IBOutlet weak var addNewBtn: UIButton!
     var isEmpty: Bool = true
+    var noItems: Bool = false
     
     // MARK: - Actions
     @IBAction func addToStorageAction(_ sender: Any) {
@@ -23,10 +24,23 @@ class StorageMainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        onLoad()
+    }
+    
+    func onLoad()
+    {
         if(isEmpty){
            showEmptyView()
         } else {
            showListView()
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueStoreEmpty"{
+            if let vc = segue.destination as? StorageEmptyViewController {
+                vc.noItems = noItems
+            }
         }
     }
     

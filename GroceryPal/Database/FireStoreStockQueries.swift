@@ -83,6 +83,8 @@ class FireStoreStockQueries {
             dictionary["quantity"] = newQty
             if (newQty <= item.roLevel) {
                 dictionary["status"] = "restock"
+            } else {
+                dictionary["status"] = "active"
             }
             
             FireStoreDataBase.shared.firebaseDb.collection("user").document(self.userId).collection("storage").document(item.id).setData(dictionary,merge: true)
@@ -128,6 +130,18 @@ class FireStoreStockQueries {
             }
         
             self.delegateRestockItemEvents?.restockItemList(restockItemList: itemList)
+        }
+    }
+    
+    func deleteItem(item: StockItem, completion: @escaping(Bool)->())
+    {
+        FireStoreDataBase.shared.firebaseDb.collection("user").document(self.userId).collection("storage").document(item.id).delete() { err in
+            if let err = err {
+                print("Error removing item: \(err)")
+                completion(false)
+            } else {
+                completion(true)
+            }
         }
     }
 }

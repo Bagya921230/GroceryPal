@@ -33,6 +33,7 @@ class HomeViewController: UIViewController,ItemEvents, StockItemEvents , Restock
         let nav = self.tabBarController?.viewControllers?[1] as! UINavigationController
         let vc = nav.topViewController as! StorageMainViewController
         vc.isEmpty = stockItemList.count == 0
+        vc.noItems = itemList.count == 0
     }
     
     @IBAction func clickGrocery(_ sender: Any) {
@@ -69,6 +70,10 @@ class HomeViewController: UIViewController,ItemEvents, StockItemEvents , Restock
         self.tabBarController?.tabBar.isHidden = true
         navigationController?.setNavigationBarHidden(true, animated: animated)
         navigationController?.navigationBar.tintColor = UIColor.themeColor()
+        let nav = self.tabBarController?.viewControllers?[1] as! UINavigationController
+        let vc = nav.topViewController as! StorageMainViewController
+        vc.isEmpty = stockItemList.count == 0
+        vc.noItems = itemList.count == 0
     }
     
     func configureUI() {

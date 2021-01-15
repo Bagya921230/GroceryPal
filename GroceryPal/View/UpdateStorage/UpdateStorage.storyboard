@@ -324,6 +324,7 @@
                         <outlet property="approxQty" destination="9V2-MD-ukN" id="gSA-Cb-KPQ"/>
                         <outlet property="category" destination="3Or-Mh-9Mo" id="xSf-Vq-peT"/>
                         <outlet property="expDate" destination="nb9-Rl-xaG" id="OML-7u-Jo0"/>
+                        <outlet property="itemImageView" destination="NxA-K9-hw0" id="Yp4-OF-XxP"/>
                         <outlet property="minusButton" destination="6aU-y8-7f8" id="eVT-VH-kgi"/>
                         <outlet property="name" destination="Sa5-8H-rOM" id="LZl-Cs-1dJ"/>
                         <outlet property="nonUnitView" destination="5NU-Pw-LEe" id="aa7-Wk-xSU"/>

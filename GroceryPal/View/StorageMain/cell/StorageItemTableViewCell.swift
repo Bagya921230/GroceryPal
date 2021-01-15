@@ -46,9 +46,11 @@ class StorageItemTableViewCell: UITableViewCell {
         if (item.status == "restock") {
             stockImageView.isHidden = false
             expiredImageView.isHidden = true
-        }
-        if (item.status == "expired" ) {
+        }else if (item.status == "expired" ) {
             expiredImageView.isHidden = false
+            stockImageView.isHidden = true
+        } else {
+            expiredImageView.isHidden = true
             stockImageView.isHidden = true
         }
     }

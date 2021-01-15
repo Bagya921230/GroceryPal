@@ -9,6 +9,9 @@
 import UIKit
 
 class StorageEmptyViewController: UIViewController {
+    
+    @IBOutlet weak var addNewBtn: UIButton!
+    var noItems: Bool = false
 
     @IBAction func addToStoreAction(_ sender: Any) {
         performSegue(withIdentifier: "segueAddToStore", sender: nil)

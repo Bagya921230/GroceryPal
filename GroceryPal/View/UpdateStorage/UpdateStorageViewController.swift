@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import FirebaseUI
 
 protocol UpdateStorageViewControllerDelegate {
     func displayError(msg: String)
@@ -35,6 +36,7 @@ class UpdateStorageViewController: UIViewController ,UpdateStorageViewController
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var minusButton: UIButton!
+    @IBOutlet weak var itemImageView: UIImageView!
     
     let updateStorageVM = UpdateStorageVM()
     let fireStoreItemQueries = FireStoreItemQueries()
@@ -112,13 +114,15 @@ class UpdateStorageViewController: UIViewController ,UpdateStorageViewController
                 addedQty.text = Common.getFormattedDecimalString(value: selectedItem.initialQty)
                 roLevel.text = Common.getFormattedDecimalString(value: selectedItem.roLevel)
                 remainQty.text = Common.getFormattedDecimalString(value: selectedItem.quantity)
-                self.initNonUnitVal = selectedItem.initialQty
+                self.initNonUnitVal = selectedItem.quantity
                 self.uomVal = selectedItem.uom
-                let value = calculatePercentage(initValue: selectedItem.initialQty, currentVal: selectedItem.quantity)
+                let value = Common.getFormattedDecimalDouble(value: calculatePercentage(initValue: selectedItem.initialQty, currentVal: selectedItem.quantity)) 
                 slider.setValue(Float(value), animated: true)
                 remainNonunitQty.text = "\(value)%"
                 
             }
+            let referenceImage = Storage.storage().reference().child(selectedItem.image)
+            itemImageView.sd_setImage(with: referenceImage,placeholderImage: UIImage(named: "placeholder"))
             name.text = selectedItem.name
             category.text = selectedItem.category
             addedOn.text = selectedItem.addedDate

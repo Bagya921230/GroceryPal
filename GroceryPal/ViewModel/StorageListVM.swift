@@ -35,4 +35,12 @@ class StorageListVM {
         fireStoreStockQueries.fetchStockItems()
     }
 
+    func deleteItem(item: StockItem, completion: @escaping(Bool)->())
+    {
+        fireStoreStockQueries.deleteItem(item: item)
+        {
+            status in
+            completion(status)
+        }
+    }
 }
