@@ -14,6 +14,7 @@ class FireStoreStockQueries {
     
     let userId = UserDefaults.standard.string(forKey: "userId")!
     var delegateStockItemEvents: StockItemEvents?
+    var delegateRestockItemEvents: RestockItemEvents?
     
     func fetchStockItems()
     {
@@ -70,6 +71,64 @@ class FireStoreStockQueries {
         }
         
     }
+    
+    func updateStockItem(item: StockItem, newQty: Double, completed: @escaping (Bool) -> Void)
+    {
+        do
+        {
+            let jsonData = try item.jsonData()
+            let json = try JSONSerialization.jsonObject(with: jsonData, options: [])
+            var dictionary = json as! [String : Any]
+            dictionary["id"] = item.id
+            dictionary["quantity"] = newQty
+            if (newQty <= item.roLevel) {
+                dictionary["status"] = "restock"
+            }
+            
+            FireStoreDataBase.shared.firebaseDb.collection("user").document(self.userId).collection("storage").document(item.id).setData(dictionary,merge: true)
+            { err in
+                if let err = err {
+                    print("Error updating item: \(err)")
+                    completed(false)
+                } else {
+                    completed(true)
+                }
+            }
+            
+        } catch {
+            completed(false)
+        }
+    }
 
+    func fetchRestockItems()
+    {
+
+        FireStoreDataBase.shared.firebaseDb.collection("user").document(self.userId).collection("storage").whereField("status", isEqualTo: "restock").addSnapshotListener { (querySnapshot, error) in
+          
+            var itemList = [StockItem]()
+
+            guard let documents = querySnapshot?.documents else {
+            self.delegateStockItemEvents?.stockItemList(stockItemList: itemList)
+            return
+           }
+
+            _ = documents.map { queryDocumentSnapshot -> Void in
+                
+                do {
+                let data = queryDocumentSnapshot.data()
+                 
+                let jsonObj = try JSONSerialization.data(withJSONObject: data, options: [])
+                var item = try JSONDecoder().decode(StockItem.self, from: jsonObj)
+                item.id = queryDocumentSnapshot.documentID
+                itemList.append(item)
+                }
+                catch{
+                    self.delegateRestockItemEvents?.restockItemList(restockItemList: itemList)
+                }
+            }
+        
+            self.delegateRestockItemEvents?.restockItemList(restockItemList: itemList)
+        }
+    }
 }
 

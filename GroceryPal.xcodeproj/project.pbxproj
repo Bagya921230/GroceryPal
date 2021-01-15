@@ -69,6 +69,8 @@
 		69E7CF5D25AFF716008368AE /* StockItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E7CF5C25AFF716008368AE /* StockItem.swift */; };
 		69E7CF5F25AFF752008368AE /* FireStoreStockQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E7CF5E25AFF752008368AE /* FireStoreStockQueries.swift */; };
 		69E7CF6125B0012E008368AE /* ManualVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E7CF6025B0012E008368AE /* ManualVM.swift */; };
+		69E7CF6325B137BC008368AE /* UpdateStorageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E7CF6225B137BC008368AE /* UpdateStorageVM.swift */; };
+		69E7CF6525B14D11008368AE /* RestockListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E7CF6425B14D11008368AE /* RestockListVM.swift */; };
 		B92899CA25A82CE100D37313 /* SignUpUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92899C925A82CE100D37313 /* SignUpUITest.swift */; };
 		B94E984E25A11C0400875C7F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B94E984D25A11C0400875C7F /* GoogleService-Info.plist */; };
 		B94E985725A21E3D00875C7F /* FireStoreDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94E985625A21E3D00875C7F /* FireStoreDatabase.swift */; };
@@ -182,6 +184,8 @@
 		69E7CF5C25AFF716008368AE /* StockItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockItem.swift; sourceTree = "<group>"; };
 		69E7CF5E25AFF752008368AE /* FireStoreStockQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreStockQueries.swift; sourceTree = "<group>"; };
 		69E7CF6025B0012E008368AE /* ManualVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManualVM.swift; sourceTree = "<group>"; };
+		69E7CF6225B137BC008368AE /* UpdateStorageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStorageVM.swift; sourceTree = "<group>"; };
+		69E7CF6425B14D11008368AE /* RestockListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestockListVM.swift; sourceTree = "<group>"; };
 		A317CCBA347B2433DD25BF70 /* libPods-GroceryPal-GroceryPalUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GroceryPal-GroceryPalUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B92899C925A82CE100D37313 /* SignUpUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUITest.swift; sourceTree = "<group>"; };
 		B94E984D25A11C0400875C7F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -557,6 +561,8 @@
 				B9580FAE25AA6C9400536179 /* ItemDetailVM.swift */,
 				69DD7D8025AD37AF00B16670 /* StorageListVM.swift */,
 				B98E8E0725AF879A000948DD /* ItemListVM.swift */,
+				69E7CF6225B137BC008368AE /* UpdateStorageVM.swift */,
+				69E7CF6425B14D11008368AE /* RestockListVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -866,9 +872,11 @@
 				69461EE4259DEBFD00035AF7 /* NotificationListViewController.swift in Sources */,
 				69188434259F1B4200DE636F /* AddToStorageViewController.swift in Sources */,
 				694B1E6225A9F6D000C4C4B3 /* AddItemToGroceryViewController.swift in Sources */,
+				69E7CF6525B14D11008368AE /* RestockListVM.swift in Sources */,
 				6934D4D12599E48100B4F846 /* RestockMainViewController.swift in Sources */,
 				B9580FA525A9E1D400536179 /* Item.swift in Sources */,
 				696D328B25998C64009ACCB3 /* UIViewEx.swift in Sources */,
+				69E7CF6325B137BC008368AE /* UpdateStorageVM.swift in Sources */,
 				694B1E6625AA06DD00C4C4B3 /* RestockEmptyViewController.swift in Sources */,
 				696D328B25998C64009ACCB3 /* UIViewEx.swift in Sources */,
 				69A7AC3625A9835000B25D2A /* GroceryListViewController.swift in Sources */,

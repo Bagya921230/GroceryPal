@@ -15,6 +15,7 @@ class HomeVM {
     {
         fireStoreQueries.fetchItems()
         fireStoreStockQueries.fetchStockItems()
+        fireStoreStockQueries.fetchRestockItems()
     }
 
 }

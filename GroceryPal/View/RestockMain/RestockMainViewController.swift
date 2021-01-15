@@ -13,11 +13,20 @@ class RestockMainViewController: UIViewController {
     // MARK: - Outlet
     @IBOutlet weak var emptyContainer: UIView!
     @IBOutlet weak var listContainerView: UIView!
+    var isEmpty: Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //showEmptyView()
-        showListView()
+        onLoad()
+    }
+    
+    func onLoad()
+    {
+        if(isEmpty){
+           showEmptyView()
+        } else {
+           showListView()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

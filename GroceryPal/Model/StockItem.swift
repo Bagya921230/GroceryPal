@@ -12,6 +12,10 @@ protocol StockItemEvents {
     func stockItemList(stockItemList: [StockItem])
 }
 
+protocol RestockItemEvents {
+    func restockItemList(restockItemList: [StockItem])
+}
+
 struct StockItem: Codable {
     var id: String
     var name: String

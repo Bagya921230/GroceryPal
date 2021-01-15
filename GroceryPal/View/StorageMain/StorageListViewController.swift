@@ -88,8 +88,6 @@ class StorageListViewController: UIViewController, StorageListViewControllerDele
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueUpdateStorage"{
             if let vc = segue.destination as? UpdateStorageViewController {
-                let addBarItem = UIBarButtonItem(title: "Update", style: .done, target: vc, action: #selector(vc.onUpdate))
-                self.navigationItem.rightBarButtonItem  = addBarItem
                 vc.selectedItem = selectedItem
             }
         }

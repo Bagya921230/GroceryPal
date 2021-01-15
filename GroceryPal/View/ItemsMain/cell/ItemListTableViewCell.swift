@@ -33,6 +33,15 @@ class ItemListTableViewCell: UITableViewCell {
         SDImageCache.shared.removeImage(forKey: referenceImage.fullPath)
         itemImageView.sd_setImage(with: referenceImage,placeholderImage: UIImage(named: "placeholder"))
     }
+    
+    func setUp(restockItem: StockItem) {
+        nameLabel.text = restockItem.name
+        categoryLabel.text = restockItem.category
+        
+        let referenceImage = Storage.storage().reference().child(restockItem.image)
+        SDImageCache.shared.removeImage(forKey: referenceImage.fullPath)
+        itemImageView.sd_setImage(with: referenceImage,placeholderImage: UIImage(named: "placeholder"))
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

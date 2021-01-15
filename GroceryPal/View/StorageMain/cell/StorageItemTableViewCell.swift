@@ -33,9 +33,14 @@ class StorageItemTableViewCell: UITableViewCell {
     
     func setUp(item: StockItem) {
         nameLabel.text = item.name
-        quantityLabel.text = String(format: "%.2f",item.quantity)
+        if (item.uom == "unit") {
+            quantityLabel.text = String(format: "%.0f",item.quantity)
+            levelLabel.text = String(format: "%.0f",item.roLevel)
+        } else {
+            quantityLabel.text = String(format: "%.2f%@",item.quantity,item.uom)
+            levelLabel.text = String(format: "%.2f%@",item.roLevel,item.uom)
+        }
         dateLabel.text = item.expDate
-        levelLabel.text = String(format: "%.2f",item.roLevel)
         let referenceImage = Storage.storage().reference().child(item.image)
         itemImageView.sd_setImage(with: referenceImage,placeholderImage: UIImage(named: "placeholder"))
         if (item.status == "restock") {

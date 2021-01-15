@@ -8,14 +8,20 @@
 
 import UIKit
 
-class RestockListViewController: UIViewController {
+class RestockListViewController: UIViewController, RestockItemEvents {
 
     @IBOutlet weak var tableView: UITableView!
     
+    var itemList = [StockItem]()
+    var selectedItem: StockItem?
+    let restockListVM = RestockListVM()
+    let fireStoreStockQueries = FireStoreStockQueries()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        fireStoreStockQueries.delegateRestockItemEvents = self
+        restockListVM.onLoad(fireStoreStockQueries: fireStoreStockQueries)
     }
     
     func configureUI() {
@@ -30,6 +36,11 @@ class RestockListViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
+    
+    func restockItemList(restockItemList: [StockItem]) {
+        self.itemList = restockItemList
+        self.tableView.reloadData()
+    }
 
 }
 
@@ -39,7 +50,7 @@ extension RestockListViewController : UITableViewDataSource , UITableViewDelegat
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return itemList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -47,7 +58,8 @@ extension RestockListViewController : UITableViewDataSource , UITableViewDelegat
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ItemListTableViewCell else {
             fatalError("The dequed cell is not an instance of ItemListTableViewCell")
         }
-        //cell.setUp(name: "Coconut Oil", image: UIImage(named: "temp")!, category: "Oil")
+        let item = itemList[indexPath.row]
+        cell.setUp(restockItem: item)
         return cell
     }
 

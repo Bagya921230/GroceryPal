@@ -8,8 +8,8 @@
 
 import UIKit
 
-class HomeViewController: UIViewController,ItemEvents, StockItemEvents {
-    
+class HomeViewController: UIViewController,ItemEvents, StockItemEvents , RestockItemEvents{
+        
     // MARK: - Outlet
     @IBOutlet weak var storageView: UIView!
     @IBOutlet weak var itemsView: UIView!
@@ -18,12 +18,14 @@ class HomeViewController: UIViewController,ItemEvents, StockItemEvents {
     @IBOutlet weak var statisticsView: UIView!
     @IBOutlet weak var itemCount: UILabel!
     @IBOutlet weak var stockItemCount: UILabel!
+    @IBOutlet weak var restockItemCount: UILabel!
     
     let homeVM = HomeVM()
     let fireStoreQueries = FireStoreItemQueries()
     let fireStoreStockQueries = FireStoreStockQueries()
     var itemList = [Item]()
     var stockItemList = [StockItem]()
+    var restockItemList = [StockItem]()
 
     // MARK: - Actions
     @IBAction func clickStorage(_ sender: Any) {
@@ -57,6 +59,7 @@ class HomeViewController: UIViewController,ItemEvents, StockItemEvents {
         super.viewDidLoad()
         fireStoreQueries.delegateItemEvents = self
         fireStoreStockQueries.delegateStockItemEvents = self
+        fireStoreStockQueries.delegateRestockItemEvents = self
         configureUI()
         homeVM.onLoad(fireStoreQueries: fireStoreQueries, fireStoreStockQueries: fireStoreStockQueries)
     }
@@ -83,6 +86,11 @@ class HomeViewController: UIViewController,ItemEvents, StockItemEvents {
                 vc.isEmpty = itemList.count == 0
             }
         }
+        if segue.identifier == "segueRestockMain"{
+            if let vc = segue.destination as? RestockMainViewController {
+                vc.isEmpty = restockItemList.count == 0
+            }
+        }
     }
 
     @IBAction func onLogout(_ sender: Any) {
@@ -100,6 +108,11 @@ class HomeViewController: UIViewController,ItemEvents, StockItemEvents {
     func stockItemList(stockItemList: [StockItem]) {
         self.stockItemList = stockItemList
         stockItemCount.text = String(stockItemList.count)+" "+(stockItemList.count < 2 ? "item" : "items")+" available"
+    }
+    
+    func restockItemList(restockItemList: [StockItem]) {
+        self.restockItemList = restockItemList
+        restockItemCount.text = String(restockItemList.count)+" "+(restockItemList.count < 2 ? "item" : "items")+" available"
     }
     
 }
