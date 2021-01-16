@@ -127,11 +127,6 @@ class FireStoreItemQueries
             let name = "image-"+String(timestamp)+".jpg"
 
             let path = self.userId+"/"+docId+"/"+name
-            
-            if(previousPath != "")
-            {
-                Storage.storage().reference().child(previousPath).delete {_ in}
-            }
 
             let imageData: Data = image!.jpegData(compressionQuality: 0.1)!
             let storageRef = Storage.storage().reference().child(path)

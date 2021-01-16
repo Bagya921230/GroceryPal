@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		3C8DF59AA33A72E7040D05F9 /* libPods-GroceryPalTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B9A6B1BD7977AE3C301E53 /* libPods-GroceryPalTests.a */; };
 		5E6ED4C01DD48B5E784BBE32 /* libPods-GroceryPal-GroceryPalUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A317CCBA347B2433DD25BF70 /* libPods-GroceryPal-GroceryPalUITests.a */; };
+		6907768525B34A4700577F92 /* FireStoreGroceryQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6907768425B34A4700577F92 /* FireStoreGroceryQueries.swift */; };
+		6907768925B34A5A00577F92 /* AddItemToGroceryVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6907768625B34A5A00577F92 /* AddItemToGroceryVM.swift */; };
+		6907768A25B34A5A00577F92 /* GroceryListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6907768725B34A5A00577F92 /* GroceryListVM.swift */; };
+		6907768B25B34A5A00577F92 /* NewGroceryListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6907768825B34A5A00577F92 /* NewGroceryListVM.swift */; };
+		6907768E25B34A6600577F92 /* GroceryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6907768C25B34A6500577F92 /* GroceryItem.swift */; };
+		6907768F25B34A6600577F92 /* Grocery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6907768D25B34A6500577F92 /* Grocery.swift */; };
 		6912E727259C9AFD007219B6 /* UpdateStorage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6912E726259C9AFD007219B6 /* UpdateStorage.storyboard */; };
 		6912E729259C9B1B007219B6 /* UpdateStorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6912E728259C9B1B007219B6 /* UpdateStorageViewController.swift */; };
 		69136BA5259A24BB0024DA33 /* StorageItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69136BA3259A24BB0024DA33 /* StorageItemTableViewCell.swift */; };
@@ -55,12 +61,6 @@
 		696D32A32599BC18009ACCB3 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 696D32A22599BC18009ACCB3 /* SignUp.storyboard */; };
 		696D32A52599BC23009ACCB3 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 696D32A42599BC23009ACCB3 /* SignIn.storyboard */; };
 		6975466225A9815300D98C2B /* ManualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6975466125A9815300D98C2B /* ManualViewController.swift */; };
-		699F741525B2E07E00CD9C92 /* FireStoreGroceryQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699F741425B2E07E00CD9C92 /* FireStoreGroceryQueries.swift */; };
-		699F741725B2E28E00CD9C92 /* Grocery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699F741625B2E28E00CD9C92 /* Grocery.swift */; };
-		699F741B25B2E4F400CD9C92 /* NewGroceryListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699F741A25B2E4F400CD9C92 /* NewGroceryListVM.swift */; };
-		699F741D25B2F88300CD9C92 /* GroceryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699F741C25B2F88300CD9C92 /* GroceryItem.swift */; };
-		699F741F25B2FADF00CD9C92 /* GroceryListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699F741E25B2FADF00CD9C92 /* GroceryListVM.swift */; };
-		699F742125B30E9500CD9C92 /* AddItemToGroceryVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699F742025B30E9500CD9C92 /* AddItemToGroceryVM.swift */; };
 		69A7AC3425A9833F00B25D2A /* GroceryEmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A7AC3325A9833F00B25D2A /* GroceryEmptyViewController.swift */; };
 		69A7AC3625A9835000B25D2A /* GroceryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A7AC3525A9835000B25D2A /* GroceryListViewController.swift */; };
 		69A7AC3925A983C600B25D2A /* GroceryItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A7AC3825A983C600B25D2A /* GroceryItemTableViewCell.swift */; };
@@ -93,6 +93,8 @@
 		B9580FAD25AA686A00536179 /* libiOSDropDown.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9580FAC25AA686A00536179 /* libiOSDropDown.a */; };
 		B9580FAF25AA6C9400536179 /* ItemDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9580FAE25AA6C9400536179 /* ItemDetailVM.swift */; };
 		B968CD0025AB543500EE6BFF /* EncodableEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B968CCFF25AB543500EE6BFF /* EncodableEx.swift */; };
+		B9739B3525B30DAF0099EC23 /* StaticticsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9739B3425B30DAF0099EC23 /* StaticticsVM.swift */; };
+		B9739B3725B30DDD0099EC23 /* FireStoreStatisticsQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9739B3625B30DDD0099EC23 /* FireStoreStatisticsQueries.swift */; };
 		B989EEE725B0A8840072BC93 /* ItemListVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B989EEE625B0A8840072BC93 /* ItemListVMTests.swift */; };
 		B989EEE925B0C8370072BC93 /* ItemDetailVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B989EEE825B0C8370072BC93 /* ItemDetailVMTests.swift */; };
 		B989EEED25B0D6030072BC93 /* ItemMainUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B989EEEC25B0D6030072BC93 /* ItemMainUITest.swift */; };
@@ -124,6 +126,12 @@
 /* Begin PBXFileReference section */
 		0E33F038C82A08DE53819EA6 /* Pods-GroceryPalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroceryPalTests.release.xcconfig"; path = "Target Support Files/Pods-GroceryPalTests/Pods-GroceryPalTests.release.xcconfig"; sourceTree = "<group>"; };
 		501034C9D3F05FD583A6D40F /* Pods-GroceryPal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroceryPal.release.xcconfig"; path = "Target Support Files/Pods-GroceryPal/Pods-GroceryPal.release.xcconfig"; sourceTree = "<group>"; };
+		6907768425B34A4700577F92 /* FireStoreGroceryQueries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireStoreGroceryQueries.swift; sourceTree = "<group>"; };
+		6907768625B34A5A00577F92 /* AddItemToGroceryVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemToGroceryVM.swift; sourceTree = "<group>"; };
+		6907768725B34A5A00577F92 /* GroceryListVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListVM.swift; sourceTree = "<group>"; };
+		6907768825B34A5A00577F92 /* NewGroceryListVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGroceryListVM.swift; sourceTree = "<group>"; };
+		6907768C25B34A6500577F92 /* GroceryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryItem.swift; sourceTree = "<group>"; };
+		6907768D25B34A6500577F92 /* Grocery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grocery.swift; sourceTree = "<group>"; };
 		6912E726259C9AFD007219B6 /* UpdateStorage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UpdateStorage.storyboard; sourceTree = "<group>"; };
 		6912E728259C9B1B007219B6 /* UpdateStorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStorageViewController.swift; sourceTree = "<group>"; };
 		69136BA3259A24BB0024DA33 /* StorageItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageItemTableViewCell.swift; sourceTree = "<group>"; };
@@ -176,12 +184,6 @@
 		696D32A22599BC18009ACCB3 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		696D32A42599BC23009ACCB3 /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		6975466125A9815300D98C2B /* ManualViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualViewController.swift; sourceTree = "<group>"; };
-		699F741425B2E07E00CD9C92 /* FireStoreGroceryQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreGroceryQueries.swift; sourceTree = "<group>"; };
-		699F741625B2E28E00CD9C92 /* Grocery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grocery.swift; sourceTree = "<group>"; };
-		699F741A25B2E4F400CD9C92 /* NewGroceryListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroceryListVM.swift; sourceTree = "<group>"; };
-		699F741C25B2F88300CD9C92 /* GroceryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItem.swift; sourceTree = "<group>"; };
-		699F741E25B2FADF00CD9C92 /* GroceryListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListVM.swift; sourceTree = "<group>"; };
-		699F742025B30E9500CD9C92 /* AddItemToGroceryVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemToGroceryVM.swift; sourceTree = "<group>"; };
 		69A7AC3325A9833F00B25D2A /* GroceryEmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryEmptyViewController.swift; sourceTree = "<group>"; };
 		69A7AC3525A9835000B25D2A /* GroceryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListViewController.swift; sourceTree = "<group>"; };
 		69A7AC3825A983C600B25D2A /* GroceryItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItemTableViewCell.swift; sourceTree = "<group>"; };
@@ -215,6 +217,8 @@
 		B9580FAC25AA686A00536179 /* libiOSDropDown.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libiOSDropDown.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9580FAE25AA6C9400536179 /* ItemDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailVM.swift; sourceTree = "<group>"; };
 		B968CCFF25AB543500EE6BFF /* EncodableEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableEx.swift; sourceTree = "<group>"; };
+		B9739B3425B30DAF0099EC23 /* StaticticsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticticsVM.swift; sourceTree = "<group>"; };
+		B9739B3625B30DDD0099EC23 /* FireStoreStatisticsQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreStatisticsQueries.swift; sourceTree = "<group>"; };
 		B989EEE625B0A8840072BC93 /* ItemListVMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListVMTests.swift; sourceTree = "<group>"; };
 		B989EEE825B0C8370072BC93 /* ItemDetailVMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailVMTests.swift; sourceTree = "<group>"; };
 		B989EEEC25B0D6030072BC93 /* ItemMainUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemMainUITest.swift; sourceTree = "<group>"; };
@@ -546,11 +550,11 @@
 		B94E984F25A212D800875C7F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6907768D25B34A6500577F92 /* Grocery.swift */,
+				6907768C25B34A6500577F92 /* GroceryItem.swift */,
 				69E7CF5C25AFF716008368AE /* StockItem.swift */,
 				B9580FA425A9E1D400536179 /* Item.swift */,
 				69AE5C8325B1EF330026E186 /* NotificationItem.swift */,
-				699F741625B2E28E00CD9C92 /* Grocery.swift */,
-				699F741C25B2F88300CD9C92 /* GroceryItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -558,6 +562,9 @@
 		B94E985225A2156100875C7F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				6907768625B34A5A00577F92 /* AddItemToGroceryVM.swift */,
+				6907768725B34A5A00577F92 /* GroceryListVM.swift */,
+				6907768825B34A5A00577F92 /* NewGroceryListVM.swift */,
 				69E7CF6025B0012E008368AE /* ManualVM.swift */,
 				B94E986925A2648900875C7F /* SignUpVM.swift */,
 				B94E986E25A2874400875C7F /* SignInVM.swift */,
@@ -568,9 +575,7 @@
 				69E7CF6225B137BC008368AE /* UpdateStorageVM.swift */,
 				69E7CF6425B14D11008368AE /* RestockListVM.swift */,
 				69AE5C8525B1F2890026E186 /* NotificationListVM.swift */,
-				699F741A25B2E4F400CD9C92 /* NewGroceryListVM.swift */,
-				699F741E25B2FADF00CD9C92 /* GroceryListVM.swift */,
-				699F742025B30E9500CD9C92 /* AddItemToGroceryVM.swift */,
+				B9739B3425B30DAF0099EC23 /* StaticticsVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -578,11 +583,12 @@
 		B94E985525A21E2D00875C7F /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				6907768425B34A4700577F92 /* FireStoreGroceryQueries.swift */,
 				B94E985625A21E3D00875C7F /* FireStoreDatabase.swift */,
 				B98E8E0925AFA753000948DD /* FireStoreItemQueries.swift */,
 				69E7CF5E25AFF752008368AE /* FireStoreStockQueries.swift */,
 				69AE5C8125B1EECF0026E186 /* FireStoreNotificationQueries.swift */,
-				699F741425B2E07E00CD9C92 /* FireStoreGroceryQueries.swift */,
+				B9739B3625B30DDD0099EC23 /* FireStoreStatisticsQueries.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -879,7 +885,6 @@
 				694B1EC525AABEC900C4C4B3 /* GroceryNewItemTableViewCell.swift in Sources */,
 				6934D4C22599D5B200B4F846 /* SignUpViewController.swift in Sources */,
 				69A7AC3C25A98F4700B25D2A /* NewGroceryListViewController.swift in Sources */,
-				699F741525B2E07E00CD9C92 /* FireStoreGroceryQueries.swift in Sources */,
 				69461EE4259DEBFD00035AF7 /* NotificationListViewController.swift in Sources */,
 				69188434259F1B4200DE636F /* AddToStorageViewController.swift in Sources */,
 				694B1E6225A9F6D000C4C4B3 /* AddItemToGroceryViewController.swift in Sources */,
@@ -887,6 +892,7 @@
 				6934D4D12599E48100B4F846 /* RestockMainViewController.swift in Sources */,
 				B9580FA525A9E1D400536179 /* Item.swift in Sources */,
 				696D328B25998C64009ACCB3 /* UIViewEx.swift in Sources */,
+				6907768925B34A5A00577F92 /* AddItemToGroceryVM.swift in Sources */,
 				69E7CF6325B137BC008368AE /* UpdateStorageVM.swift in Sources */,
 				694B1E6625AA06DD00C4C4B3 /* RestockEmptyViewController.swift in Sources */,
 				696D328B25998C64009ACCB3 /* UIViewEx.swift in Sources */,
@@ -896,19 +902,21 @@
 				B9580FAB25AA5E8B00536179 /* ImagePicker.swift in Sources */,
 				B968CD0025AB543500EE6BFF /* EncodableEx.swift in Sources */,
 				69136BA5259A24BB0024DA33 /* StorageItemTableViewCell.swift in Sources */,
-				699F741D25B2F88300CD9C92 /* GroceryItem.swift in Sources */,
 				69A7AC3425A9833F00B25D2A /* GroceryEmptyViewController.swift in Sources */,
 				69E7CF6125B0012E008368AE /* ManualVM.swift in Sources */,
 				69461EF0259EF56000035AF7 /* ItemListTableViewCell.swift in Sources */,
 				69AE5C8625B1F2890026E186 /* NotificationListVM.swift in Sources */,
 				69E7CF5D25AFF716008368AE /* StockItem.swift in Sources */,
 				696D32932599B6D8009ACCB3 /* StorageMainViewController.swift in Sources */,
+				B9739B3525B30DAF0099EC23 /* StaticticsVM.swift in Sources */,
+				B9739B3725B30DDD0099EC23 /* FireStoreStatisticsQueries.swift in Sources */,
+				6907768A25B34A5A00577F92 /* GroceryListVM.swift in Sources */,
 				696D324F259984D1009ACCB3 /* AppDelegate.swift in Sources */,
-				699F742125B30E9500CD9C92 /* AddItemToGroceryVM.swift in Sources */,
-				699F741F25B2FADF00CD9C92 /* GroceryListVM.swift in Sources */,
 				B94E986A25A2648900875C7F /* SignUpVM.swift in Sources */,
 				69E7CF6725B19CFE008368AE /* LocalNotification.swift in Sources */,
 				B9580FAF25AA6C9400536179 /* ItemDetailVM.swift in Sources */,
+				6907768F25B34A6600577F92 /* Grocery.swift in Sources */,
+				6907768525B34A4700577F92 /* FireStoreGroceryQueries.swift in Sources */,
 				6934D4DA259A113D00B4F846 /* StorageEmptyViewController.swift in Sources */,
 				694B1E6825AA06ED00C4C4B3 /* RestockListViewController.swift in Sources */,
 				B94E986425A2548800875C7F /* UIViewControllerEx.swift in Sources */,
@@ -928,8 +936,8 @@
 				B94E985725A21E3D00875C7F /* FireStoreDatabase.swift in Sources */,
 				6934D4C82599E29600B4F846 /* ItemsMainViewController.swift in Sources */,
 				B98E8E0A25AFA753000948DD /* FireStoreItemQueries.swift in Sources */,
+				6907768B25B34A5A00577F92 /* NewGroceryListVM.swift in Sources */,
 				B9580FA725A9F12900536179 /* HomeVM.swift in Sources */,
-				699F741B25B2E4F400CD9C92 /* NewGroceryListVM.swift in Sources */,
 				6912E729259C9B1B007219B6 /* UpdateStorageViewController.swift in Sources */,
 				69461EE2259DEBE300035AF7 /* NotificationEmptyViewController.swift in Sources */,
 				69461EED259E083A00035AF7 /* UISearchBarEx.swift in Sources */,
@@ -937,8 +945,8 @@
 				69E7CF5F25AFF752008368AE /* FireStoreStockQueries.swift in Sources */,
 				69461EEB259E048F00035AF7 /* ItemsListViewController.swift in Sources */,
 				6934D4CB2599E43900B4F846 /* StatisticsViewController.swift in Sources */,
-				699F741725B2E28E00CD9C92 /* Grocery.swift in Sources */,
 				69DD7D8125AD37AF00B16670 /* StorageListVM.swift in Sources */,
+				6907768E25B34A6600577F92 /* GroceryItem.swift in Sources */,
 				6934D4D52599E4A200B4F846 /* NotificationsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
