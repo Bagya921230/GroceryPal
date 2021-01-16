@@ -32,7 +32,6 @@ class ManualViewController: UIViewController, ManualViewControllerDelegate, Item
     var itemList = [Item]()
     var selectedItem: Item?
     let fireStoreItemQueries = FireStoreItemQueries()
-    var addToStoragedelegate: AddToStorageViewControllerDelegate?
     var timeDiff : Int?
 
     override func viewDidLoad() {
