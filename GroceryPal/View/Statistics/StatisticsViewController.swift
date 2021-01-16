@@ -43,8 +43,8 @@ class StatisticsViewController: UIViewController, StatisticsViewControllerDelega
     var pieChartEntryMeatUsage = PieChartDataEntry(value: 0)
     var pieChartEntryVegetableUsage = PieChartDataEntry(value: 0)
     var pieChartEntryFruitUsage = PieChartDataEntry(value: 0)
-    var pieChartEntryBeverageUsage = PieChartDataEntry(value: 0)
-    var pieChartEntryBakeryUsage = PieChartDataEntry(value: 0)
+    var pieChartEntryDairyUsage = PieChartDataEntry(value: 0)
+    var pieChartEntryGrainsUsage = PieChartDataEntry(value: 0)
     var meatUsage:Double = 0
     var vegetableUsage:Double = 0
     var fruitUsage:Double = 0
@@ -61,18 +61,19 @@ class StatisticsViewController: UIViewController, StatisticsViewControllerDelega
         staticticsVM.delegate = self
         staticticsVM.getStockQueries()
         staticticsVM.getCategoryUsageQueries()
-        setData()
+        
     }
     
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
         print(entry)
     }
-    func  setChartData()  {
+    func  setChartData( _ expredCount:Double, _ notExpiredCount:Double, _ instockCount:Double , _ outStockCount:Double)  {
         
-        expiredItemCount = 2
-        notExpiredItemCount = 20
-        inStockItemCount = 30
-        outStockItemCount = 10
+        print("chamil",expredCount,notExpiredCount,instockCount,outStockCount)
+        expiredItemCount = expredCount
+        notExpiredItemCount = notExpiredCount
+        inStockItemCount = instockCount
+        outStockItemCount = outStockCount
         
         meatUsage = 10
         vegetableUsage = 40
@@ -81,38 +82,58 @@ class StatisticsViewController: UIViewController, StatisticsViewControllerDelega
         bakeryUsage = 20
         
     }
-    
-    func setData( ) {
+    func setCategoryUsage( _ categoryUsageData: Dictionary<String, Double> )
+    {
+         let meatUsage:Double? = categoryUsageData["Meat"]
+         let vegetableUsage:Double? = categoryUsageData["Vegetables"]
+         let fruitUsage:Double? = categoryUsageData["Fruits"]
+         let dairyeUsage:Double? = categoryUsageData["Dairy"]
+         let grainsUsage:Double? = categoryUsageData["Grains"]
+     
+        //Category usage of month
+        pieChartEntryMeatUsage.value = meatUsage!
+        pieChartEntryMeatUsage.label = "Meat"
+        pieChartEntryVegetableUsage.value = vegetableUsage!
+        pieChartEntryVegetableUsage.label = "Vegetable"
+        pieChartEntryFruitUsage.value = fruitUsage!
+        pieChartEntryFruitUsage.label = "Fruit"
+        pieChartEntryDairyUsage.value = dairyeUsage!
+        pieChartEntryDairyUsage.label = "Dairy"
+        pieChartEntryGrainsUsage.value = grainsUsage!
+        pieChartEntryGrainsUsage.label = "Grains"
+        pieChartEntryCategoryUsage = [pieChartEntryMeatUsage,pieChartEntryVegetableUsage,pieChartEntryFruitUsage,pieChartEntryDairyUsage,pieChartEntryGrainsUsage]
         
-        setChartData()
+        let categoryUsageDataSet = PieChartDataSet(entries: pieChartEntryCategoryUsage, label: nil)
+        let categoryUsageData = PieChartData(dataSet: categoryUsageDataSet)
+        let colors5 = [UIColor.red,UIColor.green,UIColor.yellow,UIColor.blue,UIColor.orange]
+        categoryUsageDataSet.colors = colors5
+        chartView4.data = categoryUsageData
+        chartView4.animate(xAxisDuration: 3.2)
+        chartView4.entryLabelFont = .boldSystemFont(ofSize: 10)
+        chartView4.entryLabelColor = .black
+        chartView4.data?.setValueTextColor(.black)
+    }
+    
+    func setData(_ expredCount:Double, _ notExpiredCount:Double, _ instockCount:Double , _ outStockCount:Double ) {
+        
+        
         
         //Stock data
-        pieChartEntryInstock.value = inStockItemCount
+        pieChartEntryInstock.value = instockCount
         pieChartEntryInstock.label = "InStock"
-        pieChartEntryOutOfStock.value = outStockItemCount
+        pieChartEntryOutOfStock.value = outStockCount
         pieChartEntryOutOfStock.label = "OutStock"
         pieChartTotalStockDataEntry = [pieChartEntryInstock,pieChartEntryOutOfStock]
         
         
         //Expired data
-        pieChartEntryNotExpired.value = expiredItemCount
+        pieChartEntryNotExpired.value = notExpiredCount
         pieChartEntryNotExpired.label = "NotExpired"
-        pieChartEntryExpired.value = notExpiredItemCount
+        pieChartEntryExpired.value = expredCount
         pieChartEntryExpired.label = "Expired"
         pieChartTotalExpiredDataEntry = [pieChartEntryNotExpired,pieChartEntryExpired]
         
-        //Category usage of month
-        pieChartEntryMeatUsage.value = meatUsage
-        pieChartEntryMeatUsage.label = "Meat"
-        pieChartEntryVegetableUsage.value = vegetableUsage
-        pieChartEntryVegetableUsage.label = "Vegetable"
-        pieChartEntryFruitUsage.value = fruitUsage
-        pieChartEntryFruitUsage.label = "Fruit"
-        pieChartEntryBeverageUsage.value = beverageUsage
-        pieChartEntryBeverageUsage.label = "Beverage"
-        pieChartEntryBakeryUsage.value = bakeryUsage
-        pieChartEntryBakeryUsage.label = "Bakery"
-        pieChartEntryCategoryUsage = [pieChartEntryMeatUsage,pieChartEntryVegetableUsage,pieChartEntryFruitUsage,pieChartEntryBeverageUsage,pieChartEntryBakeryUsage]
+        
         
         
         //Set chart data stocks
@@ -146,33 +167,25 @@ class StatisticsViewController: UIViewController, StatisticsViewControllerDelega
         chartView3.rightAxis.enabled = false
         chartView3.animate(xAxisDuration: 3.1)
         
-        let categoryUsageDataSet = PieChartDataSet(entries: pieChartEntryCategoryUsage, label: nil)
-        let categoryUsageData = PieChartData(dataSet: categoryUsageDataSet)
-        let colors5 = [UIColor.red,UIColor.green,UIColor.yellow,UIColor.blue,UIColor.orange]
-        categoryUsageDataSet.colors = colors5
-        chartView4.data = categoryUsageData
-        chartView4.animate(xAxisDuration: 3.2)
-        chartView4.entryLabelFont = .boldSystemFont(ofSize: 10)
-        chartView4.entryLabelColor = .black
-        chartView4.data?.setValueTextColor(.black)
+        
         
         
     }
     
-    
+    //Dummy data for monthly expenses
     let yValues2: [BarChartDataEntry] = [
-        BarChartDataEntry(x: 1, y: 100, data: "Jan"),
-        BarChartDataEntry(x: 2, y: 99, data: "Feb"),
-        BarChartDataEntry(x: 3, y: 80, data: "Mar"),
-        BarChartDataEntry(x: 4, y: 90, data: "Apr"),
-        BarChartDataEntry(x: 5, y: 101, data: "May"),
-        BarChartDataEntry(x: 6, y: 105, data: "Jun"),
-        BarChartDataEntry(x: 7, y: 100, data: "Jul"),
-        BarChartDataEntry(x: 8, y: 99, data: "Aug"),
-        BarChartDataEntry(x: 9, y: 80, data: "Sep"),
-        BarChartDataEntry(x: 10, y: 90, data: "Oct"),
-        BarChartDataEntry(x: 11, y: 101, data: "Nov"),
-        BarChartDataEntry(x: 12, y: 105, data: "Dec")
+        BarChartDataEntry(x: 1, y: 30000, data: "Jan"),
+        BarChartDataEntry(x: 2, y: 35000, data: "Feb"),
+        BarChartDataEntry(x: 3, y: 33000, data: "Mar"),
+        BarChartDataEntry(x: 4, y: 25000, data: "Apr"),
+        BarChartDataEntry(x: 5, y: 40000, data: "May"),
+        BarChartDataEntry(x: 6, y: 36000, data: "Jun"),
+        BarChartDataEntry(x: 7, y: 34000, data: "Jul"),
+        BarChartDataEntry(x: 8, y: 38000, data: "Aug"),
+        BarChartDataEntry(x: 9, y: 41000, data: "Sep"),
+        BarChartDataEntry(x: 10, y: 29000, data: "Oct"),
+        BarChartDataEntry(x: 11, y: 31000, data: "Nov"),
+        BarChartDataEntry(x: 12, y: 37000, data: "Dec")
         
     ]
     
@@ -190,10 +203,15 @@ class StatisticsViewController: UIViewController, StatisticsViewControllerDelega
     
     func displayStockReleatedData(reStockCount: Double, expiredCount: Double, inStockCount: Double, nonExpiredCount: Double) {
         print("Restock Count",reStockCount,expiredCount,inStockCount, nonExpiredCount)
+        //setChartData(reStockCount,inStockCount,nonExpiredCount,expiredCount)
+        //setData(_ expredCount:Double, _ notExpiredCount:Double, _ instockCount:Double , _ outStockCount:Double )
+        setData(expiredCount,expiredCount,inStockCount,reStockCount)
     }
     
     func displayCatgeoryUsageData(categoryUsage: Dictionary<String, Double>) {
         print("Catgeory Usage",categoryUsage)
+        setCategoryUsage(categoryUsage)
+        
     }
 
 }
