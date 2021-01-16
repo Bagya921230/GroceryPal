@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7vr-dc-hr3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7vr-dc-hr3">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -33,7 +35,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ywO-68-8PA">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ywO-68-8PA">
                                 <rect key="frame" x="354" y="101" width="34" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="djJ-9x-KWB"/>
@@ -47,7 +49,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="G7g-Zv-Egf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Brb-M4-GZP" firstAttribute="top" secondItem="0zD-3f-bRz" secondAttribute="bottom" id="0Sf-gU-G9g"/>
                             <constraint firstItem="G7g-Zv-Egf" firstAttribute="bottom" secondItem="Brb-M4-GZP" secondAttribute="bottom" id="CvX-oe-wca"/>
@@ -63,7 +66,6 @@
                             <constraint firstItem="0zD-3f-bRz" firstAttribute="leading" secondItem="3zv-Hd-Pf1" secondAttribute="leading" constant="20" id="uvF-2h-wPU"/>
                             <constraint firstItem="JIz-vE-jAz" firstAttribute="leading" secondItem="G7g-Zv-Egf" secondAttribute="leading" id="zSg-eN-jN6"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="G7g-Zv-Egf"/>
                     </view>
                     <navigationItem key="navigationItem" id="KEa-YB-vd9">
                         <barButtonItem key="backBarButtonItem" title=" " id="1WQ-yY-IsB"/>
@@ -112,7 +114,7 @@ Please create a new list.</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uzl-uc-iGh">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uzl-uc-iGh">
                                 <rect key="frame" x="60" y="502.5" width="294" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.53333333329999999" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
@@ -129,6 +131,7 @@ Please create a new list.</string>
                                 </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="GUR-VR-Jla"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="uzl-uc-iGh" firstAttribute="leading" secondItem="kiv-7Y-8IN" secondAttribute="leadingMargin" constant="40" id="9E9-jI-9WZ"/>
@@ -140,7 +143,6 @@ Please create a new list.</string>
                             <constraint firstItem="uzl-uc-iGh" firstAttribute="top" secondItem="WKa-rV-Dtn" secondAttribute="bottom" constant="90" id="sjR-Do-jh6"/>
                             <constraint firstItem="Fnw-AQ-IAA" firstAttribute="top" secondItem="kiv-7Y-8IN" secondAttribute="topMargin" constant="120" id="y3C-Vh-Qle"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="GUR-VR-Jla"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="abE-mS-LDV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -169,7 +171,7 @@ Please create a new list.</string>
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Sg-51-SZ4">
                                                 <rect key="frame" x="0.0" y="67" width="414" height="158"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="158" id="odY-05-sN2"/>
                                                 </constraints>
@@ -252,7 +254,7 @@ Please create a new list.</string>
                                             </tableView>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Dt-Ev-vLP">
                                                 <rect key="frame" x="0.0" y="329" width="414" height="651"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="651" id="YM7-Ye-L3t"/>
                                                 </constraints>
@@ -373,7 +375,7 @@ Please create a new list.</string>
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VcK-aj-GgO">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VcK-aj-GgO">
                                                 <rect key="frame" x="364" y="240" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="KhU-MA-Kxp"/>
@@ -396,7 +398,7 @@ Please create a new list.</string>
                                                 <state key="normal" image="shareicon"/>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="2Dt-Ev-vLP" firstAttribute="top" secondItem="WvI-uX-HWv" secondAttribute="bottom" constant="30" id="4Ou-ar-O8x"/>
                                             <constraint firstAttribute="trailing" secondItem="2Dt-Ev-vLP" secondAttribute="trailing" id="4s5-ka-sbq"/>
@@ -432,14 +434,14 @@ Please create a new list.</string>
                                 <viewLayoutGuide key="frameLayoutGuide" id="O5S-dW-B98"/>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="REh-y7-Qsh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Fp9-7W-PzB" firstAttribute="bottom" secondItem="REh-y7-Qsh" secondAttribute="bottom" id="OzY-FC-8iz"/>
                             <constraint firstItem="Fp9-7W-PzB" firstAttribute="trailing" secondItem="REh-y7-Qsh" secondAttribute="trailing" id="Ref-Ro-RKq"/>
                             <constraint firstItem="Fp9-7W-PzB" firstAttribute="leading" secondItem="rW8-sd-oBQ" secondAttribute="leading" id="TVQ-AX-vDz"/>
                             <constraint firstItem="Fp9-7W-PzB" firstAttribute="top" secondItem="rW8-sd-oBQ" secondAttribute="top" id="vpT-2d-WV8"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="REh-y7-Qsh"/>
                     </view>
                     <connections>
                         <outlet property="autoTableView" destination="6Sg-51-SZ4" id="ghD-qg-rZC"/>
@@ -486,9 +488,12 @@ Please create a new list.</string>
     </scenes>
     <resources>
         <image name="grocery_large" width="156" height="200"/>
-        <image name="minus.circle.fill" catalog="system" width="64" height="60"/>
-        <image name="nav_grocery" width="32" height="32"/>
+        <image name="minus.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="nav_grocery" width="24" height="24"/>
         <image name="shareicon" width="18" height="15"/>
         <image name="temp" width="373" height="198"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
