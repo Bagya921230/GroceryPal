@@ -101,6 +101,20 @@ class ManualViewController: UIViewController, ManualViewControllerDelegate, Item
                 self.unitPriceTextField.text = Common.getFormattedDecimalString(value: item.unitPrice)
                 self.priceTextField.text = Common.getFormattedDecimalString(value: item.unitPrice)
                 self.measurementTextField.text = Common.getFormattedDecimalString(value: item.perValue)
+
+                if(item.uom == "unit")
+                {
+                    self.unitPriceTextField.isHidden = false
+                    self.nonUnitView.isHidden = true
+                    self.quantityTextField.setRightLabel(text: "")
+                }
+                else
+                {
+                    self.unitPriceTextField.isHidden = true
+                    self.nonUnitView.isHidden = false
+                    self.quantityTextField.setRightLabel(text: item.uom)
+                    self.measurementTextField.setRightLabel(text: item.uom)
+                }
           
         })
     }
