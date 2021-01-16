@@ -37,57 +37,66 @@ class FireStoreDataBase
     func fetchCategories(completed: @escaping ([String]) -> Void)
     {
         var categoryList = [String]()
-
-        firebaseDb.collection("category").addSnapshotListener { (querySnapshot, error) in
-          guard let documents = querySnapshot?.documents else {
-            return
-          }
-
-        _ = documents.map { queryDocumentSnapshot -> Void in
-            let data = queryDocumentSnapshot.data()
-            let catName = data["catName"] as? String ?? ""
-            categoryList.append(catName)
-        }
         
-            completed(categoryList)
+        firebaseDb.collection("category").getDocuments() {
+            (querySnapshot, err) in
+            if let err = err {
+                print("Error: \(err)")
+                return
+            }
+            else
+            {
+                for document in querySnapshot!.documents {
+                    let data = document.data()
+                    let catName = data["catName"] as? String ?? ""
+                    categoryList.append(catName)
+                }
+                completed(categoryList)
+            }
         }
     }
     
     func fetchUOM(completed: @escaping ([String]) -> Void)
        {
            var unitOfMeasurementList = [String]()
-
-           firebaseDb.collection("unit of measurement").addSnapshotListener { (querySnapshot, error) in
-             guard let documents = querySnapshot?.documents else {
-               return
-             }
-
-           _ = documents.map { queryDocumentSnapshot -> Void in
-               let data = queryDocumentSnapshot.data()
-               let name = data["uom"] as? String ?? ""
-               unitOfMeasurementList.append(name)
-           }
-           
-            completed(unitOfMeasurementList)
-           }
-       }
+        
+           firebaseDb.collection("unit of measurement").getDocuments() {
+                (querySnapshot, err) in
+                if let err = err {
+                    print("Error: \(err)")
+                    return
+                }
+                else
+                {
+                    for document in querySnapshot!.documents {
+                        let data = document.data()
+                        let name = data["uom"] as? String ?? ""
+                        unitOfMeasurementList.append(name)
+                    }
+                    completed(unitOfMeasurementList)
+                }
+            }
+    }
     
     func fetchStatus(completed: @escaping ([String]) -> Void)
     {
         var statusList = [String]()
 
-        firebaseDb.collection("status").addSnapshotListener { (querySnapshot, error) in
-          guard let documents = querySnapshot?.documents else {
-            return
-          }
-
-        _ = documents.map { queryDocumentSnapshot -> Void in
-            let data = queryDocumentSnapshot.data()
-            let name = data["statName"] as? String ?? ""
-            statusList.append(name)
-        }
-        
-         completed(statusList)
+        firebaseDb.collection("status").getDocuments() {
+            (querySnapshot, err) in
+            if let err = err {
+                print("Error: \(err)")
+                return
+            }
+            else
+            {
+                for document in querySnapshot!.documents {
+                    let data = document.data()
+                    let name = data["statName"] as? String ?? ""
+                    statusList.append(name)
+                }
+                completed(statusList)
+            }
         }
     }
 }

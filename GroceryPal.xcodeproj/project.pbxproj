@@ -87,6 +87,8 @@
 		B9580FAD25AA686A00536179 /* libiOSDropDown.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9580FAC25AA686A00536179 /* libiOSDropDown.a */; };
 		B9580FAF25AA6C9400536179 /* ItemDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9580FAE25AA6C9400536179 /* ItemDetailVM.swift */; };
 		B968CD0025AB543500EE6BFF /* EncodableEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B968CCFF25AB543500EE6BFF /* EncodableEx.swift */; };
+		B9739B3525B30DAF0099EC23 /* StaticticsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9739B3425B30DAF0099EC23 /* StaticticsVM.swift */; };
+		B9739B3725B30DDD0099EC23 /* FireStoreStatisticsQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9739B3625B30DDD0099EC23 /* FireStoreStatisticsQueries.swift */; };
 		B989EEE725B0A8840072BC93 /* ItemListVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B989EEE625B0A8840072BC93 /* ItemListVMTests.swift */; };
 		B989EEE925B0C8370072BC93 /* ItemDetailVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B989EEE825B0C8370072BC93 /* ItemDetailVMTests.swift */; };
 		B989EEED25B0D6030072BC93 /* ItemMainUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B989EEEC25B0D6030072BC93 /* ItemMainUITest.swift */; };
@@ -203,6 +205,8 @@
 		B9580FAC25AA686A00536179 /* libiOSDropDown.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libiOSDropDown.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9580FAE25AA6C9400536179 /* ItemDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailVM.swift; sourceTree = "<group>"; };
 		B968CCFF25AB543500EE6BFF /* EncodableEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableEx.swift; sourceTree = "<group>"; };
+		B9739B3425B30DAF0099EC23 /* StaticticsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticticsVM.swift; sourceTree = "<group>"; };
+		B9739B3625B30DDD0099EC23 /* FireStoreStatisticsQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreStatisticsQueries.swift; sourceTree = "<group>"; };
 		B989EEE625B0A8840072BC93 /* ItemListVMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListVMTests.swift; sourceTree = "<group>"; };
 		B989EEE825B0C8370072BC93 /* ItemDetailVMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailVMTests.swift; sourceTree = "<group>"; };
 		B989EEEC25B0D6030072BC93 /* ItemMainUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemMainUITest.swift; sourceTree = "<group>"; };
@@ -554,6 +558,7 @@
 				69E7CF6225B137BC008368AE /* UpdateStorageVM.swift */,
 				69E7CF6425B14D11008368AE /* RestockListVM.swift */,
 				69AE5C8525B1F2890026E186 /* NotificationListVM.swift */,
+				B9739B3425B30DAF0099EC23 /* StaticticsVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -565,6 +570,7 @@
 				B98E8E0925AFA753000948DD /* FireStoreItemQueries.swift */,
 				69E7CF5E25AFF752008368AE /* FireStoreStockQueries.swift */,
 				69AE5C8125B1EECF0026E186 /* FireStoreNotificationQueries.swift */,
+				B9739B3625B30DDD0099EC23 /* FireStoreStatisticsQueries.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -883,6 +889,8 @@
 				69AE5C8625B1F2890026E186 /* NotificationListVM.swift in Sources */,
 				69E7CF5D25AFF716008368AE /* StockItem.swift in Sources */,
 				696D32932599B6D8009ACCB3 /* StorageMainViewController.swift in Sources */,
+				B9739B3525B30DAF0099EC23 /* StaticticsVM.swift in Sources */,
+				B9739B3725B30DDD0099EC23 /* FireStoreStatisticsQueries.swift in Sources */,
 				696D324F259984D1009ACCB3 /* AppDelegate.swift in Sources */,
 				B94E986A25A2648900875C7F /* SignUpVM.swift in Sources */,
 				69E7CF6725B19CFE008368AE /* LocalNotification.swift in Sources */,
