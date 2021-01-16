@@ -44,9 +44,12 @@ class SignInViewController: UIViewController,SignInViewControllerDelegate {
     }
     
     func signInSuccess() {
+//        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+//        let homeViewController = storyboard.instantiateViewController(withIdentifier: "homeViewController") as! HomeViewController
+//        self.navigationController?.pushViewController(homeViewController, animated: true)
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
-        let homeViewController = storyboard.instantiateViewController(withIdentifier: "homeViewController") as! HomeViewController
-        self.navigationController?.pushViewController(homeViewController, animated: true)
+        let mainTabBarController = storyboard.instantiateViewController(withIdentifier: "homeTabBar")
+        (UIApplication.shared.delegate as? AppDelegate)?.changeRootViewController(mainTabBarController)
     }
     
     func displayError(msg: String) {

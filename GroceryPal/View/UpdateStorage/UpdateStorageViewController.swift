@@ -119,6 +119,7 @@ class UpdateStorageViewController: UIViewController ,UpdateStorageViewController
                 let value = Common.getFormattedDecimalDouble(value: calculatePercentage(initValue: selectedItem.initialQty, currentVal: selectedItem.quantity)) 
                 slider.setValue(Float(value), animated: true)
                 remainNonunitQty.text = "\(value)%"
+                self.newNonUnitVal = Common.getFormattedDecimalDouble(value: selectedItem.quantity)
                 approxQty.text = "Approximately \(Common.getFormattedDecimalString(value: selectedItem.quantity))\(uomVal)"
 
                 

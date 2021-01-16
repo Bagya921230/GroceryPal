@@ -94,12 +94,32 @@ class ManualViewController: UIViewController, ManualViewControllerDelegate, Item
     }
     
     func didScan(msg: String) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        
-        let pickerDateformatter = DateFormatter()
-        pickerDateformatter.dateStyle = .medium
-        self.expiryTextField.text = pickerDateformatter.string(from: dateFormatter.date(from: msg)!)
+        manualVM.fetchItemFromStore(barcode: msg, itemList: itemList, completion: {
+            item in
+            
+                self.selectedItem = item
+                self.itemNameDropdown.text = item.name
+                self.itemNameDropdown.selectedIndex = self.manualVM.getItemIndex(barcode: msg, itemList: self.itemList)
+                self.categoryLabel.text = item.category
+                self.unitPriceTextField.text = Common.getFormattedDecimalString(value: item.unitPrice)
+                self.priceTextField.text = Common.getFormattedDecimalString(value: item.unitPrice)
+                self.measurementTextField.text = Common.getFormattedDecimalString(value: item.perValue)
+
+                if(item.uom == "unit")
+                {
+                    self.unitPriceTextField.isHidden = false
+                    self.nonUnitView.isHidden = true
+                    self.quantityTextField.setRightLabel(text: "")
+                }
+                else
+                {
+                    self.unitPriceTextField.isHidden = true
+                    self.nonUnitView.isHidden = false
+                    self.quantityTextField.setRightLabel(text: item.uom)
+                    self.measurementTextField.setRightLabel(text: item.uom)
+                }
+          
+        })
     }
     
     func displayItems(list: [String]) {
@@ -140,6 +160,9 @@ class ManualViewController: UIViewController, ManualViewControllerDelegate, Item
         if let timeDif = self.timeDiff {
             print("set expiry notification to trigger in \(timeDif) mins")
             LocalNotification.scheduleLocalNotification(type: "expired", item: item, mins: timeDif)
+        }
+        if (item.quantity <= item.roLevel) {
+            LocalNotification.scheduleLocalNotification(type: "restock", item: item, mins: 1)
         }
     }
     

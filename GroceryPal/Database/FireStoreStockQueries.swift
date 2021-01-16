@@ -56,6 +56,11 @@ class FireStoreStockQueries {
             let json = try JSONSerialization.jsonObject(with: jsonData, options: [])
             var dictionary = json as! [String : Any]
             dictionary["id"] = docRef.documentID
+            if (item.quantity <= item.roLevel) {
+                dictionary["status"] = "restock"
+            } else {
+                dictionary["status"] = "active"
+            }
             FireStoreDataBase.shared.firebaseDb.collection("user").document(self.userId).collection("storage").document(docRef.documentID).setData(dictionary)
             { err in
                 if let err = err {

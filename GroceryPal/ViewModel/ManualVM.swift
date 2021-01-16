@@ -14,9 +14,11 @@ class ManualVM {
     var delegate: ManualViewControllerDelegate?
     let dispatch = DispatchGroup()
     var fireStoreStockQueries = FireStoreStockQueries()
+    var fireStoreItemQueries = FireStoreItemQueries()
 
     func onLoad(fireStoreQueries: FireStoreItemQueries)
     {
+        fireStoreItemQueries = fireStoreQueries
         fireStoreQueries.fetchItems()
     }
     
@@ -86,6 +88,23 @@ class ManualVM {
                                 self.delegate?.displayError(msg: "Cannot add the item")
                             }
          }
+    }
+    
+    func fetchItemFromStore(barcode: String, itemList: [Item], completion: @escaping(Item)->())
+    {
+        fireStoreItemQueries.fetchItemByBarCode(barCode: barcode) { item in
+            if(item != nil)
+            {
+             completion(item!)
+            }
+        }
+    }
+    
+    func getItemIndex(barcode: String, itemList: [Item]) -> Int
+    {
+        return itemList.firstIndex(where: { (item) -> Bool in
+          item.barcode == barcode
+        })!
     }
 
 }

@@ -35,10 +35,6 @@ class HomeViewController: UIViewController,ItemEvents, StockItemEvents , Restock
     // MARK: - Actions
     @IBAction func clickStorage(_ sender: Any) {
         self.tabBarController?.selectedIndex = 1
-        let nav = self.tabBarController?.viewControllers?[1] as! UINavigationController
-        let vc = nav.topViewController as! StorageMainViewController
-        vc.isEmpty = stockItemList.count == 0
-        vc.noItems = itemList.count == 0
     }
     
     @IBAction func clickGrocery(_ sender: Any) {
@@ -111,7 +107,7 @@ class HomeViewController: UIViewController,ItemEvents, StockItemEvents , Restock
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = false
         navigationController?.setNavigationBarHidden(true, animated: animated)
         navigationController?.navigationBar.tintColor = UIColor.themeColor()
     }
@@ -122,6 +118,7 @@ class HomeViewController: UIViewController,ItemEvents, StockItemEvents , Restock
         groceryListView.roundCorners([.topRight, .bottomRight], [.layerMaxXMinYCorner, .layerMaxXMaxYCorner], radius: 20)
         restockNeededView.roundCorners([.topRight, .bottomRight], [.layerMaxXMinYCorner, .layerMaxXMaxYCorner], radius: 20)
         statisticsView.roundCorners([.topRight, .bottomRight], [.layerMaxXMinYCorner, .layerMaxXMaxYCorner], radius: 20)
+        self.tabBarController?.selectedIndex = 0
     }
 
     // MARK: - Navigation

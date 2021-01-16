@@ -36,6 +36,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return true
     }
     
+    func changeRootViewController(_ vc: UIViewController, animated: Bool = true) {
+        guard let window = self.window else {
+            return
+        }
+        
+        // change the root view controller to your specific view controller
+        window.rootViewController = vc
+    }
+    
     func requestAuthForLocalNotifications() {
         notificationCenter.delegate = self
         notificationCenter.requestAuthorization(options: [.alert,.sound]){ (granted, error) in

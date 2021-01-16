@@ -132,8 +132,7 @@ class StorageListViewController: UIViewController, StorageListViewControllerDele
            if let vcs = self.navigationController?.viewControllers {
                let previousVC = vcs[0]
                if previousVC is StorageMainViewController {
-                   let isEmpty = stockItemList.count == 0
-                   (previousVC as! StorageMainViewController).isEmpty = isEmpty
+                   (previousVC as! StorageMainViewController).stockItemList = stockItemList
                    (previousVC as! StorageMainViewController).onLoad()
                }
            }

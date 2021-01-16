@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Yy7-k4-8I4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Yy7-k4-8I4">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,25 +17,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="d9y-hX-fNf">
-                                <rect key="frame" x="40" y="253" width="334" height="312.5"/>
+                                <rect key="frame" x="40" y="259.5" width="399.5" height="299.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_items" translatesAutoresizingMaskIntoConstraints="NO" id="MEC-Rb-NgZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="334" height="140"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="399.5" height="140"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="2X1-Tp-EB9"/>
                                             <constraint firstAttribute="height" constant="140" id="pgx-RY-Wr8"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oh you don’t have any items. Please add new items!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Zm-91-EPp">
-                                        <rect key="frame" x="0.0" y="190" width="334" height="38.5"/>
+                                        <rect key="frame" x="0.0" y="190" width="399.5" height="19.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KLT-mW-cMA">
-                                        <rect key="frame" x="0.0" y="278.5" width="334" height="34"/>
+                                        <rect key="frame" x="0.0" y="259.5" width="399.5" height="40"/>
                                         <color key="backgroundColor" red="0.0" green="0.53333333329999999" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="RxT-uz-ROM"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                         <state key="normal" title="Add Items">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -73,11 +77,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yuD-tN-1U6">
+                                <rect key="frame" x="244" y="64" width="150" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.53333333329999999" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="Kia-CS-zjK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Add Bar Code">
+                                    <color key="titleColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onScan:" destination="1uU-nL-EAS" eventType="touchUpInside" id="gZF-G2-bSh"/>
+                                </connections>
+                            </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wr4-qF-3xy">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="1100"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="1006"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="PBg-9v-kX2">
-                                        <rect key="frame" x="50" y="20" width="314" height="887"/>
+                                        <rect key="frame" x="50" y="20" width="314" height="981.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_item" translatesAutoresizingMaskIntoConstraints="NO" id="yoe-Sg-Gqa" customClass="SDAnimatedImageView">
                                                 <rect key="frame" x="0.0" y="0.0" width="314" height="200"/>
@@ -224,6 +242,17 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bar Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="at8-gg-90I" userLabel="Additional Notes">
+                                                <rect key="frame" x="0.0" y="907" width="314" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.59215686270000001" green="0.59215686270000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7yj-7D-4Pq">
+                                                <rect key="frame" x="0.0" y="947.5" width="314" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -238,18 +267,22 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <accessibility key="accessibilityConfiguration" identifier="itemDetailView"/>
                         <constraints>
+                            <constraint firstItem="yMX-fB-tm0" firstAttribute="trailing" secondItem="yuD-tN-1U6" secondAttribute="trailing" constant="20" id="9eb-0O-zjM"/>
+                            <constraint firstItem="wr4-qF-3xy" firstAttribute="top" secondItem="yuD-tN-1U6" secondAttribute="bottom" id="La9-LO-9tJ"/>
                             <constraint firstItem="wr4-qF-3xy" firstAttribute="leading" secondItem="hKU-Oz-wSH" secondAttribute="leading" id="Lba-Na-eby"/>
                             <constraint firstAttribute="bottom" secondItem="wr4-qF-3xy" secondAttribute="bottom" id="Var-ip-uQx"/>
                             <constraint firstItem="PBg-9v-kX2" firstAttribute="width" secondItem="hKU-Oz-wSH" secondAttribute="width" constant="-100" id="W4J-ur-QDt"/>
+                            <constraint firstItem="yuD-tN-1U6" firstAttribute="top" secondItem="yMX-fB-tm0" secondAttribute="top" constant="20" id="dMO-Td-t7i"/>
                             <constraint firstItem="PBg-9v-kX2" firstAttribute="centerX" secondItem="yMX-fB-tm0" secondAttribute="centerX" id="mJX-oO-MQD"/>
                             <constraint firstItem="wr4-qF-3xy" firstAttribute="trailing" secondItem="hKU-Oz-wSH" secondAttribute="trailing" id="obh-vk-W5a"/>
-                            <constraint firstItem="wr4-qF-3xy" firstAttribute="top" secondItem="hKU-Oz-wSH" secondAttribute="top" id="rh0-gr-xdB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yMX-fB-tm0"/>
                     </view>
                     <navigationItem key="navigationItem" id="h6G-Df-5H3"/>
                     <size key="freeformSize" width="414" height="1100"/>
                     <connections>
+                        <outlet property="barCode" destination="7yj-7D-4Pq" id="xTE-bj-Kc4"/>
+                        <outlet property="barCodeButton" destination="yuD-tN-1U6" id="zq8-H4-0rc"/>
                         <outlet property="categoryDropDown" destination="p55-7e-S9y" id="QT4-Pa-3c4"/>
                         <outlet property="imageView" destination="yoe-Sg-Gqa" id="0Yw-tO-0Fe"/>
                         <outlet property="name" destination="JFy-ZD-cI4" id="AKo-YS-9gJ"/>
@@ -440,12 +473,12 @@
             <point key="canvasLocation" x="1029" y="151"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="DPz-YI-uvt"/>
-    </inferredMetricsTieBreakers>
-    <color key="tintColor" red="0.0" green="0.53333333329999999" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
     <resources>
         <image name="add_item" width="407" height="190"/>
         <image name="no_items" width="96" height="87.5"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="L9p-xP-YJ2"/>
+    </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.0" green="0.53333333329999999" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
 </document>

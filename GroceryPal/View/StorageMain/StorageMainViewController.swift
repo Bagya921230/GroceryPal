@@ -8,14 +8,17 @@
 
 import UIKit
 
-class StorageMainViewController: UIViewController {
+class StorageMainViewController: UIViewController,ItemEvents, StockItemEvents {
 
     // MARK: - Outlet
     @IBOutlet weak var emptyContainer: UIView!
     @IBOutlet weak var listContainerView: UIView!
     @IBOutlet weak var addNewBtn: UIButton!
-    var isEmpty: Bool = true
-    var noItems: Bool = false
+    let fireStoreQueries = FireStoreItemQueries()
+    let fireStoreStockQueries = FireStoreStockQueries()
+    var itemList = [Item]()
+    var stockItemList = [StockItem]()
+    let homeVM = HomeVM()
     
     // MARK: - Actions
     @IBAction func addToStorageAction(_ sender: Any) {
@@ -24,23 +27,17 @@ class StorageMainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        onLoad()
+        fireStoreQueries.delegateItemEvents = self
+        fireStoreStockQueries.delegateStockItemEvents = self
+        homeVM.onLoad(fireStoreQueries: fireStoreQueries, fireStoreStockQueries: fireStoreStockQueries)
     }
     
     func onLoad()
     {
-        if(isEmpty){
+        if(self.stockItemList.count == 0){
            showEmptyView()
         } else {
            showListView()
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "segueStoreEmpty"{
-            if let vc = segue.destination as? StorageEmptyViewController {
-                vc.noItems = noItems
-            }
         }
     }
     
@@ -63,4 +60,12 @@ class StorageMainViewController: UIViewController {
         addNewBtn.isHidden = false
     }
 
+    func itemList(itemList: [Item]) {
+        self.itemList = itemList
+    }
+    
+    func stockItemList(stockItemList: [StockItem]) {
+        self.stockItemList = stockItemList
+        onLoad()
+    }
 }
