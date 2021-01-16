@@ -25,6 +25,7 @@ class ManualViewController: UIViewController, ManualViewControllerDelegate, Item
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var unitPriceTextField: UITextField!
     @IBOutlet weak var scrollViewATS: UIScrollView!
+    @IBOutlet weak var nonUnitView: UIStackView!
     
     let datePicker = UIDatePicker()
     let manualVM = ManualVM()
@@ -53,6 +54,7 @@ class ManualViewController: UIViewController, ManualViewControllerDelegate, Item
     func configureUI() {
         expiryTextField.setRightIcon(icon: UIImage(named: "calendar")!)
         priceTextField.setRightLabel(text: "LKR")
+        unitPriceTextField.setRightLabel(text: "LKR")
         itemNameDropdown.setLeftIcon(icon: UIImage(named: "search")!)
         expiryTextField.setInputViewDatePicker(target: self, selector: #selector(tapDatePickerDone))
     }
@@ -110,8 +112,7 @@ class ManualViewController: UIViewController, ManualViewControllerDelegate, Item
             if self.itemList[index].uom == "unit" {
                 self.unitPriceTextField.text = String(format: "%.2f", self.itemList[index].unitPrice)
                 self.unitPriceTextField.isHidden = false
-                self.priceTextField.isHidden = true
-                self.measurementTextField.isHidden = true
+                self.nonUnitView.isHidden = true
                 self.quantityTextField.setRightLabel(text: "")
             } else {
                 self.measurementTextField.setRightLabel(text: self.itemList[index].uom)
@@ -119,8 +120,7 @@ class ManualViewController: UIViewController, ManualViewControllerDelegate, Item
                 self.measurementTextField.text = String(format: "%.2f", self.itemList[index].perValue)
                 self.priceTextField.text = String(format: "%.2f", self.itemList[index].unitPrice)
                 self.unitPriceTextField.isHidden = true
-                self.priceTextField.isHidden = false
-                self.measurementTextField.isHidden = false
+                self.nonUnitView.isHidden = false
             }
         }
     }
