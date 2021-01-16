@@ -56,17 +56,17 @@ class FireStoreNotificationQueries {
                     print("Error adding item: \(err)")
                     completed(false)
                 } else {
-                   completed(true)
-//                    FireStoreDataBase.shared.firebaseDb.collection("user").document(self.userId).collection("storage").document(stockItemId).updateData(["status":type])
-//                    { err in
-//                        if let err = err {
-//                            print("Error updating item: \(err)")
-//                            completed(false)
-//                        } else {
-//                            completed(true)
-//                        }
+                    FireStoreDataBase.shared.firebaseDb.collection("user").document(self.userId).collection("storage").document(stockItemId).updateData(["status":type])
+                    { err in
+                        if let err = err {
+                            print("Error updating item: \(err)")
+                            completed(false)
+                        } else {
+                            completed(true)
+                        }
                     }
                 }
+            }
         } catch{
             completed(false)
         }

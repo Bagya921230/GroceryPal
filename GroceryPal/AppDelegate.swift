@@ -33,8 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
-        if let customData = notification.request.content.userInfo["addedDate"] as? String {
-            print(customData)
+        if let customData = notification.request.content.userInfo["id"] as? String {
+            print("ID",customData)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 NotificationCenter.default.post(name: Notification.Name("ADD_NOTIFICATION"), object: nil, userInfo: notification.request.content.userInfo)
                 

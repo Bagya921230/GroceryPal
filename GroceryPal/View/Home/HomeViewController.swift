@@ -69,6 +69,7 @@ class HomeViewController: UIViewController,ItemEvents, StockItemEvents , Restock
         configureUI()
         homeVM.onLoad(fireStoreQueries: fireStoreQueries, fireStoreStockQueries: fireStoreStockQueries)
         configureNotificationObserver()
+        homeVM.delegate = self
     }
     
     private func configureNotificationObserver() {
@@ -81,26 +82,29 @@ class HomeViewController: UIViewController,ItemEvents, StockItemEvents , Restock
     
     func displayError(msg: String) {
         Common.stopActivityIndicatory()
-        Common.showAlert(msg: msg, viewController: self)
+        //Common.showAlert(msg: msg, viewController: self)
     }
     
     func addSuccess() {
-        
+        Common.stopActivityIndicatory()
     }
     
     @objc private func updateWhenNotificationReceived(notification: NSNotification){
-        if let userInfo = notification.userInfo {
-            // Safely unwrap the name sent out by the notification sender
-            if let name = userInfo["name"], let qty = userInfo["quantity"], let uom = userInfo["uom"],let expDate = userInfo["expDate"], let type = userInfo["type"], let stockId = userInfo["id"] {
+        if let userInfo = notification.userInfo as NSDictionary?{
+            if let name = userInfo["name"] as? String,
+                let qty = userInfo["quantity"] as? Double,
+                let uom = userInfo["uom"] as? String,
+                let expDate = userInfo["expDate"] as? String,
+                let type = userInfo["type"] as? String,
+                let stockId = userInfo["id"] as? String {
                 var message =  "Available Quantity"
                 var title = "Restock"
-                if ((type as? String) == "expired") {
+                if (type == "expired") {
                     message = "Affected Quantity"
                     title = "Expired"
                 }
-                //print("stockId\(userInfo["id"])")
                 Common.showActivityIndicatory(view: self.view)
-                _ = homeVM.sendValues(id: "", itemName: name as! String, quantity: qty as! Double, uom: uom as! String, expDate: expDate as! String, type: type as! String, message: message, title: title, stockItemId: stockId as! String )
+                _ = homeVM.sendValues(id: "", itemName: name, quantity: qty, uom: uom, expDate: expDate, type: type, message: message, title: title, stockItemId: stockId )
             }
         }
     }

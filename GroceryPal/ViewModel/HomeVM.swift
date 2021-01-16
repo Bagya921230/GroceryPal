@@ -13,6 +13,7 @@ class HomeVM {
     
     var fireStoreNotificationQueries = FireStoreNotificationQueries()
     var fireStoreStockQueries = FireStoreStockQueries()
+    var delegate: HomeViewControllerDelegate?
     
     func onLoad(fireStoreQueries: FireStoreItemQueries, fireStoreStockQueries: FireStoreStockQueries)
     {
@@ -36,9 +37,11 @@ class HomeVM {
             if(transaction)
             {
                 print("Stored notfication")
+                self.delegate?.addSuccess()
             }
             else
             {
+                self.delegate?.displayError(msg: "")
                 print("Cannot add the item")
             }
          }

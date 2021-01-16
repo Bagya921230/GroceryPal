@@ -47,7 +47,7 @@ class FireStoreStockQueries {
         }
     }
     
-    func addStockItems(item: StockItem, completed: @escaping (Bool) -> Void)
+    func addStockItems(item: StockItem, completion: @escaping(Any)->())
     {
         
         let docRef = FireStoreDataBase.shared.firebaseDb.collection("user").document().collection("storage").document()
@@ -60,14 +60,16 @@ class FireStoreStockQueries {
             { err in
                 if let err = err {
                     print("Error adding item: \(err)")
-                    completed(false)
+                    completion("err")
                 } else {
                     print("Item data successfully written!")
-                    completed(true)
+                    var stockItem = item
+                    stockItem.id = docRef.documentID
+                    completion(stockItem)
                 }
             }
         } catch{
-            completed(false)
+            completion("err")
         }
         
     }

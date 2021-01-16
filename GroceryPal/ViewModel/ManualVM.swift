@@ -76,10 +76,10 @@ class ManualVM {
     
     func storeItem(item: StockItem)
     {
-        fireStoreStockQueries.addStockItems(item: item){ transaction in
-                            if(transaction)
+        fireStoreStockQueries.addStockItems(item: item){ item in
+            if(item as? StockItem ?? nil != nil)
                             {
-                                self.delegate?.addSuccess(item: item)
+                                self.delegate?.addSuccess(item: item as! StockItem)
                             }
                             else
                             {
