@@ -9,7 +9,13 @@
 import UIKit
 import Charts
 
-class StatisticsViewController: UIViewController {
+protocol StatisticsViewControllerDelegate {
+    func displayStockReleatedData(reStockCount: Double, expiredCount: Double, inStockCount: Double)
+    func displayCatgeoryUsageData(categoryUsage: Dictionary<String, Double>)
+}
+
+class StatisticsViewController: UIViewController, StatisticsViewControllerDelegate {
+    
     @IBOutlet weak var chartView1: PieChartView!
     
     @IBOutlet weak var chartView2: PieChartView!
@@ -47,14 +53,14 @@ class StatisticsViewController: UIViewController {
     
     
     var pieChartEntryCategoryUsage = [PieChartDataEntry]()
-    
-    
-    
+    let staticticsVM = StaticticsVM()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       
+        staticticsVM.delegate = self
+        staticticsVM.getStockQueries()
+        staticticsVM.getCategoryUsageQueries()
         setData()
     }
     
@@ -180,6 +186,14 @@ class StatisticsViewController: UIViewController {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+    }
+    
+    func displayStockReleatedData(reStockCount: Double, expiredCount: Double, inStockCount: Double) {
+        print("Restock Count",reStockCount,expiredCount,inStockCount)
+    }
+    
+    func displayCatgeoryUsageData(categoryUsage: Dictionary<String, Double>) {
+        print("Catgeory Usage",categoryUsage)
     }
 
 }
