@@ -64,7 +64,6 @@ class ItemsListViewController: UIViewController, UISearchBarDelegate, ItemsListV
     }
 
     func configureUI() {
-
         tableView.allowsSelection = true
         tableView.separatorStyle = .none
         searchBar.barTintColor = UIColor.white

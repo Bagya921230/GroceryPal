@@ -14,11 +14,11 @@ class LandingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        signup.createRoundedButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        signup.createRoundedButton()
         navigationController?.setNavigationBarHidden(true, animated: animated)
         navigationController?.navigationBar.tintColor = UIColor.themeColor();
     }

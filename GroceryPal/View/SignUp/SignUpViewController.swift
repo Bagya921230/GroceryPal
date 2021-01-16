@@ -27,13 +27,13 @@ class SignUpViewController: UIViewController, SignUpVMDelegate, SignUpViewContro
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        signUp.createRoundedButton()
         signUpVM.delegate = self
         self.hideKeyboardWhenTappedAround(scrollView: scrollView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        signUp.createRoundedButton()
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 

@@ -212,6 +212,7 @@ PODS:
     - abseil/base/base_internal
     - abseil/base/config
     - abseil/meta/type_traits
+  - BarcodeScanner (5.0.0)
   - BoringSSL-GRPC (0.0.7):
     - BoringSSL-GRPC/Implementation (= 0.0.7)
     - BoringSSL-GRPC/Interface (= 0.0.7)
@@ -318,6 +319,7 @@ PODS:
   - SDWebImage/Core (5.9.1)
 
 DEPENDENCIES:
+  - BarcodeScanner
   - BoringSSL-GRPC
   - Firebase/Auth
   - Firebase/Firestore
@@ -331,6 +333,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - abseil
+    - BarcodeScanner
     - BoringSSL-GRPC
     - Firebase
     - FirebaseAuth
@@ -353,6 +356,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
+  BarcodeScanner: 2f5a53198eae49dc39bf61f2c1f05c04e01ff72d
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
   Firebase: 47176280bfba198e531f909cfb1612dad216cb96
   FirebaseAuth: f7b269b33c1e842a35400ddc9bbc8b03cdc47ba3
@@ -373,6 +377,6 @@ SPEC CHECKSUMS:
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
   SDWebImage: a990c053fff71e388a10f3357edb0be17929c9c5
 
-PODFILE CHECKSUM: 61b90f9cc8e3a25ad8f4797ea37689651a1bbec8
+PODFILE CHECKSUM: d22fcd34a4f0654bafc55bf88fe0884a60ecde04
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.10.0

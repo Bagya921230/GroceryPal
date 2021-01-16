@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "server.png",
+      "filename" : "magnify.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "magnify-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "magnify-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
