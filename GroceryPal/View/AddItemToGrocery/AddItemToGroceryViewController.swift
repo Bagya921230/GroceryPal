@@ -19,11 +19,12 @@ class AddItemToGroceryViewController: UIViewController, AddItemToGroceryViewCont
     @IBOutlet weak var itemNameDropdown: DropDown!
     @IBOutlet weak var quantityTextField: UITextField!
     @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var qtyLabel: UILabel!
     
     var delegateGrocery: GroceryListViewControllerDelegate?
     let addItemVM = AddItemToGroceryVM()
     var selectedItem: Item?
-    var listId: String?
+    var list: Grocery?
     let fireStoreItemQueries = FireStoreItemQueries()
     var itemList = [Item]()
 
@@ -64,10 +65,11 @@ class AddItemToGroceryViewController: UIViewController, AddItemToGroceryViewCont
         let perVal = self.selectedItem?.perValue ?? 0
         let unitPrice =  self.selectedItem?.unitPrice ?? 0
         let quantity = self.quantityTextField.text!
-        let listId = self.listId ?? ""
-
-        Common.showActivityIndicatory(view: self.view)
-        _ = addItemVM.sendValues(name: name, category: category, uom: uom, unitPrice: unitPrice, id: "", quantity: quantity, image: image, listId: listId, perVal: perVal)
+        
+        if let grocery = self.list {
+            Common.showActivityIndicatory(view: self.view)
+            _ = addItemVM.sendValues(name: name, category: category, uom: uom, unitPrice: unitPrice, id: "", quantity: quantity, image: image, list: grocery, perVal: perVal)
+        }
     }
     
     func handleItemDropDown()

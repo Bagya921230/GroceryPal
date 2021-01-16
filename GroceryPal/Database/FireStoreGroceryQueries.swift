@@ -43,15 +43,15 @@ class FireStoreGroceryQueries {
         
     }
     
-    func createGroceryItem(grocery: GroceryItem, groceryId: String, completed: @escaping (Bool) -> Void) {
+    func createGroceryItem(grocery: GroceryItem, list: Grocery, completed: @escaping (Bool) -> Void) {
         
-        let docRef = FireStoreDataBase.shared.firebaseDb.collection("user").document(self.userId).collection("grocery").document(groceryId).collection("list").document()
+        let docRef = FireStoreDataBase.shared.firebaseDb.collection("user").document(self.userId).collection("grocery").document(list.id).collection("list").document()
         do {
             let jsonData = try grocery.jsonData()
             let json = try JSONSerialization.jsonObject(with: jsonData, options: [])
             var dictionary = json as! [String : Any]
             dictionary["id"] = docRef.documentID
-            FireStoreDataBase.shared.firebaseDb.collection("user").document(self.userId).collection("grocery").document(groceryId).collection("list").document(docRef.documentID).setData(dictionary)
+            FireStoreDataBase.shared.firebaseDb.collection("user").document(self.userId).collection("grocery").document(list.id).collection("list").document(docRef.documentID).setData(dictionary)
             { err in
                 if let err = err {
                     print("Error adding item: \(err)")
@@ -178,6 +178,17 @@ class FireStoreGroceryQueries {
     
     func deleteItem(item: Grocery, completion: @escaping(Bool)->()) {
         FireStoreDataBase.shared.firebaseDb.collection("user").document(self.userId).collection("grocery").document(item.id).delete() { err in
+            if let err = err {
+                print("Error removing item: \(err)")
+                completion(false)
+            } else {
+                completion(true)
+            }
+        }
+    }
+    
+    func deleteGroceryItem(item: GroceryItem, listId: String, completion: @escaping(Bool)->()) {
+        FireStoreDataBase.shared.firebaseDb.collection("user").document(self.userId).collection("grocery").document(listId).collection("list").document(item.id).delete() { err in
             if let err = err {
                 print("Error removing item: \(err)")
                 completion(false)

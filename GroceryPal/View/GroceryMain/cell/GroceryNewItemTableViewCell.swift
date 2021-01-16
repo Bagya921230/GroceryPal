@@ -16,6 +16,7 @@ class GroceryNewItemTableViewCell: UITableViewCell {
     @IBOutlet weak var qtyLabel: UILabel!
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var bgView: UIView!
+    @IBOutlet weak var totalLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,6 +32,7 @@ class GroceryNewItemTableViewCell: UITableViewCell {
         } else {
             qtyLabel.text = String(format: "%.2f%@",item.quantity,item.uom)
         }
+        totalLabel.text = String(format: "%@%.2f","LKR ",item.total)
         let referenceImage = Storage.storage().reference().child(item.image)
         itemImageView.sd_setImage(with: referenceImage,placeholderImage: UIImage(named: "placeholder"))
         

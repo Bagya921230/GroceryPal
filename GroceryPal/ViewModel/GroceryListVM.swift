@@ -19,13 +19,22 @@ class GroceryListVM {
         fireStoreGroceryQueries.fetchRestockItems()
     }
     
-    func getGroceryList(groceryId: String) {
+    func getGroceryList(groceryId: String,fireStoreGroceryQueries: FireStoreGroceryQueries) {
         fireStoreGroceryQueries.fetchGroceryItemList(groceryListId: groceryId)
     }
     
     func deleteItem(item: Grocery, completion: @escaping(Bool)->())
     {
         fireStoreGroceryQueries.deleteItem(item: item)
+        {
+            status in
+            completion(status)
+        }
+    }
+    
+    func deleteGroceryItem(item: GroceryItem, listId: String, completion: @escaping(Bool)->())
+    {
+        fireStoreGroceryQueries.deleteGroceryItem(item: item, listId: listId)
         {
             status in
             completion(status)

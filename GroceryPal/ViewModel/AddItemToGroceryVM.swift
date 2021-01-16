@@ -18,7 +18,7 @@ class AddItemToGroceryVM {
         fireStoreQueries.fetchItems()
     }
     
-    func sendValues(name:String, category:String, uom:String, unitPrice:Double,id: String, quantity:String, image:String, listId: String, perVal: Double) -> Bool
+    func sendValues(name:String, category:String, uom:String, unitPrice:Double,id: String, quantity:String, image:String, list: Grocery, perVal: Double) -> Bool
     {
         if name.trimmingCharacters(in: .whitespaces).isEmpty{
             delegate?.displayError(msg: "Please enter the name.")
@@ -35,15 +35,31 @@ class AddItemToGroceryVM {
             let total = Common.getFormattedDecimalDouble(value: calc )
             let item = GroceryItem(name: name, category: category, uom: uom, unitPrice: unitPrice, total: total, id: "", quantity: qty, image: image)
                         
-            storeGroceryItem(item: item, listId: listId)
+            storeGroceryItem(item: item, list: list)
             return true
         }
         return false
     }
     
-    func storeGroceryItem(item: GroceryItem, listId: String)
+    func storeGroceryItem(item: GroceryItem, list: Grocery)
     {
-        fireStoreGroceryQueries.createGroceryItem(grocery: item, groceryId: listId ){ result in
+        fireStoreGroceryQueries.createGroceryItem(grocery: item, list: list ){ result in
+            if result {
+                let total = item.total
+                var grocery = list
+                grocery.total += total
+                grocery.itemCount += 1
+                self.updateGrocery(item: grocery)
+            } else {
+                print("Cannot add the grocery")
+            }
+         }
+        
+    }
+    
+    func updateGrocery(item: Grocery)
+    {
+        fireStoreGroceryQueries.updateGrocery(item: item){ result in
             if result {
                 self.delegate?.addSuccess()
             } else {

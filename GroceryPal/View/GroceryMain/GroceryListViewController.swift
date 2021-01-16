@@ -11,10 +11,17 @@ import UIKit
 protocol GroceryListViewControllerDelegate {
     func getCreatedList(grocery: Grocery)
     func addNewItem()
+    func displayError(msg: String)
 }
 
 class GroceryListViewController: UIViewController, GroceryListViewControllerDelegate, GroceryEvent, GroceryItemEvents, RestockItemEvents {
     
+    
+    var grocery: Grocery?
+    let groceryListVM = GroceryListVM()
+    var groceryItemList = [GroceryItem]()
+    var restockList = [StockItem]()
+    let fireStoreGroceryQueries = FireStoreGroceryQueries()
     
     //MARK: - Outlets
     @IBOutlet weak var autoTableView: UITableView!
@@ -25,6 +32,7 @@ class GroceryListViewController: UIViewController, GroceryListViewControllerDele
     @IBOutlet weak var itemCount: UILabel!
     @IBOutlet weak var total: UILabel!
     @IBOutlet weak var newButton: UIButton!
+    @IBOutlet weak var detailView: UIView!
     
     //MARK: - Actions
     @IBAction func addItemAction(_ sender: Any) {
@@ -35,13 +43,21 @@ class GroceryListViewController: UIViewController, GroceryListViewControllerDele
         performSegue(withIdentifier: "segueNewList", sender: nil)
     }
     @IBAction func shareAction(_ sender: Any) {
+        if let grocery = self.grocery {
+            groceryListVM.deleteItem(item: grocery, completion: {
+                status in
+                      if(!status)
+                      {
+                          self.displayError(msg: "Cannot delete the item")
+                      }else {
+                        self.groceryItemList = []
+                        self.newListTableView.reloadData()
+                        self.groceryListVM.getGroceryList(groceryId: self.grocery!.id, fireStoreGroceryQueries: self.fireStoreGroceryQueries)
+                }
+            })
+        }
     }
     
-    var grocery: Grocery?
-    let groceryListVM = GroceryListVM()
-    var groceryItemList = [GroceryItem]()
-    var restockList = [StockItem]()
-    let fireStoreGroceryQueries = FireStoreGroceryQueries()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +65,10 @@ class GroceryListViewController: UIViewController, GroceryListViewControllerDele
         fireStoreGroceryQueries.delegateGroceryEvent = self
         fireStoreGroceryQueries.delegateRestockItemEvents = self
         fireStoreGroceryQueries.delegateGroceryItemEvents = self
+        groceryListVM.onLoad(fireStoreGroceryQueries: fireStoreGroceryQueries)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         groceryListVM.onLoad(fireStoreGroceryQueries: fireStoreGroceryQueries)
     }
     
@@ -76,12 +96,14 @@ class GroceryListViewController: UIViewController, GroceryListViewControllerDele
         newListTableView.delegate = self
         newListTableView.allowsSelection = true
         newListTableView.separatorStyle = .none
+        newListTableView.estimatedRowHeight = 100
+        autoTableView.estimatedRowHeight = 100
     }
     
     func getCreatedList(grocery: Grocery) {
         self.grocery = grocery
         listName.text = grocery.name
-        total.text = grocery.id
+        total.text = "LKR 0.00"
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -93,24 +115,30 @@ class GroceryListViewController: UIViewController, GroceryListViewControllerDele
         if segue.identifier == "segueAddItemToGrocery"{
             if let vc = segue.destination as? AddItemToGroceryViewController {
                 vc.delegateGrocery = self
-                vc.listId = self.grocery?.id
+                vc.list = self.grocery
             }
         }
     }
     
     func groceryEvent(groceryList: [Grocery]) {
         if (groceryList.count > 0){
+            detailView.isHidden = true
             self.grocery = groceryList[0]
             listName.text = self.grocery?.name
-            groceryListVM.getGroceryList(groceryId: self.grocery!.id)
+            total.text = Common.getFormattedDecimalString(value: Common.getFormattedDecimalDouble(value: self.grocery?.total ?? 0))
+            groceryListVM.getGroceryList(groceryId: self.grocery!.id, fireStoreGroceryQueries: fireStoreGroceryQueries)
             newButton.isHidden = true
         } else {
-            newButton.isHidden = true
+            detailView.isHidden = false
+            newButton.isHidden = false
         }
     }
     
     func groceryItemList(itemList: [GroceryItem]) {
         self.groceryItemList = itemList
+        if (itemList.count > 0) {
+            itemCount.text = String(itemList.count)+" "+(itemList.count < 2 ? "item" : "items")
+        }
         self.newListTableView.reloadData()
         updateTableViewHeight()
     }
@@ -123,6 +151,11 @@ class GroceryListViewController: UIViewController, GroceryListViewControllerDele
     
     func addNewItem() {
         groceryListVM.onLoad(fireStoreGroceryQueries: fireStoreGroceryQueries)
+    }
+    
+    func displayError(msg: String) {
+        Common.stopActivityIndicatory()
+        Common.showAlert(msg: msg, viewController: self)
     }
     
 }
@@ -171,7 +204,28 @@ extension GroceryListViewController : UITableViewDataSource , UITableViewDelegat
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 96
+        return 100
     }
 
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch tableView {
+        case autoTableView:
+            return
+        case newListTableView:
+            if (editingStyle == .delete) {
+                groceryListVM.deleteGroceryItem(item: groceryItemList[indexPath.row], listId: self.grocery?.id ?? "" , completion: {
+                    status in
+                          if(!status)
+                          {
+                              self.displayError(msg: "Cannot delete the item")
+                          } else {
+                            self.total.text = "LKR 0.00"
+                    }
+                })
+            }
+        default:
+            return
+        }
+        
+    }
 }
