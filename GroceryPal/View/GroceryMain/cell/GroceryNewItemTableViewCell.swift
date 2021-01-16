@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseUI
 
 class GroceryNewItemTableViewCell: UITableViewCell {
 
@@ -15,6 +16,7 @@ class GroceryNewItemTableViewCell: UITableViewCell {
     @IBOutlet weak var qtyLabel: UILabel!
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var bgView: UIView!
+    @IBOutlet weak var totalLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,10 +25,17 @@ class GroceryNewItemTableViewCell: UITableViewCell {
         self.bgView.layer.masksToBounds = true
     }
     
-    func setUp(name: String, image: UIImage, quantity: String) {
-        nameLabel.text = name
-        itemImageView.image = image
-        qtyLabel.text = quantity
+    func setUp(item: GroceryItem) {
+        nameLabel.text = item.name
+        if (item.uom == "unit") {
+            qtyLabel.text = String(format: "%.0f",item.quantity)
+        } else {
+            qtyLabel.text = String(format: "%.2f%@",item.quantity,item.uom)
+        }
+        totalLabel.text = String(format: "%@%.2f","LKR ",item.total)
+        let referenceImage = Storage.storage().reference().child(item.image)
+        itemImageView.sd_setImage(with: referenceImage,placeholderImage: UIImage(named: "placeholder"))
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

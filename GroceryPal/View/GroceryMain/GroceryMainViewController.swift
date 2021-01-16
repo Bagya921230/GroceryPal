@@ -14,9 +14,6 @@ class GroceryMainViewController: UIViewController {
     @IBOutlet weak var emptyContainer: UIView!
     @IBOutlet weak var listContainerView: UIView!
 
-    @IBAction func newListAction(_ sender: Any) {
-        performSegue(withIdentifier: "segueNewList", sender: nil)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
