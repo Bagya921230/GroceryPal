@@ -27,7 +27,7 @@ class ItemListVMTests: XCTestCase {
     
          func testDeleteItem() throws {
             
-           let item = Item(name: "Apple", category: "Fruit", uom: "g", unitPrice: 300, perValue: 200, roLevel: 50, notes: "Test", image: "", id: "123")
+           let item = Item(name: "Apple", category: "Fruit", uom: "g", unitPrice: 300, perValue: 200, roLevel: 50, notes: "Test", image: "", id: "123", barcode: "")
             
             let exp = expectation(description: "Check delete is successful")
             var finalResult: Bool = false
@@ -43,9 +43,9 @@ class ItemListVMTests: XCTestCase {
     
           func prepareList()
           {
-            let item = Item(name: "Apple", category: "Fruit", uom: "g", unitPrice: 300, perValue: 200, roLevel: 50, notes: "Test", image: "", id: "")
+            let item = Item(name: "Apple", category: "Fruit", uom: "g", unitPrice: 300, perValue: 200, roLevel: 50, notes: "Test", image: "", id: "", barcode: "")
             
-            let item1 = Item(name: "Orange", category: "Fruit", uom: "g", unitPrice: 300, perValue: 200, roLevel: 50, notes: "Test", image: "", id: "")
+            let item1 = Item(name: "Orange", category: "Fruit", uom: "g", unitPrice: 300, perValue: 200, roLevel: 50, notes: "Test", image: "", id: "", barcode: "")
                 
              itemList.append(item)
              itemList.append(item1)
