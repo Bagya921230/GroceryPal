@@ -8,7 +8,12 @@
 
 import UIKit
 
-class HomeViewController: UIViewController,ItemEvents, StockItemEvents , RestockItemEvents{
+protocol HomeViewControllerDelegate {
+    func displayError(msg: String)
+    func addSuccess()
+}
+
+class HomeViewController: UIViewController,ItemEvents, StockItemEvents , RestockItemEvents,HomeViewControllerDelegate{
         
     // MARK: - Outlet
     @IBOutlet weak var storageView: UIView!
@@ -30,10 +35,6 @@ class HomeViewController: UIViewController,ItemEvents, StockItemEvents , Restock
     // MARK: - Actions
     @IBAction func clickStorage(_ sender: Any) {
         self.tabBarController?.selectedIndex = 1
-        let nav = self.tabBarController?.viewControllers?[1] as! UINavigationController
-        let vc = nav.topViewController as! StorageMainViewController
-        vc.isEmpty = stockItemList.count == 0
-        vc.noItems = itemList.count == 0
     }
     
     @IBAction func clickGrocery(_ sender: Any) {
@@ -63,17 +64,52 @@ class HomeViewController: UIViewController,ItemEvents, StockItemEvents , Restock
         fireStoreStockQueries.delegateRestockItemEvents = self
         configureUI()
         homeVM.onLoad(fireStoreQueries: fireStoreQueries, fireStoreStockQueries: fireStoreStockQueries)
+        configureNotificationObserver()
+        homeVM.delegate = self
+    }
+    
+    private func configureNotificationObserver() {
+        NotificationCenter.default.addObserver(
+        self,
+        selector: #selector(self.updateWhenNotificationReceived),
+        name: Notification.Name(rawValue: "ADD_NOTIFICATION"),
+        object: nil)
+    }
+    
+    func displayError(msg: String) {
+        Common.stopActivityIndicatory()
+        //Common.showAlert(msg: msg, viewController: self)
+    }
+    
+    func addSuccess() {
+        Common.stopActivityIndicatory()
+    }
+    
+    @objc private func updateWhenNotificationReceived(notification: NSNotification){
+        if let userInfo = notification.userInfo as NSDictionary?{
+            if let name = userInfo["name"] as? String,
+                let qty = userInfo["quantity"] as? Double,
+                let uom = userInfo["uom"] as? String,
+                let expDate = userInfo["expDate"] as? String,
+                let type = userInfo["type"] as? String,
+                let stockId = userInfo["id"] as? String {
+                var message =  "Available Quantity"
+                var title = "Restock"
+                if (type == "expired") {
+                    message = "Affected Quantity"
+                    title = "Expired"
+                }
+                Common.showActivityIndicatory(view: self.view)
+                _ = homeVM.sendValues(id: "", itemName: name, quantity: qty, uom: uom, expDate: expDate, type: type, message: message, title: title, stockItemId: stockId )
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = false
         navigationController?.setNavigationBarHidden(true, animated: animated)
         navigationController?.navigationBar.tintColor = UIColor.themeColor()
-        let nav = self.tabBarController?.viewControllers?[1] as! UINavigationController
-        let vc = nav.topViewController as! StorageMainViewController
-        vc.isEmpty = stockItemList.count == 0
-        vc.noItems = itemList.count == 0
     }
     
     func configureUI() {
@@ -82,6 +118,7 @@ class HomeViewController: UIViewController,ItemEvents, StockItemEvents , Restock
         groceryListView.roundCorners([.topRight, .bottomRight], [.layerMaxXMinYCorner, .layerMaxXMaxYCorner], radius: 20)
         restockNeededView.roundCorners([.topRight, .bottomRight], [.layerMaxXMinYCorner, .layerMaxXMaxYCorner], radius: 20)
         statisticsView.roundCorners([.topRight, .bottomRight], [.layerMaxXMinYCorner, .layerMaxXMaxYCorner], radius: 20)
+        self.tabBarController?.selectedIndex = 0
     }
 
     // MARK: - Navigation

@@ -95,7 +95,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fwo-R0-7IW">
-                                <rect key="frame" x="0.0" y="74" width="414" height="744"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="notificationCell" rowHeight="96" id="NjV-cc-lY2" customClass="NotificationTableViewCell" customModule="GroceryPal" customModuleProvider="target">
@@ -197,7 +197,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Fwo-R0-7IW" firstAttribute="top" secondItem="ov1-od-pxn" secondAttribute="top" constant="30" id="3D7-SC-M4r"/>
+                            <constraint firstItem="Fwo-R0-7IW" firstAttribute="top" secondItem="ov1-od-pxn" secondAttribute="top" id="3D7-SC-M4r"/>
                             <constraint firstItem="ov1-od-pxn" firstAttribute="trailing" secondItem="Fwo-R0-7IW" secondAttribute="trailing" id="BqB-rr-Dzx"/>
                             <constraint firstItem="Fwo-R0-7IW" firstAttribute="leading" secondItem="ov1-od-pxn" secondAttribute="leading" id="FqJ-dY-6Jb"/>
                             <constraint firstItem="ov1-od-pxn" firstAttribute="bottom" secondItem="Fwo-R0-7IW" secondAttribute="bottom" id="maS-0x-xpA"/>

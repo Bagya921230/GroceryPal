@@ -8,13 +8,22 @@
 
 import UIKit
 
-class NotificationListViewController: UIViewController {
+protocol NotificationListViewControllerDelegate {
+    func displayError(msg: String)
+}
+
+class NotificationListViewController: UIViewController, NotificationItemEvents, NotificationListViewControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    var notificationList = [NotificationItem]()
+    let notificationListVM = NotificationListVM()
+    let fireStoreNotificationQueries = FireStoreNotificationQueries()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        fireStoreNotificationQueries.delegateStockNotificationEvents = self
+        notificationListVM.onLoad(fireStoreNotificationQueries: fireStoreNotificationQueries)
     }
     
     func configureUI() {
@@ -29,6 +38,15 @@ class NotificationListViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
+    
+    func notificationList(notiList: [NotificationItem]) {
+        self.notificationList = notiList
+        self.tableView.reloadData()
+    }
+    
+    func displayError(msg: String) {
+        Common.showAlert(msg: msg, viewController: self)
+    }
 
 }
 
@@ -38,7 +56,7 @@ extension NotificationListViewController : UITableViewDataSource , UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return notificationList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -46,18 +64,25 @@ extension NotificationListViewController : UITableViewDataSource , UITableViewDe
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? NotificationTableViewCell else {
             fatalError("The dequed cell is not an instance of NotificationTableViewCell")
         }
-        if (indexPath.row == 1) {
-            cell.setUp(name: "Yoghurt", qty: "3", msg: "Expired on 02/12/2020", subMsg: "Affected Qty",expired: true, outOfStock: false)
-        } else if (indexPath.row == 2) {
-            cell.setUp(name: "Eggs", qty: "2", msg: "Restock needed", subMsg: "Available Qty",expired: false, outOfStock: true)
-        } else {
-            cell.setUp(name: "Fresh Milk 500ml", qty: "2", msg: "Going to expire soon", subMsg: "Affected Qty",expired: false, outOfStock: false)
-        }
+        let item = notificationList[indexPath.row]
+        cell.setUp(item: item)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 96
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            notificationListVM.deleteItem(item: notificationList[indexPath.row], completion: {
+                status in
+                      if(!status)
+                      {
+                          self.displayError(msg: "Cannot delete the item")
+                      }
+            })
+        }
     }
     
 }

@@ -39,6 +39,20 @@ class StorageListViewController: UIViewController, StorageListViewControllerDele
         fireStoreStockQueries.delegateStockItemEvents = self
         storageListVM.onLoad(fireStoreStockQueries: fireStoreStockQueries)
         handleDropDowns()
+        configureNotificationObserver()
+    }
+    
+    private func configureNotificationObserver() {
+        NotificationCenter.default.addObserver(
+        self,
+        selector: #selector(self.updateWhenNotificationReceived),
+        name: Notification.Name(rawValue: "UPDATE_STORAGE"),
+        object: nil)
+    }
+    
+    @objc private func updateWhenNotificationReceived(notification: NSNotification){
+        print("noti update")
+        storageListVM.onLoad(fireStoreStockQueries: fireStoreStockQueries)
     }
     
     func configureUI() {
@@ -118,8 +132,7 @@ class StorageListViewController: UIViewController, StorageListViewControllerDele
            if let vcs = self.navigationController?.viewControllers {
                let previousVC = vcs[0]
                if previousVC is StorageMainViewController {
-                   let isEmpty = stockItemList.count == 0
-                   (previousVC as! StorageMainViewController).isEmpty = isEmpty
+                   (previousVC as! StorageMainViewController).stockItemList = stockItemList
                    (previousVC as! StorageMainViewController).onLoad()
                }
            }

@@ -47,7 +47,7 @@ class FireStoreStockQueries {
         }
     }
     
-    func addStockItems(item: StockItem, completed: @escaping (Bool) -> Void)
+    func addStockItems(item: StockItem, completion: @escaping(Any)->())
     {
         
         let docRef = FireStoreDataBase.shared.firebaseDb.collection("user").document().collection("storage").document()
@@ -56,18 +56,25 @@ class FireStoreStockQueries {
             let json = try JSONSerialization.jsonObject(with: jsonData, options: [])
             var dictionary = json as! [String : Any]
             dictionary["id"] = docRef.documentID
+            if (item.quantity <= item.roLevel) {
+                dictionary["status"] = "restock"
+            } else {
+                dictionary["status"] = "active"
+            }
             FireStoreDataBase.shared.firebaseDb.collection("user").document(self.userId).collection("storage").document(docRef.documentID).setData(dictionary)
             { err in
                 if let err = err {
                     print("Error adding item: \(err)")
-                    completed(false)
+                    completion("err")
                 } else {
                     print("Item data successfully written!")
-                    completed(true)
+                    var stockItem = item
+                    stockItem.id = docRef.documentID
+                    completion(stockItem)
                 }
             }
         } catch{
-            completed(false)
+            completion("err")
         }
         
     }
@@ -83,6 +90,7 @@ class FireStoreStockQueries {
             dictionary["quantity"] = newQty
             if (newQty <= item.roLevel) {
                 dictionary["status"] = "restock"
+                LocalNotification.scheduleLocalNotification(type: "restock", item: item, mins: 1)
             } else {
                 dictionary["status"] = "active"
             }
@@ -101,6 +109,7 @@ class FireStoreStockQueries {
             completed(false)
         }
     }
+    
 
     func fetchRestockItems()
     {

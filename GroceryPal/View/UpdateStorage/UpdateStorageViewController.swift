@@ -111,14 +111,17 @@ class UpdateStorageViewController: UIViewController ,UpdateStorageViewController
             } else {
                 unitView.alpha = 0
                 nonUnitView.alpha = 1
-                addedQty.text = Common.getFormattedDecimalString(value: selectedItem.initialQty)
-                roLevel.text = Common.getFormattedDecimalString(value: selectedItem.roLevel)
+                addedQty.text = "\(Common.getFormattedDecimalString(value: selectedItem.initialQty))\(selectedItem.uom)"
+                roLevel.text = "\(Common.getFormattedDecimalString(value: selectedItem.roLevel))\(selectedItem.uom)"
                 remainQty.text = Common.getFormattedDecimalString(value: selectedItem.quantity)
                 self.initNonUnitVal = selectedItem.quantity
                 self.uomVal = selectedItem.uom
                 let value = Common.getFormattedDecimalDouble(value: calculatePercentage(initValue: selectedItem.initialQty, currentVal: selectedItem.quantity)) 
                 slider.setValue(Float(value), animated: true)
                 remainNonunitQty.text = "\(value)%"
+                self.newNonUnitVal = Common.getFormattedDecimalDouble(value: selectedItem.quantity)
+                approxQty.text = "Approximately \(Common.getFormattedDecimalString(value: selectedItem.quantity))\(uomVal)"
+
                 
             }
             let referenceImage = Storage.storage().reference().child(selectedItem.image)

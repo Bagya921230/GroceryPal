@@ -18,33 +18,37 @@ class NotificationTableViewCell: UITableViewCell {
     @IBOutlet weak var expiredImageView: UIImageView!
     @IBOutlet weak var stockImageView: UIImageView!
     
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
     // MARK: - Setup
-    func setUp(name: String, qty: String, msg: String, subMsg: String, expired: Bool, outOfStock: Bool) {
-           nameLabel.text = name
-           qtyLabel.text = qty
-           msgLabel.text = msg
-           subMsgLabel.text = subMsg
-           if (outOfStock) {
-               stockImageView.isHidden = false
-               expiredImageView.isHidden = true
-           }
-           if (expired) {
-               expiredImageView.isHidden = false
-               stockImageView.isHidden = true
-           }
-       }
-
-
+    func setUp(item: NotificationItem) {
+        nameLabel.text = item.itemName
+        if (item.uom == "unit") {
+            qtyLabel.text = Common.getFormattedDecimalString(value: item.quantity)
+        } else {
+            qtyLabel.text = "\(Common.getFormattedDecimalString(value: item.quantity))\(item.uom)"
+        }
+        msgLabel.text = item.title
+        subMsgLabel.text = item.message
+        if (item.type == "restock") {
+            stockImageView.isHidden = false
+            expiredImageView.isHidden = true
+        }
+        if (item.type == "expired") {
+            expiredImageView.isHidden = false
+            stockImageView.isHidden = true
+        }
+    }
+    
+    
 }

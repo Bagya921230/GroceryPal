@@ -11,11 +11,40 @@ import Foundation
 
 class HomeVM {
     
+    var fireStoreNotificationQueries = FireStoreNotificationQueries()
+    var fireStoreStockQueries = FireStoreStockQueries()
+    var delegate: HomeViewControllerDelegate?
+    
     func onLoad(fireStoreQueries: FireStoreItemQueries, fireStoreStockQueries: FireStoreStockQueries)
     {
         fireStoreQueries.fetchItems()
         fireStoreStockQueries.fetchStockItems()
         fireStoreStockQueries.fetchRestockItems()
+    }
+    
+    func sendValues(id: String, itemName: String, quantity: Double,uom: String, expDate: String, type: String, message: String, title: String, stockItemId: String) -> Bool
+    {
+        
+        let notiItem = NotificationItem(id: "", itemName: itemName, quantity: quantity, uom: uom, expDate: expDate, type: type, message: message, title: title)
+                    
+        storeNotification(item: notiItem, stockItemId: stockItemId, type: type)
+        return true
+    }
+    
+    func storeNotification(item: NotificationItem, stockItemId: String, type: String)
+    {
+        fireStoreNotificationQueries.addNotification(notiItem: item, stockItemId: stockItemId,type: type){ transaction in
+            if(transaction)
+            {
+                print("Stored notfication")
+                self.delegate?.addSuccess()
+            }
+            else
+            {
+                self.delegate?.displayError(msg: "")
+                print("Cannot add the item")
+            }
+         }
     }
 
 }

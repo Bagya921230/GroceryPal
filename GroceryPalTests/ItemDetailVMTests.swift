@@ -23,33 +23,33 @@ class ItemDetailVMTests: XCTestCase {
        
         func testNameIsEmpty() throws {
             
-            let result = viewModel.sendValues(name: "", category: "Dairy", uom: "unit", notes: "xxx", price: "200", nonUnitPrice: "2000", perVal: "10", roLevel: "4", image: nil, isEditMode: false, selectedItem: nil)
+            let result = viewModel.sendValues(name: "", category: "Dairy", uom: "unit", notes: "xxx", price: "200", nonUnitPrice: "2000", perVal: "10", roLevel: "4", image: nil, isEditMode: false, selectedItem: nil, barcode: "")
             XCTAssertFalse(result)
         }
     
         func testUnitPriceIsEmpty() throws {
             
-            let result = viewModel.sendValues(name: "abc", category: "Dairy", uom: "unit", notes: "xxx", price: "", nonUnitPrice: "2000", perVal: "10", roLevel: "4", image: nil, isEditMode: false, selectedItem: nil)
+            let result = viewModel.sendValues(name: "abc", category: "Dairy", uom: "unit", notes: "xxx", price: "", nonUnitPrice: "2000", perVal: "10", roLevel: "4", image: nil, isEditMode: false, selectedItem: nil, barcode: "")
             XCTAssertFalse(result)
         }
     
         func testNonUnitPriceIsEmpty() throws {
             
-            let result = viewModel.sendValues(name: "abc", category: "Dairy", uom: "kg", notes: "xxx", price: "100", nonUnitPrice: "", perVal: "10", roLevel: "4", image: nil, isEditMode: false, selectedItem: nil)
+            let result = viewModel.sendValues(name: "abc", category: "Dairy", uom: "kg", notes: "xxx", price: "100", nonUnitPrice: "", perVal: "10", roLevel: "4", image: nil, isEditMode: false, selectedItem: nil, barcode: "")
             XCTAssertFalse(result)
         }
     
         func testPerValIsEmpty() throws {
             
-            let result = viewModel.sendValues(name: "abc", category: "Dairy", uom: "kg", notes: "xxx", price: "100", nonUnitPrice: "2000", perVal: "", roLevel: "4", image: nil, isEditMode: false, selectedItem: nil)
+            let result = viewModel.sendValues(name: "abc", category: "Dairy", uom: "kg", notes: "xxx", price: "100", nonUnitPrice: "2000", perVal: "", roLevel: "4", image: nil, isEditMode: false, selectedItem: nil, barcode: "")
             XCTAssertFalse(result)
         }
     
         func testUpdateValidationSuccess() throws {
             
-            let item = Item(name: "Apple", category: "Fruit", uom: "g", unitPrice: 300, perValue: 200, roLevel: 50, notes: "Test", image: "", id: "0")
+            let item = Item(name: "Apple", category: "Fruit", uom: "g", unitPrice: 300, perValue: 200, roLevel: 50, notes: "Test", image: "", id: "0", barcode: "")
                
-            let result = viewModel.sendValues(name: "abc", category: "Dairy", uom: "unit", notes: "xxx", price: "100", nonUnitPrice: "2000", perVal: "5", roLevel: "4", image: nil, isEditMode: true, selectedItem: item)
+            let result = viewModel.sendValues(name: "abc", category: "Dairy", uom: "unit", notes: "xxx", price: "100", nonUnitPrice: "2000", perVal: "5", roLevel: "4", image: nil, isEditMode: true, selectedItem: item, barcode: "")
             XCTAssertTrue(result)
         }
     
@@ -85,7 +85,7 @@ class ItemDetailVMTests: XCTestCase {
     
         func testUpdateItemSuccess() throws {
     
-               let item = Item(name: "Apple", category: "Fruit", uom: "g", unitPrice: 300, perValue: 200, roLevel: 50, notes: "Test", image: "", id: "0")
+               let item = Item(name: "Apple", category: "Fruit", uom: "g", unitPrice: 300, perValue: 200, roLevel: 50, notes: "Test", image: "", id: "0", barcode: "")
                
                            let exp = expectation(description: "Check update is successful")
                            var finalResult: Bool = false

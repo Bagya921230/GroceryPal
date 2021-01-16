@@ -11,7 +11,7 @@ import iOSDropDown
 
 protocol ManualViewControllerDelegate {
     func displayError(msg: String)
-    func addSuccess()
+    func addSuccess(item: StockItem)
 }
 
 class ManualViewController: UIViewController, ManualViewControllerDelegate, ItemEvents, ScanViewControllerDelegate {
@@ -32,6 +32,7 @@ class ManualViewController: UIViewController, ManualViewControllerDelegate, Item
     var itemList = [Item]()
     var selectedItem: Item?
     let fireStoreItemQueries = FireStoreItemQueries()
+    var timeDiff : Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +65,8 @@ class ManualViewController: UIViewController, ManualViewControllerDelegate, Item
              let dateformatter = DateFormatter()
              dateformatter.dateStyle = .medium
              self.expiryTextField.text = dateformatter.string(from: datePicker.date)
+            let diffComponents = Calendar.current.dateComponents([.minute], from: Date(), to: datePicker.date)
+            self.timeDiff = diffComponents.minute
          }
          self.expiryTextField.resignFirstResponder()
      }
@@ -91,12 +94,32 @@ class ManualViewController: UIViewController, ManualViewControllerDelegate, Item
     }
     
     func didScan(msg: String) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        
-        let pickerDateformatter = DateFormatter()
-        pickerDateformatter.dateStyle = .medium
-        self.expiryTextField.text = pickerDateformatter.string(from: dateFormatter.date(from: msg)!)
+        manualVM.fetchItemFromStore(barcode: msg, itemList: itemList, completion: {
+            item in
+            
+                self.selectedItem = item
+                self.itemNameDropdown.text = item.name
+                self.itemNameDropdown.selectedIndex = self.manualVM.getItemIndex(barcode: msg, itemList: self.itemList)
+                self.categoryLabel.text = item.category
+                self.unitPriceTextField.text = Common.getFormattedDecimalString(value: item.unitPrice)
+                self.priceTextField.text = Common.getFormattedDecimalString(value: item.unitPrice)
+                self.measurementTextField.text = Common.getFormattedDecimalString(value: item.perValue)
+
+                if(item.uom == "unit")
+                {
+                    self.unitPriceTextField.isHidden = false
+                    self.nonUnitView.isHidden = true
+                    self.quantityTextField.setRightLabel(text: "")
+                }
+                else
+                {
+                    self.unitPriceTextField.isHidden = true
+                    self.nonUnitView.isHidden = false
+                    self.quantityTextField.setRightLabel(text: item.uom)
+                    self.measurementTextField.setRightLabel(text: item.uom)
+                }
+          
+        })
     }
     
     func displayItems(list: [String]) {
@@ -130,9 +153,17 @@ class ManualViewController: UIViewController, ManualViewControllerDelegate, Item
         Common.showAlert(msg: msg, viewController: self)
     }
     
-    func addSuccess() {
+    func addSuccess(item: StockItem) {
         Common.stopActivityIndicatory()
         navigationController?.popViewController(animated: true)
+        
+        if let timeDif = self.timeDiff {
+            print("set expiry notification to trigger in \(timeDif) mins")
+            LocalNotification.scheduleLocalNotification(type: "expired", item: item, mins: timeDif)
+        }
+        if (item.quantity <= item.roLevel) {
+            LocalNotification.scheduleLocalNotification(type: "restock", item: item, mins: 1)
+        }
     }
     
     func itemList(itemList: [Item]) {
