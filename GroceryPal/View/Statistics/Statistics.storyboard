@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qv5-F0-hPs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qv5-F0-hPs">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Statistics View Controller-->
+        <!--Statistics-->
         <scene sceneID="D3h-Nl-4HZ">
             <objects>
-                <viewController id="qv5-F0-hPs" customClass="StatisticsViewController" customModule="GroceryPal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Statistics" id="qv5-F0-hPs" customClass="StatisticsViewController" customModule="GroceryPal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aNJ-y0-hdi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,7 +31,7 @@
                                                 <color key="backgroundColor" red="0.58093809222159876" green="1" blue="0.82527288153963929" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
+                                        <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="mtS-RW-Vj4"/>
                                         </constraints>
@@ -49,7 +48,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
+                                        <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="JXc-jz-Yg4" firstAttribute="leading" secondItem="Mpb-oo-Qe8" secondAttribute="leading" constant="5" id="8Kl-eE-qSs"/>
                                             <constraint firstItem="JXc-jz-Yg4" firstAttribute="top" secondItem="Mpb-oo-Qe8" secondAttribute="top" constant="5" id="c8A-JT-ZJN"/>
@@ -68,7 +67,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
+                                        <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="vt3-8w-fQJ" firstAttribute="leading" secondItem="LXT-SE-3cD" secondAttribute="leading" constant="5" id="AMc-n8-yZC"/>
                                             <constraint firstAttribute="trailing" secondItem="vt3-8w-fQJ" secondAttribute="trailing" constant="5" id="RvK-1a-yNe"/>
@@ -85,14 +84,14 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="P3f-5d-Li6"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="KIy-iL-qHZ" firstAttribute="leading" secondItem="P3f-5d-Li6" secondAttribute="leading" id="UuM-r9-1Xr"/>
                             <constraint firstItem="KIy-iL-qHZ" firstAttribute="top" secondItem="P3f-5d-Li6" secondAttribute="top" id="gIF-jg-Bmm"/>
                             <constraint firstItem="P3f-5d-Li6" firstAttribute="bottom" secondItem="KIy-iL-qHZ" secondAttribute="bottom" id="q86-TT-xru"/>
                             <constraint firstItem="P3f-5d-Li6" firstAttribute="trailing" secondItem="KIy-iL-qHZ" secondAttribute="trailing" id="rTL-uW-CEf"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="P3f-5d-Li6"/>
                     </view>
                     <connections>
                         <outlet property="chartView1" destination="xVY-zl-Efw" id="h8V-UF-kNi"/>
@@ -106,12 +105,4 @@
             <point key="canvasLocation" x="184" y="254"/>
         </scene>
     </scenes>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="tertiarySystemGroupedBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-    </resources>
 </document>

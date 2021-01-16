@@ -35,22 +35,8 @@ class StatisticsViewController: UIViewController, StatisticsViewControllerDelega
     var expiredItemCount:Double = 0
     var notExpiredItemCount:Double = 0
     
-    
     var pieChartTotalStockDataEntry = [PieChartDataEntry]()
     var pieChartTotalExpiredDataEntry = [PieChartDataEntry]()
-    
-    //Category usage chart data
-    var pieChartEntryMeatUsage = PieChartDataEntry(value: 0)
-    var pieChartEntryVegetableUsage = PieChartDataEntry(value: 0)
-    var pieChartEntryFruitUsage = PieChartDataEntry(value: 0)
-    var pieChartEntryDairyUsage = PieChartDataEntry(value: 0)
-    var pieChartEntryGrainsUsage = PieChartDataEntry(value: 0)
-    var meatUsage:Double = 0
-    var vegetableUsage:Double = 0
-    var fruitUsage:Double = 0
-    var beverageUsage:Double = 0
-    var bakeryUsage:Double = 0
-    
     
     var pieChartEntryCategoryUsage = [PieChartDataEntry]()
     let staticticsVM = StaticticsVM()
@@ -69,39 +55,18 @@ class StatisticsViewController: UIViewController, StatisticsViewControllerDelega
     }
     func  setChartData( _ expredCount:Double, _ notExpiredCount:Double, _ instockCount:Double , _ outStockCount:Double)  {
         
-        print("chamil",expredCount,notExpiredCount,instockCount,outStockCount)
         expiredItemCount = expredCount
         notExpiredItemCount = notExpiredCount
         inStockItemCount = instockCount
         outStockItemCount = outStockCount
         
-        meatUsage = 10
-        vegetableUsage = 40
-        fruitUsage = 20
-        beverageUsage = 10
-        bakeryUsage = 20
-        
     }
     func setCategoryUsage( _ categoryUsageData: Dictionary<String, Double> )
     {
-         let meatUsage:Double? = categoryUsageData["Meat"]
-         let vegetableUsage:Double? = categoryUsageData["Vegetables"]
-         let fruitUsage:Double? = categoryUsageData["Fruits"]
-         let dairyeUsage:Double? = categoryUsageData["Dairy"]
-         let grainsUsage:Double? = categoryUsageData["Grains"]
-     
-        //Category usage of month
-        pieChartEntryMeatUsage.value = meatUsage!
-        pieChartEntryMeatUsage.label = "Meat"
-        pieChartEntryVegetableUsage.value = vegetableUsage!
-        pieChartEntryVegetableUsage.label = "Vegetable"
-        pieChartEntryFruitUsage.value = fruitUsage!
-        pieChartEntryFruitUsage.label = "Fruit"
-        pieChartEntryDairyUsage.value = dairyeUsage!
-        pieChartEntryDairyUsage.label = "Dairy"
-        pieChartEntryGrainsUsage.value = grainsUsage!
-        pieChartEntryGrainsUsage.label = "Grains"
-        pieChartEntryCategoryUsage = [pieChartEntryMeatUsage,pieChartEntryVegetableUsage,pieChartEntryFruitUsage,pieChartEntryDairyUsage,pieChartEntryGrainsUsage]
+        
+        for (cat, usage) in categoryUsageData {
+            pieChartEntryCategoryUsage.append(PieChartDataEntry(value: usage, label: cat))
+        }
         
         let categoryUsageDataSet = PieChartDataSet(entries: pieChartEntryCategoryUsage, label: nil)
         let categoryUsageData = PieChartData(dataSet: categoryUsageDataSet)
@@ -202,16 +167,13 @@ class StatisticsViewController: UIViewController, StatisticsViewControllerDelega
     }
     
     func displayStockReleatedData(reStockCount: Double, expiredCount: Double, inStockCount: Double, nonExpiredCount: Double) {
-        print("Restock Count",reStockCount,expiredCount,inStockCount, nonExpiredCount)
-        //setChartData(reStockCount,inStockCount,nonExpiredCount,expiredCount)
-        //setData(_ expredCount:Double, _ notExpiredCount:Double, _ instockCount:Double , _ outStockCount:Double )
-        setData(expiredCount,expiredCount,inStockCount,reStockCount)
+        // print("Restock Count",reStockCount,expiredCount,inStockCount, nonExpiredCount)
+        setData(expiredCount,nonExpiredCount,inStockCount,reStockCount)
     }
     
     func displayCatgeoryUsageData(categoryUsage: Dictionary<String, Double>) {
-        print("Catgeory Usage",categoryUsage)
+        //print("Catgeory Usage",categoryUsage)
         setCategoryUsage(categoryUsage)
-        
     }
 
 }
