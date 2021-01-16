@@ -36,7 +36,7 @@ class ItemDetailVM {
         }
     }
         
-    func sendValues(name: String, category: String, uom: String,notes:String,price:String,nonUnitPrice:String,perVal:String, roLevel:String, image: UIImage?, isEditMode: Bool, selectedItem: Item?) -> Bool
+    func sendValues(name: String, category: String, uom: String,notes:String,price:String,nonUnitPrice:String,perVal:String, roLevel:String, image: UIImage?, isEditMode: Bool, selectedItem: Item?, barcode: String) -> Bool
     {
         if name.trimmingCharacters(in: .whitespaces).isEmpty{
             delegate?.displayError(msg: "Please enter the item name.")
@@ -66,7 +66,7 @@ class ItemDetailVM {
             let imagePath = selectedItem != nil ? selectedItem!.image : ""
             let id = selectedItem != nil ? selectedItem!.id : ""
             
-            let item = Item(name: name, category: category, uom: uom, unitPrice: unitPrice, perValue: perValDouble, roLevel: roLevelDouble, notes: notes, image: imagePath, id: id)
+            let item = Item(name: name, category: category, uom: uom, unitPrice: unitPrice, perValue: perValDouble, roLevel: roLevelDouble, notes: notes, image: imagePath, id: id, barcode: barcode)
                           
             if(isEditMode)
             {

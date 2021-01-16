@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import iOSDropDown
 import FirebaseStorage
+import BarcodeScanner
 
 protocol ItemDetailViewControllerDelegate {
     func displayCategories(list: [String])
@@ -19,7 +20,7 @@ protocol ItemDetailViewControllerDelegate {
     func displayValuesInScreen()
 }
 
-class ItemDetailViewController: UIViewController, ImagePickerDelegate, ItemDetailViewControllerDelegate {
+class ItemDetailViewController: UIViewController, ImagePickerDelegate, ItemDetailViewControllerDelegate{
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -34,9 +35,12 @@ class ItemDetailViewController: UIViewController, ImagePickerDelegate, ItemDetai
     @IBOutlet weak var nonUnitPrice: UITextField!
     @IBOutlet weak var perVal: UITextField!
     @IBOutlet weak var nonUnitPriceViewUnit: UILabel!
+    @IBOutlet weak var barCode: UITextField!
+    @IBOutlet weak var barCodeButton: UIButton!
     
     var imagePicker: ImagePicker!
     let itemDetailVM = ItemDetailVM()
+    let viewController = BarcodeScannerViewController()
     var selectedImage: UIImage!
     
     var selectedItem: Item?
@@ -48,10 +52,10 @@ class ItemDetailViewController: UIViewController, ImagePickerDelegate, ItemDetai
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         self.hideKeyboardWhenTappedAround(scrollView: scrollView)
         itemDetailVM.delegate = self
-        
+        viewController.codeDelegate = self
+
         itemDetailVM.onLoad()
         self.handleDropDown()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,10 +66,15 @@ class ItemDetailViewController: UIViewController, ImagePickerDelegate, ItemDetai
          self.imagePicker.present(from: self.view)
      }
     
+    @IBAction func onScan(_ sender: Any) {
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
     func configureUI() {
         notes.layer.borderColor = UIColor(red: 0.76, green: 0.76, blue: 0.76, alpha: 1.0).cgColor;
         notes.layer.borderWidth = 1.0;
         notes.layer.cornerRadius = 5.0;
+        barCodeButton.createRoundedButton()
         
         if(isEditMode)
         {
@@ -146,7 +155,6 @@ class ItemDetailViewController: UIViewController, ImagePickerDelegate, ItemDetai
         }
     }
 
-
     @objc func onSave() {
         let name =  self.name.text!
         let category =  self.categoryDropDown.text!
@@ -156,9 +164,10 @@ class ItemDetailViewController: UIViewController, ImagePickerDelegate, ItemDetai
         let price =  self.price.text!
         let nonUnitPrice =  self.nonUnitPrice.text!
         let perVal =  self.perVal.text!
+        let barCode =  self.barCode.text!
 
         Common.showActivityIndicatory(view: self.view)
-        _ = itemDetailVM.sendValues(name: name, category: category, uom: uom,notes:notes,price:price,nonUnitPrice:nonUnitPrice,perVal:perVal, roLevel:roLevel, image:selectedImage, isEditMode: isEditMode, selectedItem: selectedItem)
+        _ = itemDetailVM.sendValues(name: name, category: category, uom: uom,notes:notes,price:price,nonUnitPrice:nonUnitPrice,perVal:perVal, roLevel:roLevel, image:selectedImage, isEditMode: isEditMode, selectedItem: selectedItem, barcode: barCode)
     }
 
     
@@ -189,7 +198,7 @@ class ItemDetailViewController: UIViewController, ImagePickerDelegate, ItemDetai
         
          self.handlePrice(selectedUnit: selectedVal)
      }
-     
+        
     func performSuccess() {
         Common.stopActivityIndicatory()
         navigationController?.popViewController(animated: true)
@@ -199,5 +208,24 @@ class ItemDetailViewController: UIViewController, ImagePickerDelegate, ItemDetai
         Common.stopActivityIndicatory()
         Common.showAlert(msg: msg, viewController: self)
     }
+}
+
+extension ItemDetailViewController : BarcodeScannerCodeDelegate, BarcodeScannerErrorDelegate {
+    func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {
+            self.barCode.text = code
+            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
+              controller.reset()
+              controller.dismiss(animated: true, completion: nil)
+              self.navigationController?.popViewController(animated: true)
+            }
+    }
     
+    func scanner(_ controller: BarcodeScannerViewController, didReceiveError error: Error) {
+           Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
+                controller.reset()
+                controller.dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
+                Common.showAlert(msg: "Error occured in scanning", viewController: self)
+           }
+    }
 }

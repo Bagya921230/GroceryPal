@@ -170,5 +170,35 @@ class FireStoreItemQueries
             }
         }
     }
+    
+    func fetchItemByBarCode(barCode: String, completion: @escaping(Item?)->())
+    {
+        
+        FireStoreDataBase.shared.firebaseDb.collection("user").document(self.userId).collection("items").whereField("barcode", isEqualTo: barCode).getDocuments() {
+            (querySnapshot, err) in
+            if let err = err {
+                print("Error getting item: \(err)")
+                completion(nil)
+            }
+            else {
+                for document in querySnapshot!.documents {
+                    print("\(document.documentID) => \(document.data())")
+                    let data = document.data()
+                    
+                    do
+                    {
+                        let jsonObj = try JSONSerialization.data(withJSONObject: data, options: [])
+                        var item = try JSONDecoder().decode(Item.self, from: jsonObj)
+                        item.id = document.documentID
+                        completion(item)
+                    }
+                    catch
+                    {
+                        completion(nil)
+                    }
+                }
+            }
+        }
+    }
 
 }

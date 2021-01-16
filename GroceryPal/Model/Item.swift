@@ -22,8 +22,9 @@ struct Item: Codable {
     var roLevel: Double
     var notes: String
     var image: String
-    
-    init(name:String, category:String, uom:String, unitPrice:Double, perValue:Double, roLevel:Double, notes:String, image: String, id: String){
+    var barcode: String
+
+    init(name:String, category:String, uom:String, unitPrice:Double, perValue:Double, roLevel:Double, notes:String, image: String, id: String, barcode: String){
         self.name=name
         self.category=category
         self.uom=uom
@@ -33,5 +34,6 @@ struct Item: Codable {
         self.notes=notes
         self.image=image
         self.id = id
+        self.barcode = barcode
     }
 }

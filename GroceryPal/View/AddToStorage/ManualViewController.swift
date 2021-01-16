@@ -91,12 +91,18 @@ class ManualViewController: UIViewController, ManualViewControllerDelegate, Item
     }
     
     func didScan(msg: String) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        
-        let pickerDateformatter = DateFormatter()
-        pickerDateformatter.dateStyle = .medium
-        self.expiryTextField.text = pickerDateformatter.string(from: dateFormatter.date(from: msg)!)
+        manualVM.fetchItemFromStore(barcode: msg, itemList: itemList, completion: {
+            item in
+            
+                self.selectedItem = item
+                self.itemNameDropdown.text = item.name
+                self.itemNameDropdown.selectedIndex = self.manualVM.getItemIndex(barcode: msg, itemList: self.itemList)
+                self.categoryLabel.text = item.category
+                self.unitPriceTextField.text = Common.getFormattedDecimalString(value: item.unitPrice)
+                self.priceTextField.text = Common.getFormattedDecimalString(value: item.unitPrice)
+                self.measurementTextField.text = Common.getFormattedDecimalString(value: item.perValue)
+          
+        })
     }
     
     func displayItems(list: [String]) {
