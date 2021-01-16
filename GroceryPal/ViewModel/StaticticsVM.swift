@@ -43,7 +43,7 @@ class StaticticsVM {
         }
         
         dispatch.notify(queue: DispatchQueue.main) {
-            self.delegate?.displayStockReleatedData(reStockCount: reStockCountMain, expiredCount: expiredCountMain, inStockCount: expiredCountMain+inStockCountMain)
+            self.delegate?.displayStockReleatedData(reStockCount: reStockCountMain, expiredCount: expiredCountMain, inStockCount: expiredCountMain+inStockCountMain, nonExpiredCount: inStockCountMain+reStockCountMain)
         }
     }
     

@@ -10,7 +10,7 @@ import UIKit
 import Charts
 
 protocol StatisticsViewControllerDelegate {
-    func displayStockReleatedData(reStockCount: Double, expiredCount: Double, inStockCount: Double)
+    func displayStockReleatedData(reStockCount: Double, expiredCount: Double, inStockCount: Double, nonExpiredCount: Double)
     func displayCatgeoryUsageData(categoryUsage: Dictionary<String, Double>)
 }
 
@@ -188,8 +188,8 @@ class StatisticsViewController: UIViewController, StatisticsViewControllerDelega
         
     }
     
-    func displayStockReleatedData(reStockCount: Double, expiredCount: Double, inStockCount: Double) {
-        print("Restock Count",reStockCount,expiredCount,inStockCount)
+    func displayStockReleatedData(reStockCount: Double, expiredCount: Double, inStockCount: Double, nonExpiredCount: Double) {
+        print("Restock Count",reStockCount,expiredCount,inStockCount, nonExpiredCount)
     }
     
     func displayCatgeoryUsageData(categoryUsage: Dictionary<String, Double>) {
