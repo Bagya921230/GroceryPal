@@ -119,7 +119,7 @@ class FireStoreStockQueries {
             var itemList = [StockItem]()
 
             guard let documents = querySnapshot?.documents else {
-            self.delegateStockItemEvents?.stockItemList(stockItemList: itemList)
+            self.delegateRestockItemEvents?.restockItemList(restockItemList: itemList)
             return
            }
 

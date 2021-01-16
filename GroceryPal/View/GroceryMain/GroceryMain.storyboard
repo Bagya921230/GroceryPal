@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7vr-dc-hr3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7vr-dc-hr3">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -35,30 +34,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ywO-68-8PA">
-                                <rect key="frame" x="354" y="101" width="34" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="djJ-9x-KWB"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <state key="normal" title="NEW">
-                                    <color key="titleColor" red="0.0" green="0.53333333329999999" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="newListAction:" destination="MAw-Gy-j0o" eventType="touchUpInside" id="bc3-ql-qIE"/>
-                                </connections>
-                            </button>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="G7g-Zv-Egf"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Brb-M4-GZP" firstAttribute="top" secondItem="0zD-3f-bRz" secondAttribute="bottom" id="0Sf-gU-G9g"/>
                             <constraint firstItem="G7g-Zv-Egf" firstAttribute="bottom" secondItem="Brb-M4-GZP" secondAttribute="bottom" id="CvX-oe-wca"/>
                             <constraint firstItem="JIz-vE-jAz" firstAttribute="top" secondItem="0zD-3f-bRz" secondAttribute="bottom" id="E8g-9z-2pu"/>
-                            <constraint firstAttribute="trailing" secondItem="ywO-68-8PA" secondAttribute="trailing" constant="26" id="EmT-UN-Sl9"/>
                             <constraint firstItem="G7g-Zv-Egf" firstAttribute="trailing" secondItem="JIz-vE-jAz" secondAttribute="trailing" id="Hga-RZ-vE1"/>
                             <constraint firstItem="0zD-3f-bRz" firstAttribute="top" secondItem="G7g-Zv-Egf" secondAttribute="top" constant="20" id="YDp-ys-fnb"/>
-                            <constraint firstItem="ywO-68-8PA" firstAttribute="top" secondItem="G7g-Zv-Egf" secondAttribute="top" constant="13" id="ZWw-Yc-uZ9"/>
                             <constraint firstItem="Brb-M4-GZP" firstAttribute="leading" secondItem="G7g-Zv-Egf" secondAttribute="leading" id="cbo-iG-OUu"/>
                             <constraint firstAttribute="trailing" secondItem="0zD-3f-bRz" secondAttribute="trailing" constant="20" id="fQi-5t-Lhg"/>
                             <constraint firstItem="G7g-Zv-Egf" firstAttribute="trailing" secondItem="Brb-M4-GZP" secondAttribute="trailing" id="gha-HX-pPZ"/>
@@ -66,6 +49,7 @@
                             <constraint firstItem="0zD-3f-bRz" firstAttribute="leading" secondItem="3zv-Hd-Pf1" secondAttribute="leading" constant="20" id="uvF-2h-wPU"/>
                             <constraint firstItem="JIz-vE-jAz" firstAttribute="leading" secondItem="G7g-Zv-Egf" secondAttribute="leading" id="zSg-eN-jN6"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="G7g-Zv-Egf"/>
                     </view>
                     <navigationItem key="navigationItem" id="KEa-YB-vd9">
                         <barButtonItem key="backBarButtonItem" title=" " id="1WQ-yY-IsB"/>
@@ -74,7 +58,6 @@
                     <connections>
                         <outlet property="emptyContainer" destination="Brb-M4-GZP" id="9L9-Im-gTG"/>
                         <outlet property="listContainerView" destination="JIz-vE-jAz" id="Wd1-Rd-ok8"/>
-                        <segue destination="QNg-hP-bew" kind="presentation" identifier="segueNewList" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="grj-i5-ZHx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i1I-VV-DYj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -89,7 +72,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e7k-6m-Owj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749" y="-167"/>
+            <point key="canvasLocation" x="1677" y="648"/>
         </scene>
         <!--Grocery Empty View Controller-->
         <scene sceneID="4FH-bu-KqF">
@@ -114,7 +97,7 @@ Please create a new list.</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uzl-uc-iGh">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uzl-uc-iGh">
                                 <rect key="frame" x="60" y="502.5" width="294" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.53333333329999999" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
@@ -131,7 +114,6 @@ Please create a new list.</string>
                                 </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="GUR-VR-Jla"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="uzl-uc-iGh" firstAttribute="leading" secondItem="kiv-7Y-8IN" secondAttribute="leadingMargin" constant="40" id="9E9-jI-9WZ"/>
@@ -143,6 +125,7 @@ Please create a new list.</string>
                             <constraint firstItem="uzl-uc-iGh" firstAttribute="top" secondItem="WKa-rV-Dtn" secondAttribute="bottom" constant="90" id="sjR-Do-jh6"/>
                             <constraint firstItem="Fnw-AQ-IAA" firstAttribute="top" secondItem="kiv-7Y-8IN" secondAttribute="topMargin" constant="120" id="y3C-Vh-Qle"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="GUR-VR-Jla"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="abE-mS-LDV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -161,39 +144,39 @@ Please create a new list.</string>
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="676"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2pO-vO-Pf7">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1010"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Out of stock items &amp; reorder level reached items " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V7x-AJ-sk1">
-                                                <rect key="frame" x="20" y="30" width="374" height="17"/>
+                                                <rect key="frame" x="20" y="40" width="374" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="0.59215686270000001" green="0.59215686270000001" blue="0.59215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Sg-51-SZ4">
-                                                <rect key="frame" x="0.0" y="67" width="414" height="158"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <rect key="frame" x="0.0" y="77" width="414" height="158"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="158" id="odY-05-sN2"/>
                                                 </constraints>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="groceryTableViewCell" rowHeight="119" id="dj0-ii-KOr" customClass="GroceryItemTableViewCell" customModule="GroceryPal" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="28" width="414" height="119"/>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="groceryTableViewCell" rowHeight="130" id="dj0-ii-KOr" customClass="GroceryItemTableViewCell" customModule="GroceryPal" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="28" width="414" height="130"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dj0-ii-KOr" id="lE6-yD-if9">
-                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="119"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f4k-z4-LkH">
-                                                                    <rect key="frame" x="20" y="10" width="374" height="99"/>
+                                                                    <rect key="frame" x="20" y="10" width="374" height="110"/>
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="temp" translatesAutoresizingMaskIntoConstraints="NO" id="Car-Uf-GMI">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="99"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="110"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="100" id="bcz-78-GQO"/>
                                                                             </constraints>
                                                                         </imageView>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="iiz-fP-vWz">
-                                                                            <rect key="frame" x="110" y="26.5" width="254" height="46"/>
+                                                                            <rect key="frame" x="110" y="32" width="254" height="46"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coconut Oil 500ml" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1D-ij-mvl">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="139.5" height="19.5"/>
@@ -253,8 +236,8 @@ Please create a new list.</string>
                                                 </prototypes>
                                             </tableView>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Dt-Ev-vLP">
-                                                <rect key="frame" x="0.0" y="329" width="414" height="651"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <rect key="frame" x="0.0" y="339" width="414" height="651"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="651" id="YM7-Ye-L3t"/>
                                                 </constraints>
@@ -347,19 +330,19 @@ Please create a new list.</string>
                                                 </prototypes>
                                             </tableView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My weekly grocery list" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4Y-L4-e1E">
-                                                <rect key="frame" x="20" y="245" width="144" height="17"/>
+                                                <rect key="frame" x="20" y="255" width="144" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="0.59215686270000001" green="0.59215686270000001" blue="0.59215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 items" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WvI-uX-HWv">
-                                                <rect key="frame" x="20" y="282" width="54" height="17"/>
+                                                <rect key="frame" x="20" y="292" width="54" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="0.59215686270000001" green="0.59215686270000001" blue="0.59215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qnI-tf-vsF">
-                                                <rect key="frame" x="215.5" y="282" width="178.5" height="17"/>
+                                                <rect key="frame" x="215.5" y="292" width="178.5" height="17"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estimated Total" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tdo-Wt-fIn">
                                                         <rect key="frame" x="0.0" y="0.0" width="99.5" height="17"/>
@@ -375,8 +358,8 @@ Please create a new list.</string>
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VcK-aj-GgO">
-                                                <rect key="frame" x="364" y="240" width="30" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VcK-aj-GgO">
+                                                <rect key="frame" x="364" y="250" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="KhU-MA-Kxp"/>
                                                     <constraint firstAttribute="height" constant="30" id="d0m-RX-ra2"/>
@@ -390,29 +373,48 @@ Please create a new list.</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FYA-rJ-9bh">
-                                                <rect key="frame" x="324" y="240" width="30" height="30"/>
+                                                <rect key="frame" x="324" y="250" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="FzT-MN-E3b"/>
                                                     <constraint firstAttribute="height" constant="30" id="ZMC-kj-isX"/>
                                                 </constraints>
                                                 <state key="normal" image="shareicon"/>
+                                                <connections>
+                                                    <action selector="shareAction:" destination="iIg-c5-Mpd" eventType="touchUpInside" id="nwD-Lt-NKb"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mjs-Pa-6Ag">
+                                                <rect key="frame" x="340" y="1" width="50" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="3Zu-7r-Od8"/>
+                                                    <constraint firstAttribute="height" constant="30" id="u2i-pc-ceD"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                <state key="normal" title="NEW">
+                                                    <color key="titleColor" red="0.0" green="0.53333333329999999" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="newListAction:" destination="iIg-c5-Mpd" eventType="touchUpInside" id="b3s-Mq-yHN"/>
+                                                </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="2Dt-Ev-vLP" firstAttribute="top" secondItem="WvI-uX-HWv" secondAttribute="bottom" constant="30" id="4Ou-ar-O8x"/>
                                             <constraint firstAttribute="trailing" secondItem="2Dt-Ev-vLP" secondAttribute="trailing" id="4s5-ka-sbq"/>
+                                            <constraint firstAttribute="trailing" secondItem="Mjs-Pa-6Ag" secondAttribute="trailing" constant="24" id="8eG-yv-0Ey"/>
                                             <constraint firstItem="I4Y-L4-e1E" firstAttribute="top" secondItem="6Sg-51-SZ4" secondAttribute="bottom" constant="20" id="8oc-0S-c6E"/>
+                                            <constraint firstItem="V7x-AJ-sk1" firstAttribute="top" secondItem="Mjs-Pa-6Ag" secondAttribute="bottom" constant="9" id="9g5-qG-53c"/>
                                             <constraint firstItem="WvI-uX-HWv" firstAttribute="leading" secondItem="2pO-vO-Pf7" secondAttribute="leading" constant="20" id="FtD-aA-Nxy"/>
                                             <constraint firstItem="VcK-aj-GgO" firstAttribute="top" secondItem="6Sg-51-SZ4" secondAttribute="bottom" constant="15" id="JKI-lx-9Pd"/>
                                             <constraint firstItem="qnI-tf-vsF" firstAttribute="top" secondItem="WvI-uX-HWv" secondAttribute="top" id="KTF-uN-n6r"/>
                                             <constraint firstAttribute="trailing" secondItem="6Sg-51-SZ4" secondAttribute="trailing" id="MoN-zX-meG"/>
                                             <constraint firstItem="FYA-rJ-9bh" firstAttribute="top" secondItem="VcK-aj-GgO" secondAttribute="top" id="OZ0-iL-Rcy"/>
                                             <constraint firstItem="6Sg-51-SZ4" firstAttribute="top" secondItem="V7x-AJ-sk1" secondAttribute="bottom" constant="20" id="POG-Zl-KwP"/>
-                                            <constraint firstItem="V7x-AJ-sk1" firstAttribute="top" secondItem="2pO-vO-Pf7" secondAttribute="top" constant="30" id="RkK-LH-JGt"/>
                                             <constraint firstItem="VcK-aj-GgO" firstAttribute="leading" secondItem="FYA-rJ-9bh" secondAttribute="trailing" constant="10" id="WH8-Iu-ePb"/>
                                             <constraint firstItem="V7x-AJ-sk1" firstAttribute="leading" secondItem="2pO-vO-Pf7" secondAttribute="leading" constant="20" id="WtB-PP-eRd"/>
                                             <constraint firstItem="I4Y-L4-e1E" firstAttribute="leading" secondItem="2pO-vO-Pf7" secondAttribute="leading" constant="20" id="b68-Jc-6Tl"/>
+                                            <constraint firstItem="Mjs-Pa-6Ag" firstAttribute="top" secondItem="2pO-vO-Pf7" secondAttribute="top" constant="1" id="d9f-jn-jHo"/>
                                             <constraint firstAttribute="trailing" secondItem="qnI-tf-vsF" secondAttribute="trailing" constant="20" id="efv-hh-Zwu"/>
                                             <constraint firstItem="6Sg-51-SZ4" firstAttribute="leading" secondItem="2pO-vO-Pf7" secondAttribute="leading" id="ewy-Q7-oux"/>
                                             <constraint firstItem="WvI-uX-HWv" firstAttribute="top" secondItem="I4Y-L4-e1E" secondAttribute="bottom" constant="20" id="jEJ-gD-vTc"/>
@@ -434,21 +436,26 @@ Please create a new list.</string>
                                 <viewLayoutGuide key="frameLayoutGuide" id="O5S-dW-B98"/>
                             </scrollView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="REh-y7-Qsh"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Fp9-7W-PzB" firstAttribute="bottom" secondItem="REh-y7-Qsh" secondAttribute="bottom" id="OzY-FC-8iz"/>
                             <constraint firstItem="Fp9-7W-PzB" firstAttribute="trailing" secondItem="REh-y7-Qsh" secondAttribute="trailing" id="Ref-Ro-RKq"/>
                             <constraint firstItem="Fp9-7W-PzB" firstAttribute="leading" secondItem="rW8-sd-oBQ" secondAttribute="leading" id="TVQ-AX-vDz"/>
                             <constraint firstItem="Fp9-7W-PzB" firstAttribute="top" secondItem="rW8-sd-oBQ" secondAttribute="top" id="vpT-2d-WV8"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="REh-y7-Qsh"/>
                     </view>
                     <connections>
                         <outlet property="autoTableView" destination="6Sg-51-SZ4" id="ghD-qg-rZC"/>
                         <outlet property="autoTableViewHeightConstraint" destination="odY-05-sN2" id="Al4-YM-vnI"/>
+                        <outlet property="itemCount" destination="WvI-uX-HWv" id="Fj3-b4-ADd"/>
+                        <outlet property="listName" destination="I4Y-L4-e1E" id="WdA-Cx-UtK"/>
+                        <outlet property="newButton" destination="Mjs-Pa-6Ag" id="tjS-mw-y2D"/>
                         <outlet property="newListTableView" destination="2Dt-Ev-vLP" id="jwQ-bm-ptl"/>
                         <outlet property="newTableViewHeightConstraint" destination="YM7-Ye-L3t" id="hQa-Uq-OEa"/>
+                        <outlet property="total" destination="mOw-JP-dv0" id="O1C-WS-0Zd"/>
                         <segue destination="LbK-CI-Skk" kind="show" identifier="segueAddItemToGrocery" id="UP8-f0-8Ul"/>
+                        <segue destination="QNg-hP-bew" kind="presentation" identifier="segueNewList" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="E48-wz-Ts1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oR0-zB-82a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -488,12 +495,9 @@ Please create a new list.</string>
     </scenes>
     <resources>
         <image name="grocery_large" width="156" height="200"/>
-        <image name="minus.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="minus.circle.fill" catalog="system" width="64" height="60"/>
         <image name="nav_grocery" width="24" height="24"/>
         <image name="shareicon" width="18" height="15"/>
         <image name="temp" width="373" height="198"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
