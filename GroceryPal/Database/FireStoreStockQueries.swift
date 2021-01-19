@@ -91,6 +91,8 @@ class FireStoreStockQueries {
             if (newQty <= item.roLevel) {
                 dictionary["status"] = "restock"
                 LocalNotification.scheduleLocalNotification(type: "restock", item: item, mins: 1)
+            } else if item.status == "expired" {
+                dictionary["status"] = "expired"
             } else {
                 dictionary["status"] = "active"
             }
