@@ -70,7 +70,7 @@ class StatisticsViewController: UIViewController, StatisticsViewControllerDelega
         
         let categoryUsageDataSet = PieChartDataSet(entries: pieChartEntryCategoryUsage, label: nil)
         let categoryUsageData = PieChartData(dataSet: categoryUsageDataSet)
-        let colors5 = [UIColor.red,UIColor.green,UIColor.yellow,UIColor.blue,UIColor.orange]
+        let colors5 = [UIColor.systemPurple,UIColor.themeColor(),UIColor.lightGray,UIColor.systemTeal,UIColor.orange]
         categoryUsageDataSet.colors = colors5
         chartView4.data = categoryUsageData
         chartView4.animate(xAxisDuration: 3.2)
@@ -105,7 +105,7 @@ class StatisticsViewController: UIViewController, StatisticsViewControllerDelega
         let stockDataSet = PieChartDataSet(entries: pieChartTotalStockDataEntry, label: nil)
         let stockData = PieChartData(dataSet: stockDataSet)
         
-        let colors = [UIColor.green,UIColor.red]
+        let colors = [UIColor.themeColor(),UIColor.lightGray]
         stockDataSet.colors = colors
         chartView1.data = stockData
         chartView1.animate(xAxisDuration: 2.5)
@@ -115,7 +115,7 @@ class StatisticsViewController: UIViewController, StatisticsViewControllerDelega
         
        let expiredDataSet = PieChartDataSet(entries: pieChartTotalExpiredDataEntry,label: nil)
        let expiredData = PieChartData(dataSet: expiredDataSet)
-        let colors2 = [UIColor.blue,UIColor.orange]
+        let colors2 = [UIColor.systemTeal,UIColor.lightGray]
         expiredDataSet.colors = colors2
         chartView2.data = expiredData
         chartView2.animate(xAxisDuration: 3)
