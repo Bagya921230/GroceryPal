@@ -36,11 +36,11 @@
                                             <constraint firstAttribute="height" constant="200" id="mtS-RW-Vj4"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Mpb-oo-Qe8">
-                                        <rect key="frame" x="0.0" y="200" width="414" height="299"/>
+                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Mpb-oo-Qe8">
+                                        <rect key="frame" x="0.0" y="205" width="414" height="300"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JXc-jz-Yg4" customClass="BarChartView" customModule="Charts">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="299"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
                                                 <color key="backgroundColor" red="0.87936579870210396" green="1" blue="0.61273269517016815" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="400" id="NkB-Ta-QjH"/>
@@ -57,10 +57,10 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="LXT-SE-3cD">
-                                        <rect key="frame" x="0.0" y="499" width="414" height="319"/>
+                                        <rect key="frame" x="0.0" y="200" width="414" height="618"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vt3-8w-fQJ" customClass="PieChartView" customModule="Charts">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="319"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="618"/>
                                                 <color key="backgroundColor" red="0.94089050101746341" green="1" blue="0.53456262504176622" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="300" id="7CX-Q2-YkN"/>

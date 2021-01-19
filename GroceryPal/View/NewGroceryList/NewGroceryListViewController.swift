@@ -19,7 +19,7 @@ class NewGroceryListViewController: UIViewController, NewGroceryListViewControll
     @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var nameTextField: UITextField!
-    
+    @IBOutlet weak var scrollView: UIScrollView!
     //MARK: - Action
     @IBAction func saveAction(_ sender: Any) {
         onSave()
@@ -39,6 +39,7 @@ class NewGroceryListViewController: UIViewController, NewGroceryListViewControll
     }
     
     func configureUI() {
+        self.hideKeyboardWhenTappedAround(scrollView: scrollView)
         bgView.allRoundCorners(radius: 8)
         saveButton.allRoundCorners(radius: 8)
     }

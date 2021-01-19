@@ -167,7 +167,7 @@ class StatisticsViewController: UIViewController, StatisticsViewControllerDelega
     }
     
     func displayStockReleatedData(reStockCount: Double, expiredCount: Double, inStockCount: Double, nonExpiredCount: Double) {
-        // print("Restock Count",reStockCount,expiredCount,inStockCount, nonExpiredCount)
+         print("Restock Count",reStockCount,expiredCount,inStockCount, nonExpiredCount)
         setData(expiredCount,nonExpiredCount,inStockCount,reStockCount)
     }
     
