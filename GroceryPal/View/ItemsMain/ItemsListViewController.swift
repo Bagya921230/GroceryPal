@@ -69,7 +69,7 @@ class ItemsListViewController: UIViewController, UISearchBarDelegate, ItemsListV
         searchBar.barTintColor = UIColor.white
         searchBar.backgroundColor = UIColor.white
         searchBar.layer.borderWidth = 1
-        searchBar.layer.borderColor = UIColor.white.cgColor
+        searchBar.layer.borderColor = UIColor.gray.cgColor
         searchBar.setTextFieldColor(UIColor.init(red: 249, green: 249, blue: 249, alpha: 1))
     }
     
