@@ -159,6 +159,7 @@ class StatisticsViewController: UIViewController, StatisticsViewControllerDelega
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
+        self.tabBarController?.tabBar.isHidden = true
     }
 
     // MARK: - Navigation
